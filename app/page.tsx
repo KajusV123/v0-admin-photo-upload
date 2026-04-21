@@ -5,6 +5,7 @@ import type React from "react"
 import Image from "next/image"
 import { useState, useRef, useCallback } from "react"
 import VariableProximity from "@/components/variable-proximity"
+import { AccessSection } from "@/components/access-section"
 
 const initialImages = [
   // Top left area
@@ -226,9 +227,10 @@ export default function Home() {
   }, [])
 
   return (
+    <div className="min-h-screen bg-[#0a0a0a]">
     <main
       ref={containerRef}
-      className="relative h-screen overflow-hidden bg-[#0a0a0a]"
+      className="relative h-screen overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -323,5 +325,8 @@ export default function Home() {
         </div>
       </div>
     </main>
+    
+    <AccessSection />
+    </div>
   )
 }
