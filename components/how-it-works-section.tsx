@@ -1,5 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
+
 const steps = [
   {
     number: "01",
@@ -18,6 +20,29 @@ const steps = [
   },
 ]
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+}
+
 export function HowItWorksSection() {
   return (
     <section className="relative bg-[#0a0a0a] py-28 overflow-hidden">
@@ -30,45 +55,76 @@ export function HowItWorksSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6">
-        <div className="text-center mb-20">
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+        >
           <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
             How It Works
           </h2>
           <p className="mt-4 text-white/50">
             From prompt to portrait in minutes
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <motion.div 
+          className="grid gap-8 md:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
               className="group relative"
+              variants={itemVariants}
             >
               {/* Connecting line for desktop */}
               {index < steps.length - 1 && (
-                <div className="absolute top-12 left-[calc(50%+60px)] hidden h-px w-[calc(100%-60px)] bg-gradient-to-r from-white/20 to-transparent md:block" />
+                <motion.div 
+                  className="absolute top-12 left-[calc(50%+60px)] hidden h-px w-[calc(100%-60px)] bg-gradient-to-r from-white/20 to-transparent md:block"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 + index * 0.2, duration: 0.8 }}
+                  style={{ originX: 0 }}
+                />
               )}
               
-              <div className="relative rounded-3xl p-8 text-center transition-all duration-500 hover:bg-white/[0.02]">
+              <motion.div 
+                className="relative rounded-3xl p-8 text-center transition-all duration-500"
+                whileHover={{ 
+                  backgroundColor: "rgba(255,255,255,0.02)",
+                  y: -5,
+                }}
+              >
                 {/* Large number background */}
                 <div className="relative mb-6 inline-flex">
-                  <span 
+                  <motion.span 
                     className="text-8xl font-bold tracking-tighter"
                     style={{
                       background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
                     {step.number}
-                  </span>
+                  </motion.span>
                   {/* Glow on hover */}
-                  <div 
-                    className="absolute inset-0 rounded-full blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  <motion.div 
+                    className="absolute inset-0 rounded-full blur-2xl"
                     style={{
                       background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)",
                     }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                   />
                 </div>
 
@@ -78,10 +134,10 @@ export function HowItWorksSection() {
                 <p className="text-white/50 leading-relaxed">
                   {step.description}
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const faqs = [
   {
@@ -26,6 +27,28 @@ const faqs = [
   },
 ]
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+}
+
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
@@ -41,46 +64,67 @@ export function FaqSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+        >
           <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
             Common Questions
           </h2>
           <p className="mt-4 text-white/50">
             Everything you need to know before getting started
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div 
+          className="space-y-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
               className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden transition-colors hover:border-white/20"
+              variants={itemVariants}
+              layout
             >
-              <button
+              <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between p-6 text-left"
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
               >
                 <span className="text-lg font-medium text-white pr-4">
                   {faq.question}
                 </span>
-                <ChevronDown
-                  className={`h-5 w-5 shrink-0 text-white/50 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-out ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <p className="px-6 pb-6 text-white/60 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            </div>
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                  <ChevronDown className="h-5 w-5 shrink-0 text-white/50" />
+                </motion.div>
+              </motion.button>
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  >
+                    <p className="px-6 pb-6 text-white/60 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
