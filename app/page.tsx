@@ -4,7 +4,7 @@ import type React from "react"
 
 import Image from "next/image"
 import { useState, useRef, useCallback, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import VariableProximity from "@/components/variable-proximity"
 import { AccessSection } from "@/components/access-section"
 import { InfiniteCarousel } from "@/components/infinite-carousel"
@@ -186,10 +186,6 @@ export default function Home() {
   const pendingPosition = useRef({ left: 0, top: 0 })
   const textContainerRef = useRef<HTMLDivElement>(null)
 
-  const { scrollYProgress } = useScroll()
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95])
-
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100)
     return () => clearTimeout(timer)
@@ -277,13 +273,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
-      <motion.main
+      <main
         ref={containerRef}
         className="relative h-screen overflow-visible"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        style={{ opacity: heroOpacity, scale: heroScale }}
       >
         <div
           className="absolute inset-0 opacity-20"
@@ -496,7 +491,7 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </motion.main>
+      </main>
     
       <AccessSection />
       <InfiniteCarousel />
