@@ -30,7 +30,7 @@ export function FinalCtaSection() {
           <span 
             className="block mt-2"
             style={{
-              background: "linear-gradient(135deg, #f8b4d9 0%, #c084fc 50%, #f8b4d9 100%)",
+              background: "linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #ffffff 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -48,7 +48,7 @@ export function FinalCtaSection() {
           <div
             className="group inline-block rounded-full p-[2px] transition-all duration-300 hover:scale-105"
             style={{
-              background: "linear-gradient(135deg, #f8b4d9 0%, #c084fc 25%, #f8b4d9 50%, #c084fc 75%, #f8b4d9 100%)",
+              background: "linear-gradient(135deg, #ffffff 0%, #6b6b6b 25%, #ffffff 50%, #6b6b6b 75%, #ffffff 100%)",
             }}
           >
             <button className="flex items-center gap-3 rounded-full bg-[#0a0a0a] px-10 py-5 text-lg font-medium text-white transition-all hover:bg-white hover:text-black">

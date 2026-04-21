@@ -25,7 +25,7 @@ export function WhatsInsideSection() {
       <div className="relative z-10 mx-auto max-w-3xl px-6">
         {/* Header with decorative line */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium uppercase tracking-widest text-pink-400 border border-pink-500/30 rounded-full bg-pink-500/5">
+          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium uppercase tracking-widest text-white/70 border border-white/20 rounded-full bg-white/5">
             The Complete Package
           </span>
           <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
@@ -54,9 +54,9 @@ export function WhatsInsideSection() {
                 className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-white/[0.02]"
               >
                 <span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-pink-500/20"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-white/10"
                   style={{
-                    background: "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)",
+                    background: "linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%)",
                   }}
                 >
                   <Check className="h-4 w-4 text-white" strokeWidth={3} />
