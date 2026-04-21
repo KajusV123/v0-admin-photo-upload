@@ -365,9 +365,9 @@ export default function Home() {
       </div>
     </main>
     
-    <WhatsInsideSection />
     <AccessSection />
     <InfiniteCarousel />
+    <WhatsInsideSection />
     </div>
   )
 }
