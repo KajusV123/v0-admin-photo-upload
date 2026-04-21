@@ -58,9 +58,9 @@ export function Navbar() {
               <Image
                 src="/images/logo.svg"
                 alt="Infinite Prompt Bank"
-                width={160}
-                height={40}
-                className="h-10 w-auto"
+                width={140}
+                height={36}
+                className="h-8 w-auto"
               />
             </a>
 
