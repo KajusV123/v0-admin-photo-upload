@@ -56,7 +56,7 @@ export function FinalCtaSection() {
           transition={{ type: "spring", stiffness: 80, damping: 15 }}
         >
           <Image
-            src="/images/logo.jpg"
+            src="/images/logo.png"
             alt="DEMO Studio"
             width={320}
             height={90}
