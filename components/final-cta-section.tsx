@@ -58,9 +58,9 @@ export function FinalCtaSection() {
           <Image
             src="/images/logo.svg"
             alt="Infinite Prompt Bank"
-            width={180}
-            height={50}
-            className="h-12 w-auto opacity-80"
+            width={320}
+            height={90}
+            className="h-24 md:h-32 w-auto"
           />
         </motion.div>
 
