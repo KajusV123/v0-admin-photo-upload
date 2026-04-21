@@ -25,7 +25,7 @@ export function HowItWorksSection() {
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(236,72,153,0.3) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
         }}
       />
 
@@ -67,7 +67,7 @@ export function HowItWorksSection() {
                   <div 
                     className="absolute inset-0 rounded-full blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                     style={{
-                      background: "radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)",
+                      background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)",
                     }}
                   />
                 </div>

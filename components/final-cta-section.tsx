@@ -11,15 +11,15 @@ export function FinalCtaSection() {
     <section className="relative bg-[#0a0a0a] py-32 overflow-hidden">
       {/* Gradient orbs */}
       <div 
-        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-30 blur-[150px]"
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-40 blur-[150px]"
         style={{
-          background: "radial-gradient(circle, #ec4899 0%, transparent 70%)",
+          background: "radial-gradient(circle, #2a2a2a 0%, transparent 70%)",
         }}
       />
       <div 
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-20 blur-[120px]"
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background: "radial-gradient(circle, #a855f7 0%, transparent 70%)",
+          background: "radial-gradient(circle, #1f1f1f 0%, transparent 70%)",
         }}
       />
 
@@ -97,7 +97,7 @@ export function FinalCtaSection() {
       <div 
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(236,72,153,0.3) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
         }}
       />
     </section>
