@@ -153,18 +153,20 @@
 }
 
 /* Infinite carousel animations */
+/* Card width: 256px (w-64) + 24px (px-3 = 12px each side) = 280px per card */
+/* 8 cards = 2240px total for one set */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-280px * 8));
   }
 }
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-280px * 8));
   }
   100% {
     transform: translateX(0);
@@ -172,14 +174,9 @@
 }
 
 .animate-scroll-left {
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 40s linear infinite;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 30s linear infinite;
-}
-
-.animate-scroll-left:hover,
-.animate-scroll-right:hover {
-  animation-play-state: paused;
+  animation: scroll-right 40s linear infinite;
 }
