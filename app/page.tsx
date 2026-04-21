@@ -6,6 +6,7 @@ import Image from "next/image"
 import { useState, useRef, useCallback } from "react"
 import VariableProximity from "@/components/variable-proximity"
 import { AccessSection } from "@/components/access-section"
+import { InfiniteCarousel } from "@/components/infinite-carousel"
 
 const initialImages = [
   // Top left area
@@ -327,6 +328,7 @@ export default function Home() {
     </main>
     
     <AccessSection />
+    <InfiniteCarousel />
     </div>
   )
 }
