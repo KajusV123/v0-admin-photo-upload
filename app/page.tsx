@@ -178,7 +178,6 @@ const initialImages = [
 export default function Home() {
   const [images, setImages] = useState(initialImages)
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null)
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const dragOffset = useRef({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
@@ -289,33 +288,22 @@ export default function Home() {
           }}
         />
 
-        {/* Animated gradient orb */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] pointer-events-none"
+        {/* Static gradient orb */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] pointer-events-none opacity-40"
           style={{
             background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
           }}
         />
 
         {/* Scattered draggable images */}
         {images.map((image, index) => {
           const isDragging = draggingIndex === index
-          const isHovered = hoveredIndex === index
-          const isActive = isDragging || isHovered
           
           return (
             <motion.div
               key={index}
-              className={`draggable-image absolute select-none ${
+              className={`draggable-image absolute select-none will-change-transform ${
                 isDragging ? "cursor-grabbing" : "cursor-grab"
               }`}
               style={{
@@ -323,62 +311,31 @@ export default function Home() {
                 left: `${image.left}%`,
                 width: image.width,
                 height: image.height,
-                zIndex: isDragging ? 100 : isHovered ? 50 : index,
+                zIndex: isDragging ? 100 : index,
+                transform: `rotate(${image.rotate}deg)`,
               }}
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
               variants={getImageAnimation(index)}
               onMouseDown={(e) => handleMouseDown(e, index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <motion.div 
-                className="relative h-full w-full overflow-hidden rounded-2xl"
-                animate={{
-                  rotate: image.rotate,
-                  scale: isDragging ? 1.12 : isHovered ? 1.08 : 1,
-                  y: isHovered && !isDragging ? -8 : 0,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                }}
+              <div 
+                className="relative h-full w-full overflow-hidden rounded-2xl transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-2"
                 style={{
                   boxShadow: isDragging
-                    ? "0 35px 70px -12px rgba(0, 0, 0, 0.9), 0 0 50px rgba(236, 72, 153, 0.2)"
-                    : isHovered 
-                      ? "0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 72, 153, 0.15)"
-                      : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
+                    ? "0 35px 70px -12px rgba(0, 0, 0, 0.9)"
+                    : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
                 }}
               >
-                <div 
-                  className="absolute inset-0 rounded-2xl transition-all duration-400"
-                  style={{
-                    boxShadow: isActive 
-                      ? "inset 0 0 0 2px rgba(244, 114, 182, 0.4)" 
-                      : "inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
-                  }}
-                />
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 hover:ring-pink-400/40 transition-all duration-300" />
                 <Image
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
                   fill
-                  className="pointer-events-none object-cover"
-                  style={{
-                    transform: `scale(${isHovered ? 1.1 : 1})`,
-                    transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
-                  }}
+                  className="pointer-events-none object-cover transition-transform duration-500 ease-out hover:scale-110"
                   draggable={false}
                 />
-                <div 
-                  className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
-                  style={{
-                    opacity: isHovered ? 1 : 0,
-                    transition: "opacity 0.4s ease-out",
-                  }}
-                />
-              </motion.div>
+              </div>
             </motion.div>
           )
         })}
