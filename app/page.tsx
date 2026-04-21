@@ -13,6 +13,7 @@ import { HowItWorksSection } from "@/components/how-it-works-section"
 import { FaqSection } from "@/components/faq-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { ShowcaseSection } from "@/components/showcase-section"
+import { Navbar } from "@/components/navbar"
 
 const initialImages = [
   // Top left area
@@ -273,6 +274,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      <Navbar />
       <main
         ref={containerRef}
         className="relative h-screen overflow-visible"
