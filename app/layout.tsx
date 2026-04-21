@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 
 import { Analytics } from "@vercel/analytics/next"
+import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
 
 import { Corinthia, Geist_Mono as V0_Font_Geist_Mono } from 'next/font/google'
@@ -48,7 +49,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans antialiased ${corinthia.variable}`}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
         <Analytics />
       </body>
     </html>
