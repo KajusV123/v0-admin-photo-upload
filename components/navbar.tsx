@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -54,20 +55,13 @@ export function Navbar() {
               href="#" 
               className="flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors hover:bg-white/10"
             >
-              <div className="relative w-6 h-6">
-                <div 
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: "linear-gradient(135deg, #f8b4d9 0%, #c084fc 100%)",
-                  }}
-                />
-                <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white">
-                  IP
-                </span>
-              </div>
-              <span className="text-sm font-medium text-white hidden sm:block">
-                Infinite Prompt
-              </span>
+              <Image
+                src="/images/logo.svg"
+                alt="Infinite Prompt Bank"
+                width={100}
+                height={28}
+                className="h-7 w-auto"
+              />
             </a>
 
             {/* Divider */}

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function FinalCtaSection() {
   const [showCodeInput, setShowCodeInput] = useState(false)
@@ -46,6 +47,23 @@ export function FinalCtaSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+        {/* Logo */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 30, scale: 0.8 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: "spring", stiffness: 80, damping: 15 }}
+        >
+          <Image
+            src="/images/logo.svg"
+            alt="Infinite Prompt Bank"
+            width={180}
+            height={50}
+            className="h-12 w-auto opacity-80"
+          />
+        </motion.div>
+
         {/* Main heading */}
         <motion.h2 
           className="text-4xl font-bold tracking-tight text-white md:text-6xl leading-tight"
