@@ -9,161 +9,161 @@ import VariableProximity from "@/components/variable-proximity"
 const initialImages = [
   // Top left area
   {
-    src: "/majestic-mountain-vista.png",
-    alt: "Mountain landscape",
+    src: "/portrait-1.jpg",
+    alt: "Fashion editorial portrait",
     top: 3,
     left: -2,
     rotate: -12,
-    width: 280,
-    height: 200,
+    width: 220,
+    height: 280,
   },
   {
-    src: "/ocean-waves-beach-photography.jpg",
-    alt: "Ocean waves",
+    src: "/portrait-2.jpg",
+    alt: "Dreamy ethereal portrait",
     top: 5,
-    left: 18,
+    left: 16,
     rotate: 5,
     width: 180,
-    height: 140,
+    height: 240,
   },
   {
-    src: "/forest-trees-nature-photography.jpg",
-    alt: "Forest trees",
+    src: "/portrait-3.jpg",
+    alt: "High fashion portrait",
     top: -3,
-    left: 38,
+    left: 32,
     rotate: -3,
     width: 200,
-    height: 180,
+    height: 260,
   },
   // Top right area
   {
-    src: "/city-skyline-night-photography.jpg",
-    alt: "City skyline",
+    src: "/portrait-4.jpg",
+    alt: "Natural light portrait",
     top: 2,
-    left: 58,
+    left: 52,
     rotate: 8,
-    width: 220,
-    height: 160,
-  },
-  {
-    src: "/desert-sand-dunes-photography.jpg",
-    alt: "Desert dunes",
-    top: 5,
-    left: 78,
-    rotate: -5,
     width: 200,
-    height: 150,
+    height: 250,
   },
   {
-    src: "/waterfall-nature-photography.jpg",
-    alt: "Waterfall",
+    src: "/portrait-5.jpg",
+    alt: "Artistic floral portrait",
+    top: 5,
+    left: 72,
+    rotate: -5,
+    width: 180,
+    height: 230,
+  },
+  {
+    src: "/portrait-6.jpg",
+    alt: "Beauty photography",
     top: 0,
-    left: 92,
+    left: 88,
     rotate: 12,
     width: 180,
-    height: 220,
+    height: 240,
   },
   // Left side middle
   {
-    src: "/ocean-waves-beach-photography.jpg",
-    alt: "Beach scene",
+    src: "/portrait-7.jpg",
+    alt: "Golden hour portrait",
     top: 32,
     left: -5,
     rotate: 6,
-    width: 240,
-    height: 180,
+    width: 200,
+    height: 260,
   },
   {
-    src: "/majestic-mountain-vista.png",
-    alt: "Mountain view",
+    src: "/portrait-8.jpg",
+    alt: "Cinematic portrait",
     top: 45,
-    left: 8,
+    left: 10,
     rotate: -8,
     width: 160,
-    height: 200,
+    height: 210,
   },
   // Right side middle
   {
-    src: "/forest-trees-nature-photography.jpg",
-    alt: "Forest path",
+    src: "/portrait-9.jpg",
+    alt: "Fresh natural beauty",
     top: 28,
-    left: 85,
+    left: 82,
     rotate: -6,
-    width: 200,
-    height: 160,
+    width: 180,
+    height: 230,
   },
   {
-    src: "/city-skyline-night-photography.jpg",
-    alt: "Night city",
+    src: "/portrait-10.jpg",
+    alt: "Hollywood glamour",
     top: 48,
-    left: 82,
+    left: 85,
     rotate: 10,
-    width: 220,
-    height: 180,
+    width: 190,
+    height: 250,
   },
   // Bottom left area
   {
-    src: "/desert-sand-dunes-photography.jpg",
-    alt: "Sand patterns",
+    src: "/portrait-11.jpg",
+    alt: "Bohemian style portrait",
     top: 68,
     left: -3,
     rotate: -4,
-    width: 260,
-    height: 200,
+    width: 200,
+    height: 260,
   },
   {
-    src: "/waterfall-nature-photography.jpg",
-    alt: "Cascade",
+    src: "/portrait-12.jpg",
+    alt: "Minimalist portrait",
     top: 72,
-    left: 18,
+    left: 15,
     rotate: 7,
-    width: 180,
-    height: 160,
+    width: 170,
+    height: 220,
   },
   {
-    src: "/majestic-mountain-vista.png",
-    alt: "Peak view",
+    src: "/portrait-13.jpg",
+    alt: "Vintage inspired portrait",
     top: 78,
-    left: 32,
+    left: 30,
     rotate: -2,
     width: 160,
-    height: 140,
+    height: 200,
   },
   // Bottom center-right area
   {
-    src: "/ocean-waves-beach-photography.jpg",
-    alt: "Waves",
+    src: "/portrait-14.jpg",
+    alt: "Urban chic portrait",
     top: 75,
-    left: 48,
+    left: 46,
     rotate: 4,
     width: 180,
-    height: 150,
+    height: 230,
   },
   {
-    src: "/forest-trees-nature-photography.jpg",
-    alt: "Trees",
+    src: "/portrait-15.jpg",
+    alt: "Fantasy portrait",
     top: 72,
     left: 62,
     rotate: -6,
-    width: 200,
-    height: 170,
+    width: 190,
+    height: 250,
   },
   {
-    src: "/city-skyline-night-photography.jpg",
-    alt: "Skyline",
+    src: "/portrait-16.jpg",
+    alt: "Professional headshot",
     top: 70,
     left: 78,
     rotate: 8,
-    width: 220,
-    height: 180,
+    width: 180,
+    height: 230,
   },
   {
-    src: "/desert-sand-dunes-photography.jpg",
-    alt: "Dunes",
+    src: "/portrait-17.jpg",
+    alt: "Beach lifestyle portrait",
     top: 65,
-    left: 92,
+    left: 90,
     rotate: -10,
-    width: 180,
+    width: 170,
     height: 220,
   },
 ]
@@ -285,14 +285,14 @@ export default function Home() {
       >
         <div className="text-center">
           <p
-            className="relative z-10 text-7xl text-white/90 md:text-[120px]"
-            style={{ fontFamily: "var(--font-corinthia), cursive", marginBottom: "-50px" }}
+            className="relative z-10 text-5xl text-white/90 md:text-[90px]"
+            style={{ fontFamily: "var(--font-corinthia), cursive", marginBottom: "-40px" }}
           >
-            Connect on
+            AI Portrait
           </p>
-          <h1 className="text-7xl tracking-tight text-white md:text-9xl">
+          <h1 className="text-6xl tracking-tight text-white md:text-8xl">
             <VariableProximity
-              label="Instagram"
+              label="Prompt Bank"
               fromFontVariationSettings="'wght' 700"
               toFontVariationSettings="'wght' 900"
               containerRef={textContainerRef}
@@ -306,18 +306,18 @@ export default function Home() {
               }}
             />
           </h1>
-          <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-white/60 md:text-base">
-            A space for unfinished thoughts and late-night experiments. Catch the behind-the-scenes of my design
-            journey.
+          <p className="mx-auto mt-6 max-w-lg text-sm leading-relaxed text-white/60 md:text-base">
+            Unlock stunning AI-generated portraits with my curated collection of premium prompts. 
+            Each prompt is crafted to create the exact photo style you see.
           </p>
           <div
             className="pointer-events-auto mt-8 mb-8 inline-block rounded-full p-[2px]"
             style={{
-              background: "linear-gradient(135deg, #e8e8e8 0%, #6b6b6b 25%, #ffffff 50%, #6b6b6b 75%, #e8e8e8 100%)",
+              background: "linear-gradient(135deg, #f8b4d9 0%, #c084fc 25%, #f8b4d9 50%, #c084fc 75%, #f8b4d9 100%)",
             }}
           >
             <button className="rounded-full bg-[#0a0a0a] px-8 py-3 text-sm font-medium text-white transition-all hover:bg-white hover:text-black">
-              Follow me
+              Browse Prompts
             </button>
           </div>
         </div>

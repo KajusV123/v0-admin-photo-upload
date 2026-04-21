@@ -12,8 +12,8 @@ const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200"
 const corinthia = Corinthia({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-corinthia" })
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
+  title: "AI Portrait Prompt Bank | Premium AI Image Prompts",
+  description: "Unlock stunning AI-generated portraits with curated premium prompts. Each prompt creates the exact photo style you see.",
   generator: "v0.app",
   icons: {
     icon: [
