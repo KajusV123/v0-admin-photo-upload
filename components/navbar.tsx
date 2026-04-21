@@ -56,8 +56,8 @@ export function Navbar() {
               className="flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors hover:bg-white/10"
             >
               <Image
-                src="/images/logo.svg"
-                alt="Infinite Prompt Bank"
+                src="/images/logo.jpg"
+                alt="DEMO Studio"
                 width={140}
                 height={36}
                 className="h-8 w-auto"

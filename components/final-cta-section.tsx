@@ -56,8 +56,8 @@ export function FinalCtaSection() {
           transition={{ type: "spring", stiffness: 80, damping: 15 }}
         >
           <Image
-            src="/images/logo.svg"
-            alt="Infinite Prompt Bank"
+            src="/images/logo.jpg"
+            alt="DEMO Studio"
             width={320}
             height={90}
             className="h-24 md:h-32 w-auto"
