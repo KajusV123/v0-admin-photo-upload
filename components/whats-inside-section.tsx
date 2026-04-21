@@ -13,41 +13,66 @@ const features = [
 
 export function WhatsInsideSection() {
   return (
-    <section className="relative bg-[#0a0a0a] py-24">
-      <div
-        className="absolute inset-0 opacity-20"
+    <section className="relative bg-[#0a0a0a] py-28 overflow-hidden">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px]"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,250,0.03) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,250,0.03) 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
+          background: "radial-gradient(circle, #c084fc 0%, transparent 70%)",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-2xl px-6">
-        <div className="text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+      <div className="relative z-10 mx-auto max-w-3xl px-6">
+        {/* Header with decorative line */}
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium uppercase tracking-widest text-pink-400 border border-pink-500/30 rounded-full bg-pink-500/5">
+            The Complete Package
+          </span>
+          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
             What&apos;s Inside
           </h2>
         </div>
 
-        <ul className="mt-12 space-y-5">
-          {features.map((feature, index) => (
-            <li
-              key={index}
-              className="flex items-center gap-4"
-            >
-              <span
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
-                style={{
-                  background: "linear-gradient(135deg, #f472b6 0%, #c084fc 100%)",
-                }}
+        {/* Feature list with styled container */}
+        <div 
+          className="relative rounded-3xl p-8 md:p-12"
+          style={{
+            background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+            border: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          {/* Decorative corner accents */}
+          <div className="absolute top-0 left-8 w-16 h-[1px] bg-gradient-to-r from-pink-500/50 to-transparent" />
+          <div className="absolute top-0 left-8 w-[1px] h-16 bg-gradient-to-b from-pink-500/50 to-transparent" />
+          <div className="absolute bottom-0 right-8 w-16 h-[1px] bg-gradient-to-l from-purple-500/50 to-transparent" />
+          <div className="absolute bottom-0 right-8 w-[1px] h-16 bg-gradient-to-t from-purple-500/50 to-transparent" />
+
+          <ul className="grid gap-6 md:grid-cols-2">
+            {features.map((feature, index) => (
+              <li
+                key={index}
+                className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-white/[0.02]"
               >
-                <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
-              </span>
-              <span className="text-lg text-white/80">{feature}</span>
-            </li>
-          ))}
-        </ul>
+                <span
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-pink-500/20"
+                  style={{
+                    background: "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)",
+                  }}
+                >
+                  <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                </span>
+                <span className="text-base text-white/70 group-hover:text-white/90 transition-colors leading-relaxed pt-0.5">
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Bottom accent */}
+        <div className="flex justify-center mt-12">
+          <div className="h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-pink-500/50 to-transparent" />
+        </div>
       </div>
     </section>
   )
