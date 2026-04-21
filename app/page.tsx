@@ -236,7 +236,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0a0a0a]">
     <main
       ref={containerRef}
-      className="relative h-screen overflow-hidden"
+      className="relative h-screen overflow-visible"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
