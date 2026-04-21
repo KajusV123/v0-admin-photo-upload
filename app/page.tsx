@@ -249,35 +249,43 @@ export default function Home() {
       {images.map((image, index) => (
         <div
           key={index}
-          className={`draggable-image absolute select-none ${
-            draggingIndex === index ? "z-50 cursor-grabbing" : "cursor-grab hover:z-50"
+          className={`draggable-image absolute select-none group ${
+            draggingIndex === index ? "z-50 cursor-grabbing" : "cursor-grab hover:z-40"
           }`}
           style={{
             top: `${image.top}%`,
             left: `${image.left}%`,
-            transform: `rotate(${image.rotate}deg) scale(${draggingIndex === index ? 1.05 : 1})`,
             width: image.width,
             height: image.height,
-            transition:
-              draggingIndex === index
-                ? "transform 0.1s ease-out, box-shadow 0.2s ease-out"
-                : "top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease-out",
-            boxShadow:
-              draggingIndex === index
-                ? "0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.4)"
-                : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
-            willChange: draggingIndex === index ? "top, left, transform" : "auto",
+            transition: draggingIndex === index 
+              ? "none" 
+              : "top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            willChange: draggingIndex === index ? "top, left" : "auto",
           }}
           onMouseDown={(e) => handleMouseDown(e, index)}
         >
-          <div className="relative h-full w-full overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)]">
+          <div 
+            className="relative h-full w-full overflow-hidden rounded-2xl"
+            style={{
+              transform: `rotate(${image.rotate}deg) scale(${draggingIndex === index ? 1.08 : 1})`,
+              transition: draggingIndex === index 
+                ? "transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease-out"
+                : "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease-out",
+              boxShadow: draggingIndex === index
+                ? "0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(236, 72, 153, 0.15)"
+                : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
+              willChange: "transform, box-shadow",
+            }}
+          >
+            <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-2 group-hover:ring-pink-400/30 transition-all duration-500" />
             <Image
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
               fill
-              className="pointer-events-none object-cover transition-transform duration-500 hover:scale-105"
+              className="pointer-events-none object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               draggable={false}
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
         </div>
       ))}
