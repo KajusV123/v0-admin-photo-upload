@@ -27,14 +27,7 @@ export function FinalCtaSection() {
         {/* Main heading */}
         <h2 className="text-4xl font-bold tracking-tight text-white md:text-6xl leading-tight">
           Ready to Create
-          <span 
-            className="block mt-2"
-            style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #ffffff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <span className="block mt-2 text-white/70">
             Stunning Portraits?
           </span>
         </h2>
