@@ -8,6 +8,9 @@ import VariableProximity from "@/components/variable-proximity"
 import { AccessSection } from "@/components/access-section"
 import { InfiniteCarousel } from "@/components/infinite-carousel"
 import { WhatsInsideSection } from "@/components/whats-inside-section"
+import { HowItWorksSection } from "@/components/how-it-works-section"
+import { FaqSection } from "@/components/faq-section"
+import { FinalCtaSection } from "@/components/final-cta-section"
 
 const initialImages = [
   // Top left area
@@ -367,7 +370,10 @@ export default function Home() {
     
     <AccessSection />
     <InfiniteCarousel />
+    <HowItWorksSection />
     <WhatsInsideSection />
+    <FaqSection />
+    <FinalCtaSection />
     </div>
   )
 }
