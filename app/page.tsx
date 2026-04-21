@@ -7,6 +7,7 @@ import { useState, useRef, useCallback } from "react"
 import VariableProximity from "@/components/variable-proximity"
 import { AccessSection } from "@/components/access-section"
 import { InfiniteCarousel } from "@/components/infinite-carousel"
+import { WhatsInsideSection } from "@/components/whats-inside-section"
 
 const initialImages = [
   // Top left area
@@ -364,6 +365,7 @@ export default function Home() {
       </div>
     </main>
     
+    <WhatsInsideSection />
     <AccessSection />
     <InfiniteCarousel />
     </div>
