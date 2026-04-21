@@ -173,6 +173,7 @@ const initialImages = [
 export default function Home() {
   const [images, setImages] = useState(initialImages)
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const dragOffset = useRef({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number | null>(null)
@@ -246,49 +247,77 @@ export default function Home() {
       />
 
       {/* Scattered draggable images */}
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className={`draggable-image absolute select-none group ${
-            draggingIndex === index ? "z-50 cursor-grabbing" : "cursor-grab hover:z-40"
-          }`}
-          style={{
-            top: `${image.top}%`,
-            left: `${image.left}%`,
-            width: image.width,
-            height: image.height,
-            transition: draggingIndex === index 
-              ? "none" 
-              : "top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-            willChange: draggingIndex === index ? "top, left" : "auto",
-          }}
-          onMouseDown={(e) => handleMouseDown(e, index)}
-        >
-          <div 
-            className="relative h-full w-full overflow-hidden rounded-2xl"
+      {images.map((image, index) => {
+        const isDragging = draggingIndex === index
+        const isHovered = hoveredIndex === index
+        const isActive = isDragging || isHovered
+        
+        return (
+          <div
+            key={index}
+            className={`draggable-image absolute select-none ${
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            }`}
             style={{
-              transform: `rotate(${image.rotate}deg) scale(${draggingIndex === index ? 1.08 : 1})`,
-              transition: draggingIndex === index 
-                ? "transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease-out"
-                : "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease-out",
-              boxShadow: draggingIndex === index
-                ? "0 30px 60px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(236, 72, 153, 0.15)"
-                : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
-              willChange: "transform, box-shadow",
+              top: `${image.top}%`,
+              left: `${image.left}%`,
+              width: image.width,
+              height: image.height,
+              zIndex: isDragging ? 100 : isHovered ? 50 : index,
+              transition: isDragging 
+                ? "none" 
+                : "top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), z-index 0s",
+              willChange: isDragging ? "top, left" : "auto",
             }}
+            onMouseDown={(e) => handleMouseDown(e, index)}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-2 group-hover:ring-pink-400/30 transition-all duration-500" />
-            <Image
-              src={image.src || "/placeholder.svg"}
-              alt={image.alt}
-              fill
-              className="pointer-events-none object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              draggable={false}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div 
+              className="relative h-full w-full overflow-hidden rounded-2xl"
+              style={{
+                transform: `rotate(${image.rotate}deg) scale(${isDragging ? 1.12 : isHovered ? 1.08 : 1}) translateY(${isHovered && !isDragging ? "-8px" : "0px"})`,
+                transition: isDragging 
+                  ? "transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease-out"
+                  : "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease-out",
+                boxShadow: isDragging
+                  ? "0 35px 70px -12px rgba(0, 0, 0, 0.9), 0 0 50px rgba(236, 72, 153, 0.2)"
+                  : isHovered 
+                    ? "0 25px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(236, 72, 153, 0.15)"
+                    : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
+                willChange: "transform, box-shadow",
+              }}
+            >
+              <div 
+                className="absolute inset-0 rounded-2xl transition-all duration-400"
+                style={{
+                  boxShadow: isActive 
+                    ? "inset 0 0 0 2px rgba(244, 114, 182, 0.4)" 
+                    : "inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
+                }}
+              />
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={image.alt}
+                fill
+                className="pointer-events-none object-cover"
+                style={{
+                  transform: `scale(${isHovered ? 1.1 : 1})`,
+                  transition: "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+                draggable={false}
+              />
+              <div 
+                className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+                style={{
+                  opacity: isHovered ? 1 : 0,
+                  transition: "opacity 0.4s ease-out",
+                }}
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
 
       <div
         ref={textContainerRef}
