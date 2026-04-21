@@ -12,6 +12,7 @@ import { WhatsInsideSection } from "@/components/whats-inside-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
 import { FaqSection } from "@/components/faq-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
+import { ShowcaseSection } from "@/components/showcase-section"
 
 const initialImages = [
   // Top left area
@@ -453,6 +454,7 @@ export default function Home() {
       <AccessSection />
       <InfiniteCarousel />
       <HowItWorksSection />
+      <ShowcaseSection />
       <WhatsInsideSection />
       <FaqSection />
       <FinalCtaSection />
