@@ -338,11 +338,11 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
       <Navbar />
       <main
         ref={containerRef}
-        className="relative h-screen overflow-visible"
+        className="relative h-screen overflow-hidden"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
