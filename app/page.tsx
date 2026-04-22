@@ -181,6 +181,8 @@ export default function Home() {
   const [images, setImages] = useState(initialImages)
   const [draggingIndex, setDraggingIndex] = useState<number | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(0)
+  const totalImages = initialImages.length
   const dragOffset = useRef({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number | null>(null)
@@ -188,9 +190,12 @@ export default function Home() {
   const textContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
+    // Only trigger animations after all images are loaded
+    if (imagesLoaded >= totalImages) {
+      const timer = setTimeout(() => setIsLoaded(true), 100)
+      return () => clearTimeout(timer)
+    }
+  }, [imagesLoaded, totalImages])
 
   const handleMouseDown = (e: React.MouseEvent, index: number) => {
     e.preventDefault()
@@ -337,6 +342,8 @@ export default function Home() {
                   fill
                   className="pointer-events-none object-cover transition-transform duration-500 ease-out hover:scale-110"
                   draggable={false}
+                  priority
+                  onLoad={() => setImagesLoaded(prev => prev + 1)}
                 />
               </div>
             </motion.div>
