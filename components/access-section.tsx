@@ -8,7 +8,7 @@ export function AccessSection() {
   const [accessCode, setAccessCode] = useState("")
 
   return (
-    <section className="relative bg-[#0a0a0a] pt-48 pb-24">
+    <section className="relative z-10 bg-[#0a0a0a] pt-48 pb-24">
       <div
         className="absolute inset-0 opacity-20"
         style={{

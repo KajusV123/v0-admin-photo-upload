@@ -342,7 +342,7 @@ export default function Home() {
       <Navbar />
       <main
         ref={containerRef}
-        className="relative h-screen overflow-hidden"
+        className="relative z-20 h-screen overflow-x-hidden md:overflow-visible"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
