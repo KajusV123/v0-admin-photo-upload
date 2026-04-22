@@ -13,7 +13,7 @@ const carouselImages = [
   { src: "/carousel-8.jpg", alt: "Urban street style portrait", title: "Urban Chic" },
 ]
 
-function CarouselCard({ image, hoverColor }: { image: typeof carouselImages[0]; hoverColor: string }) {
+function CarouselCard({ image, hoverColor, preload }: { image: typeof carouselImages[0]; hoverColor: string; preload?: boolean }) {
   return (
     <div className="flex-shrink-0 px-3 group">
       <div className={`relative w-64 h-80 rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 ${hoverColor} group-hover:scale-105`}>
@@ -22,6 +22,8 @@ function CarouselCard({ image, hoverColor }: { image: typeof carouselImages[0]; 
           alt={image.alt}
           fill
           className="object-cover"
+          priority={preload}
+          loading={preload ? "eager" : "lazy"}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -58,9 +60,9 @@ export function InfiniteCarousel() {
         <div 
           className="flex w-max animate-scroll-left group-hover/row:[animation-play-state:paused]"
         >
-          {/* First set */}
+          {/* First set - preloaded */}
           {carouselImages.map((image, index) => (
-            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-pink-400/50" />
+            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-pink-400/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {carouselImages.map((image, index) => (
@@ -74,9 +76,9 @@ export function InfiniteCarousel() {
         <div 
           className="flex w-max animate-scroll-right group-hover/row:[animation-play-state:paused]"
         >
-          {/* First set */}
+          {/* First set - preloaded */}
           {reversedImages.map((image, index) => (
-            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-purple-400/50" />
+            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-purple-400/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {reversedImages.map((image, index) => (
