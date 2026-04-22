@@ -506,9 +506,9 @@ export default function Home() {
               </button>
             </motion.div>
 
-            {/* Scroll indicator */}
+            {/* Scroll indicator - hidden on mobile */}
             <motion.div
-              className="absolute bottom-8 left-1/2 -translate-x-1/2"
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ delay: 2 }}
