@@ -41,7 +41,7 @@ export function Navbar() {
         >
           <div
             className={`
-              flex items-center gap-1 px-2 py-2 rounded-full
+              flex items-center gap-1 px-2 py-1.5 sm:py-2 rounded-full
               border border-white/10 backdrop-blur-xl
               transition-all duration-500 ease-out
               ${isScrolled 
@@ -53,34 +53,34 @@ export function Navbar() {
             {/* Logo */}
             <a 
               href="#" 
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full transition-colors hover:bg-white/10"
+              className="flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10"
             >
               <Image
                 src="/images/logo.png"
                 alt="DEMO Studio"
                 width={140}
                 height={36}
-                className="h-8 w-auto"
+                className="h-6 sm:h-8 w-auto"
               />
             </a>
 
-            {/* Divider */}
-            <div className="w-px h-6 bg-white/10" />
+            {/* Divider - hidden on mobile */}
+            <div className="w-px h-6 bg-white/10 hidden sm:block" />
 
-            {/* Nav Links */}
-            <div className="flex items-center gap-0.5">
+            {/* Nav Links - hidden on mobile */}
+            <div className="hidden sm:flex items-center gap-0.5">
               <NavLink href="#prompts">Prompts</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
               <NavLink href="#faq">FAQ</NavLink>
             </div>
 
-            {/* Divider */}
+            {/* Divider - hidden on mobile */}
             <div className="w-px h-6 bg-white/10 hidden sm:block" />
 
             {/* CTA Button */}
             <motion.a
               href="#access"
-              className="relative ml-1 px-4 py-1.5 rounded-full text-sm font-medium text-black bg-white overflow-hidden group"
+              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-black bg-white overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
