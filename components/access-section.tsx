@@ -887,11 +887,11 @@ export function AccessSection() {
             >
               {/* Get Full Access Section */}
               <div className="mb-20">
-                <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
-                  <span className="relative">
-                    Get Full Access
-                    <span className="absolute inset-0 text-cyan-400 opacity-70" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
-                    <span className="absolute inset-0 text-red-400 opacity-70" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                <h2 className="relative text-3xl font-bold italic tracking-wide text-white md:text-4xl">
+                  <span className="relative inline-block">
+                    <span className="absolute left-0 top-0 text-cyan-400/80" style={{ transform: 'translateX(-3px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-red-500/80" style={{ transform: 'translateX(3px)' }}>Get Full Access</span>
+                    <span className="relative">Get Full Access</span>
                   </span>
                 </h2>
                 <p className="mt-4 text-white/60">
@@ -927,11 +927,11 @@ export function AccessSection() {
                 <Lock className="h-12 w-12 text-white/60" />
               </motion.div>
               
-              <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
-                <span className="relative">
-                  Exclusive Prompt Bank
-                  <span className="absolute inset-0 text-cyan-400 opacity-70" style={{ transform: 'translateX(-2px)' }}>Exclusive Prompt Bank</span>
-                  <span className="absolute inset-0 text-red-400 opacity-70" style={{ transform: 'translateX(2px)' }}>Exclusive Prompt Bank</span>
+              <h2 className="relative text-3xl font-bold italic tracking-wide text-white md:text-4xl">
+                <span className="relative inline-block">
+                  <span className="absolute left-0 top-0 text-cyan-400/80" style={{ transform: 'translateX(-3px)' }}>Exclusive Prompt Bank</span>
+                  <span className="absolute left-0 top-0 text-red-500/80" style={{ transform: 'translateX(3px)' }}>Exclusive Prompt Bank</span>
+                  <span className="relative">Exclusive Prompt Bank</span>
                 </span>
               </h2>
               <p className="mt-4 max-w-md text-white/60">
