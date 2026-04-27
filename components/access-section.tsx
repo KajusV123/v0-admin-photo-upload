@@ -804,12 +804,12 @@ function PromptModal({
         </button>
 
         {/* Image - left side on desktop, top on mobile */}
-        <div className="relative h-52 w-full shrink-0 bg-black/30 md:h-[70vh] md:w-[40%]">
+        <div className="relative h-64 w-full shrink-0 md:h-[70vh] md:w-[45%]">
           <Image
             src={item.image}
             alt={item.title}
             fill
-            className="object-contain p-2"
+            className="object-cover"
           />
         </div>
 
