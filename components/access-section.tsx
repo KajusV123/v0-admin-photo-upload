@@ -846,6 +846,7 @@ export function AccessSection() {
   const [error, setError] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
+  const [showCodeModal, setShowCodeModal] = useState(false)
 
   // Check cookie on mount for persistent access
   useEffect(() => {
@@ -909,7 +910,7 @@ export function AccessSection() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => document.getElementById('access-code-input')?.focus()}
+                    onClick={() => setShowCodeModal(true)}
                     className="rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-white/50"
                   >
                     Access Code
@@ -917,59 +918,74 @@ export function AccessSection() {
                 </div>
               </div>
 
-              {/* Exclusive Prompt Bank Section */}
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring" }}
-                className="mb-8 rounded-full bg-white/5 p-6"
-              >
-                <Lock className="h-12 w-12 text-white/60" />
-              </motion.div>
-              
-              <h2 className="relative text-3xl font-bold italic tracking-wide text-white md:text-4xl">
-                <span className="relative inline-block">
-                  <span className="absolute left-0 top-0 text-cyan-400/80" style={{ transform: 'translateX(-3px)' }}>Exclusive Prompt Bank</span>
-                  <span className="absolute left-0 top-0 text-red-500/80" style={{ transform: 'translateX(3px)' }}>Exclusive Prompt Bank</span>
-                  <span className="relative">Exclusive Prompt Bank</span>
-                </span>
-              </h2>
-              <p className="mt-4 max-w-md text-white/60">
-                Enter your access code to unlock 100+ premium<br />
-                AI portrait prompts with example images.
-              </p>
-
-              <form onSubmit={handleSubmit} className="mt-8 w-full max-w-sm">
-                <div className="relative">
-                  <input
-                    id="access-code-input"
-                    type="text"
-                    value={accessCode}
-                    onChange={(e) => setAccessCode(e.target.value)}
-                    placeholder="Enter access code"
-                    className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-purple-500/50 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
-                  />
-                </div>
-                
-                {error && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-3 text-sm text-red-400"
+              {/* Access Code Modal */}
+              <AnimatePresence>
+                {showCodeModal && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+                    onClick={() => setShowCodeModal(false)}
                   >
-                    {error}
-                  </motion.p>
-                )}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                      className="relative w-full max-w-md rounded-3xl bg-[#141414] p-8"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <button
+                        onClick={() => setShowCodeModal(false)}
+                        className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
+                      >
+                        <X className="h-5 w-5" />
+                      </button>
 
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-4 w-full rounded-full bg-white py-4 text-base font-semibold text-black transition-colors hover:bg-white/90"
-                >
-                  Unlock Access
-                </motion.button>
-              </form>
+                      <div className="flex flex-col items-center text-center">
+                        <div className="mb-6 rounded-full bg-white/5 p-4">
+                          <Lock className="h-10 w-10 text-white/60" />
+                        </div>
+                        
+                        <h3 className="text-2xl font-bold text-white">Enter Access Code</h3>
+                        <p className="mt-2 text-sm text-white/50">
+                          Enter your code to unlock premium prompts
+                        </p>
+
+                        <form onSubmit={handleSubmit} className="mt-6 w-full">
+                          <input
+                            type="text"
+                            value={accessCode}
+                            onChange={(e) => setAccessCode(e.target.value)}
+                            placeholder="Enter access code"
+                            autoFocus
+                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-purple-500/50 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                          />
+                          
+                          {error && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="mt-3 text-sm text-red-400"
+                            >
+                              {error}
+                            </motion.p>
+                          )}
+
+                          <motion.button
+                            type="submit"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="mt-4 w-full rounded-full bg-white py-4 text-base font-semibold text-black transition-colors hover:bg-white/90"
+                          >
+                            Unlock Access
+                          </motion.button>
+                        </form>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ) : (
             // Unlocked State - Image Gallery
