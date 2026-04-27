@@ -887,22 +887,22 @@ export function AccessSection() {
             >
               {/* Get Full Access Section */}
               <div className="mb-20">
-                <h2 className="relative text-3xl font-bold italic tracking-wide text-white md:text-4xl">
+                <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
                   <span className="relative inline-block">
-                    <span className="absolute left-0 top-0 text-cyan-400/80" style={{ transform: 'translateX(-3px)' }}>Get Full Access</span>
-                    <span className="absolute left-0 top-0 text-red-500/80" style={{ transform: 'translateX(3px)' }}>Get Full Access</span>
-                    <span className="relative">Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-cyan-400 opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-red-400 opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                    <span className="relative text-white">Get Full Access</span>
                   </span>
                 </h2>
-                <p className="mt-4 text-white/60">
+                <p className="mt-4 text-sm text-white/50 md:text-base">
                   Unlock all premium prompts and start creating<br />
                   stunning AI portraits today.
                 </p>
-                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="rounded-full border border-purple-500/50 bg-transparent px-8 py-3 font-medium text-white shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]"
+                    className="rounded-full border border-purple-500/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
                   >
                     Get Access $50
                   </motion.button>
@@ -910,7 +910,7 @@ export function AccessSection() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => document.getElementById('access-code-input')?.focus()}
-                    className="rounded-full border border-white/20 bg-transparent px-8 py-3 font-medium text-white transition-all hover:border-white/40"
+                    className="rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-white/50"
                   >
                     Access Code
                   </motion.button>
