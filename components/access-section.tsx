@@ -885,6 +885,39 @@ export function AccessSection() {
               exit={{ opacity: 0, y: -20 }}
               className="flex flex-col items-center text-center"
             >
+              {/* Get Full Access Section */}
+              <div className="mb-20">
+                <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
+                  <span className="relative">
+                    Get Full Access
+                    <span className="absolute inset-0 text-cyan-400 opacity-70" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
+                    <span className="absolute inset-0 text-red-400 opacity-70" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                  </span>
+                </h2>
+                <p className="mt-4 text-white/60">
+                  Unlock all premium prompts and start creating<br />
+                  stunning AI portraits today.
+                </p>
+                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="rounded-full border border-purple-500/50 bg-transparent px-8 py-3 font-medium text-white shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all hover:border-purple-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]"
+                  >
+                    Get Access $50
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => document.getElementById('access-code-input')?.focus()}
+                    className="rounded-full border border-white/20 bg-transparent px-8 py-3 font-medium text-white transition-all hover:border-white/40"
+                  >
+                    Access Code
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Exclusive Prompt Bank Section */}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -894,16 +927,22 @@ export function AccessSection() {
                 <Lock className="h-12 w-12 text-white/60" />
               </motion.div>
               
-              <h2 className="text-3xl font-bold text-white md:text-4xl">
-                Exclusive Prompt Bank
+              <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
+                <span className="relative">
+                  Exclusive Prompt Bank
+                  <span className="absolute inset-0 text-cyan-400 opacity-70" style={{ transform: 'translateX(-2px)' }}>Exclusive Prompt Bank</span>
+                  <span className="absolute inset-0 text-red-400 opacity-70" style={{ transform: 'translateX(2px)' }}>Exclusive Prompt Bank</span>
+                </span>
               </h2>
               <p className="mt-4 max-w-md text-white/60">
-                Enter your access code to unlock 100+ premium AI portrait prompts with example images.
+                Enter your access code to unlock 100+ premium<br />
+                AI portrait prompts with example images.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-8 w-full max-w-sm">
                 <div className="relative">
                   <input
+                    id="access-code-input"
                     type="text"
                     value={accessCode}
                     onChange={(e) => setAccessCode(e.target.value)}
