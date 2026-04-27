@@ -792,7 +792,7 @@ function PromptModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative flex h-auto max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] md:flex-row"
+        className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] md:h-[70vh] md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -804,12 +804,12 @@ function PromptModal({
         </button>
 
         {/* Image - left side on desktop, top on mobile */}
-        <div className="relative flex h-40 w-full shrink-0 items-center justify-center bg-black/50 md:h-full md:w-[40%]">
+        <div className="relative h-52 w-full shrink-0 bg-black/30 md:h-[70vh] md:w-[40%]">
           <Image
             src={item.image}
             alt={item.title}
             fill
-            className="object-contain"
+            className="object-contain p-2"
           />
         </div>
 
