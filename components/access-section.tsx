@@ -843,6 +843,7 @@ function PromptModal({
 export function AccessSection() {
   const [accessCode, setAccessCode] = useState("")
   const [isUnlocked, setIsUnlocked] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
@@ -859,10 +860,16 @@ export function AccessSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (accessCode === ACCESS_CODE) {
-      setIsUnlocked(true)
       setError("")
+      setShowCodeModal(false)
+      setShowSuccess(true)
       // Set cookie that lasts 1 year so user doesn't need to enter code again
       setCookie(COOKIE_NAME, "unlocked", COOKIE_EXPIRY_DAYS)
+      // Show congratulations for 2.5 seconds, then unlock
+      setTimeout(() => {
+        setShowSuccess(false)
+        setIsUnlocked(true)
+      }, 2500)
     } else {
       setError("Invalid access code. Please try again.")
       setAccessCode("")
@@ -877,7 +884,72 @@ export function AccessSection() {
     <section className="relative z-10 bg-[#0a0a0a] pt-48 pb-24">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
-          {!isUnlocked ? (
+          {showSuccess ? (
+            // Success State - Congratulations
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="flex min-h-[400px] flex-col items-center justify-center text-center"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="mb-8 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-8"
+              >
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+                >
+                  <Check className="h-16 w-16 text-green-400" />
+                </motion.div>
+              </motion.div>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-3xl font-bold text-white md:text-4xl"
+              >
+                Congratulations!
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="mt-4 text-lg text-white/60"
+              >
+                Access granted. Unlocking premium prompts...
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9 }}
+                className="mt-8 flex items-center gap-2"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity }}
+                  className="h-2 w-2 rounded-full bg-purple-500"
+                />
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                  className="h-2 w-2 rounded-full bg-purple-500"
+                />
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                  className="h-2 w-2 rounded-full bg-purple-500"
+                />
+              </motion.div>
+            </motion.div>
+          ) : !isUnlocked ? (
             // Locked State - Access Code Entry
             <motion.div
               key="locked"
