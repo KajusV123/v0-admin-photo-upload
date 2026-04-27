@@ -792,19 +792,19 @@ function PromptModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-[#141414] p-6"
+        className="relative flex h-auto max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-2 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
+          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white/60 transition-colors hover:bg-black/70 hover:text-white"
         >
           <X className="h-5 w-5" />
         </button>
 
-        {/* Image */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+        {/* Image - left side on desktop, top on mobile */}
+        <div className="relative h-48 w-full shrink-0 md:h-auto md:w-[45%]">
           <Image
             src={item.image}
             alt={item.title}
@@ -813,24 +813,26 @@ function PromptModal({
           />
         </div>
 
-        {/* Content */}
-        <div className="mt-6">
-          <div className="flex items-center gap-2">
-            <span className="rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-400">
-              {item.category}
-            </span>
-          </div>
-          <h3 className="mt-3 text-xl font-semibold text-white">{item.title}</h3>
-          
-          {/* Prompt box */}
-          <div className="mt-4 rounded-xl bg-white/5 p-4">
-            <p className="text-sm leading-relaxed text-white/70">{item.prompt}</p>
+        {/* Content - right side on desktop, bottom on mobile */}
+        <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-purple-500/20 px-3 py-1 text-xs font-medium text-purple-400">
+                {item.category}
+              </span>
+            </div>
+            <h3 className="mt-3 text-lg font-semibold text-white md:text-xl">{item.title}</h3>
+            
+            {/* Prompt box */}
+            <div className="mt-4 rounded-xl bg-white/5 p-4">
+              <p className="text-xs leading-relaxed text-white/70 md:text-sm">{item.prompt}</p>
+            </div>
           </div>
 
           {/* Copy button */}
           <button
             onClick={copyToClipboard}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-white py-3 text-base font-medium text-black transition-all hover:bg-white/90"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-white py-3 text-sm font-medium text-black transition-all hover:bg-white/90 md:text-base"
           >
             {copied ? (
               <>
