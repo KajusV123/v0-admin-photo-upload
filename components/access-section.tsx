@@ -11,6 +11,27 @@ import Image from "next/image"
 const ACCESS_CODE = "1234"
 // ========================================
 
+// Cookie utilities for persistent access
+const COOKIE_NAME = "prompt_bank_access"
+const COOKIE_EXPIRY_DAYS = 365 // Cookie lasts 1 year
+
+function setCookie(name: string, value: string, days: number) {
+  const expires = new Date()
+  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`
+}
+
+function getCookie(name: string): string | null {
+  const nameEQ = name + "="
+  const ca = document.cookie.split(';')
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i]
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length)
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+  }
+  return null
+}
+
 // Categories for filtering
 const categories = ["All", "Podcast", "Lifestyle", "Beauty", "Fashion", "Fitness", "Portrait"]
 
@@ -826,10 +847,10 @@ export function AccessSection() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
 
-  // Check localStorage on mount
+  // Check cookie on mount for persistent access
   useEffect(() => {
-    const stored = localStorage.getItem("prompt_access_unlocked")
-    if (stored === "true") {
+    const cookieValue = getCookie(COOKIE_NAME)
+    if (cookieValue === "unlocked") {
       setIsUnlocked(true)
     }
   }, [])
@@ -839,7 +860,8 @@ export function AccessSection() {
     if (accessCode === ACCESS_CODE) {
       setIsUnlocked(true)
       setError("")
-      localStorage.setItem("prompt_access_unlocked", "true")
+      // Set cookie that lasts 1 year so user doesn't need to enter code again
+      setCookie(COOKIE_NAME, "unlocked", COOKIE_EXPIRY_DAYS)
     } else {
       setError("Invalid access code. Please try again.")
       setAccessCode("")
