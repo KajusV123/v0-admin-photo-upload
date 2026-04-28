@@ -836,17 +836,27 @@ export default function PromptsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
 
-  // Check authorization on mount
+  // Check authorization on mount - must run client-side only
   useEffect(() => {
-    const cookieValue = getCookie(COOKIE_NAME)
-    if (cookieValue === "unlocked") {
-      setIsAuthorized(true)
-    } else {
-      // Redirect to home if not authorized
-      router.push("/")
+    // Small delay to ensure cookie is fully set after redirect
+    const checkAuth = () => {
+      console.log("[v0] All cookies:", document.cookie)
+      const cookieValue = getCookie(COOKIE_NAME)
+      console.log("[v0] Cookie check for", COOKIE_NAME, ":", cookieValue)
+      if (cookieValue === "unlocked") {
+        console.log("[v0] Authorized - showing prompts")
+        setIsAuthorized(true)
+        setIsLoading(false)
+      } else {
+        console.log("[v0] Not authorized - redirecting to home")
+        // Redirect to home if not authorized
+        window.location.href = "/"
+      }
     }
-    setIsLoading(false)
-  }, [router])
+    
+    // Small timeout to ensure we're fully client-side and cookie is available
+    setTimeout(checkAuth, 200)
+  }, [])
 
   const filteredGallery = selectedCategory === "All" 
     ? promptGallery 
