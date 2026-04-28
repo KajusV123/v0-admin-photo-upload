@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Lock, X, Send } from "lucide-react"
+import { Check, Lock, X } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 // ========================================
@@ -30,8 +30,6 @@ export function AccessSection() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState("")
   const [showCodeModal, setShowCodeModal] = useState(false)
-  const [suggestion, setSuggestion] = useState("")
-  const [suggestionSubmitted, setSuggestionSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,20 +46,6 @@ export function AccessSection() {
     } else {
       setError("Invalid access code. Please try again.")
       setAccessCode("")
-    }
-  }
-
-  const handleSuggestionSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (suggestion.trim()) {
-      // Here you could send to an API endpoint or email service
-      console.log("Suggestion submitted:", suggestion)
-      setSuggestionSubmitted(true)
-      setSuggestion("")
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setSuggestionSubmitted(false)
-      }, 3000)
     }
   }
 
@@ -173,60 +157,6 @@ export function AccessSection() {
                     Access Code
                   </motion.button>
                 </div>
-              </div>
-
-              {/* Suggestion Section */}
-              <div className="mt-16 w-full max-w-xl border-t border-white/10 pt-12">
-                <h3 className="text-xl font-semibold text-white">
-                  Have an idea?
-                </h3>
-                <p className="mt-2 text-sm text-white/50">
-                  Want to see something specific in the prompt gallery? Share your idea below.
-                </p>
-                
-                <AnimatePresence mode="wait">
-                  {suggestionSubmitted ? (
-                    <motion.div
-                      key="thanks"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mt-6 flex items-center justify-center gap-2 rounded-2xl border border-green-500/20 bg-green-500/10 py-4"
-                    >
-                      <Check className="h-5 w-5 text-green-400" />
-                      <span className="text-green-400">Thanks for your suggestion!</span>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSuggestionSubmit}
-                      className="mt-6"
-                    >
-                      <div className="flex gap-3">
-                        <input
-                          type="text"
-                          value={suggestion}
-                          onChange={(e) => setSuggestion(e.target.value)}
-                          placeholder="E.g., More vintage film prompts, cyberpunk styles..."
-                          className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/30 focus:border-white/20 focus:outline-none"
-                        />
-                        <motion.button
-                          type="submit"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          disabled={!suggestion.trim()}
-                          className="flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40"
-                        >
-                          <Send className="h-4 w-4" />
-                          <span className="hidden sm:inline">Send</span>
-                        </motion.button>
-                      </div>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
               </div>
 
               {/* Access Code Modal */}
