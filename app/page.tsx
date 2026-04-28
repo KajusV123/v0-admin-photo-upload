@@ -501,7 +501,10 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button className="rounded-full bg-[#0a0a0a] px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white hover:text-black">
+              <button 
+                onClick={() => document.getElementById('full-access')?.scrollIntoView({ behavior: 'smooth' })}
+                className="rounded-full bg-[#0a0a0a] px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
+              >
                 Browse Prompts
               </button>
             </motion.div>

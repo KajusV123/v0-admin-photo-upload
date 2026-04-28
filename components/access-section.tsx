@@ -128,7 +128,7 @@ export function AccessSection() {
               className="flex flex-col items-center text-center"
             >
               {/* Get Full Access Section */}
-              <div className="mb-20">
+              <div id="full-access" className="mb-20">
                 <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
                   <span className="relative inline-block">
                     <span className="absolute left-0 top-0 text-cyan-400 opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
