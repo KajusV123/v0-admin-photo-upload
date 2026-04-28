@@ -50,7 +50,7 @@ export function AccessSection() {
   }
 
   return (
-    <section className="relative z-10 bg-[#0a0a0a] pt-48 pb-24">
+    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
           {showSuccess ? (
@@ -128,7 +128,7 @@ export function AccessSection() {
               className="flex flex-col items-center text-center"
             >
               {/* Get Full Access Section */}
-              <div id="full-access" className="mb-20">
+              <div className="mb-20">
                 <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
                   <span className="relative inline-block">
                     <span className="absolute left-0 top-0 text-cyan-400 opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
