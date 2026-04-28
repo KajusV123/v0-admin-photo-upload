@@ -12,12 +12,12 @@ const COOKIE_NAME = "prompt_bank_access"
 
 function getCookie(name: string): string | null {
   if (typeof document === "undefined") return null
-  const nameEQ = name + "="
-  const ca = document.cookie.split(';')
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i]
-    while (c.charAt(0) === ' ') c = c.substring(1, c.length)
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
+  const cookies = document.cookie.split(";")
+  for (const cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split("=").map(c => c.trim())
+    if (cookieName === name) {
+      return cookieValue
+    }
   }
   return null
 }
@@ -838,25 +838,20 @@ export default function PromptsPage() {
 
   // Check authorization on mount - must run client-side only
   useEffect(() => {
-    // Small delay to ensure cookie is fully set after redirect
     const checkAuth = () => {
-      console.log("[v0] All cookies:", document.cookie)
       const cookieValue = getCookie(COOKIE_NAME)
-      console.log("[v0] Cookie check for", COOKIE_NAME, ":", cookieValue)
       if (cookieValue === "unlocked") {
-        console.log("[v0] Authorized - showing prompts")
         setIsAuthorized(true)
         setIsLoading(false)
       } else {
-        console.log("[v0] Not authorized - redirecting to home")
         // Redirect to home if not authorized
-        window.location.href = "/"
+        router.push("/")
       }
     }
     
-    // Small timeout to ensure we're fully client-side and cookie is available
-    setTimeout(checkAuth, 200)
-  }, [])
+    // Run immediately since we're already client-side
+    checkAuth()
+  }, [router])
 
   const filteredGallery = selectedCategory === "All" 
     ? promptGallery 

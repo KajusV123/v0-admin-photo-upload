@@ -18,10 +18,10 @@ const COOKIE_EXPIRY_DAYS = 365 // Cookie lasts 1 year
 function setCookie(name: string, value: string, days: number) {
   const expires = new Date()
   expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  const cookieString = `${name}=${value};expires=${expires.toUTCString()};path=/;SameSite=Lax`
+  // Use max-age for better browser compatibility along with expires
+  const maxAge = days * 24 * 60 * 60
+  const cookieString = `${name}=${value}; expires=${expires.toUTCString()}; max-age=${maxAge}; path=/; SameSite=Lax`
   document.cookie = cookieString
-  console.log("[v0] Setting cookie:", cookieString)
-  console.log("[v0] All cookies after set:", document.cookie)
 }
 
 export function AccessSection() {
@@ -41,8 +41,7 @@ export function AccessSection() {
       setCookie(COOKIE_NAME, "unlocked", COOKIE_EXPIRY_DAYS)
       // Show congratulations for 2.5 seconds, then redirect to prompts page
       setTimeout(() => {
-        console.log("[v0] Redirecting to /prompts")
-        window.location.href = "/prompts"
+        router.push("/prompts")
       }, 2500)
     } else {
       setError("Invalid access code. Please try again.")
