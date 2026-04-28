@@ -13,6 +13,7 @@ import { HowItWorksSection } from "@/components/how-it-works-section"
 import { FaqSection } from "@/components/faq-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { ShowcaseSection } from "@/components/showcase-section"
+import { smoothScrollTo } from "@/lib/smooth-scroll"
 import { Navbar } from "@/components/navbar"
 
 const initialImages = [
@@ -502,7 +503,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <button 
-                onClick={() => document.getElementById('full-access')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => smoothScrollTo('full-access', { duration: 1200, offset: 80 })}
                 className="rounded-full bg-[#0a0a0a] px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
               >
                 Browse Prompts

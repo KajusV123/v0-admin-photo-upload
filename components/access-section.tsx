@@ -50,7 +50,7 @@ export function AccessSection() {
   }
 
   return (
-    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24 scroll-mt-20">
+    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
           {showSuccess ? (

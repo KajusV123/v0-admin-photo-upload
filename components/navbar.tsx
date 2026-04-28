@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { smoothScrollTo, handleSmoothScroll } from "@/lib/smooth-scroll"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -69,7 +70,7 @@ export function Navbar() {
 
             {/* Nav Links - hidden on mobile */}
             <div className="hidden sm:flex items-center gap-0.5">
-              <NavLink href="#prompts">Prompts</NavLink>
+              <NavLink href="#full-access">Prompts</NavLink>
               <NavLink href="#pricing">Pricing</NavLink>
               <NavLink href="#faq">FAQ</NavLink>
             </div>
@@ -79,7 +80,8 @@ export function Navbar() {
 
             {/* CTA Button */}
             <motion.a
-              href="#access"
+              href="#full-access"
+              onClick={(e) => handleSmoothScroll(e, { duration: 1200, offset: 80 })}
               className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-black bg-white overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -103,6 +105,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <a
       href={href}
+      onClick={(e) => handleSmoothScroll(e, { duration: 1200, offset: 80 })}
       className="relative px-3 py-1.5 text-sm text-white/70 rounded-full transition-all duration-300 hover:text-white hover:bg-white/10 group"
     >
       {children}
