@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { smoothScrollTo, handleSmoothScroll } from "@/lib/smooth-scroll"
+import { smoothScrollTo, handleSmoothScroll, scrollToTop } from "@/lib/smooth-scroll"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -52,12 +52,9 @@ export function Navbar() {
             `}
           >
             {/* Logo */}
-            <a 
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
+            <button 
+              type="button"
+              onClick={() => scrollToTop({ duration: 1000 })}
               className="flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10 cursor-pointer"
             >
               <Image
@@ -67,7 +64,7 @@ export function Navbar() {
                 height={36}
                 className="h-6 sm:h-8 w-auto"
               />
-            </a>
+            </button>
 
             {/* Divider - hidden on mobile */}
             <div className="w-px h-6 bg-white/10 hidden sm:block" />

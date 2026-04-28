@@ -60,3 +60,32 @@ export function handleSmoothScroll(
   const elementId = href.slice(1)
   smoothScrollTo(elementId, options)
 }
+
+/**
+ * Smooth scroll to top of the page
+ */
+export function scrollToTop(options: Omit<SmoothScrollOptions, 'offset'> = {}): void {
+  const { duration = 1000, easing = easeInOutCubic } = options
+
+  const startPosition = window.pageYOffset
+  const targetPosition = 0
+
+  if (startPosition === 0) return
+
+  let startTime: number | null = null
+
+  function animation(currentTime: number) {
+    if (startTime === null) startTime = currentTime
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const easedProgress = easing(progress)
+
+    window.scrollTo(0, startPosition * (1 - easedProgress))
+
+    if (elapsed < duration) {
+      requestAnimationFrame(animation)
+    }
+  }
+
+  requestAnimationFrame(animation)
+}
