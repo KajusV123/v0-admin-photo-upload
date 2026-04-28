@@ -53,8 +53,12 @@ export function Navbar() {
           >
             {/* Logo */}
             <a 
-              href="#" 
-              className="flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+              className="flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10 cursor-pointer"
             >
               <Image
                 src="/images/logo.png"
