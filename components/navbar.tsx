@@ -71,7 +71,7 @@ export function Navbar() {
             {/* Nav Links - hidden on mobile */}
             <div className="hidden sm:flex items-center gap-0.5">
               <NavLink href="#full-access">Prompts</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
+              <NavLink href="#full-access">Pricing</NavLink>
               <NavLink href="#faq">FAQ</NavLink>
             </div>
 
