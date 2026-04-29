@@ -61,7 +61,7 @@ export function HowItWorksSection() {
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(139,30,63,0.4) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(158,50,72,0.5) 50%, transparent 100%)",
         }}
       />
 

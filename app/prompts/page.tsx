@@ -769,7 +769,7 @@ function PromptModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] border border-[#8B1E3F]/20 md:h-[70vh] md:flex-row"
+        className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] border border-[#9E3248]/25 md:h-[70vh] md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -794,7 +794,7 @@ function PromptModal({
         <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
           <div>
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-[#8B1E3F]/20 px-3 py-1 text-xs font-medium text-[#C44569]">
+              <span className="rounded-full bg-[#9E3248]/25 px-3 py-1 text-xs font-medium text-[#C74D64]">
                 {item.category}
               </span>
             </div>
@@ -809,7 +809,7 @@ function PromptModal({
           {/* Copy button */}
           <button
             onClick={copyToClipboard}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#8B1E3F] py-3 text-sm font-medium text-white transition-all hover:bg-[#A52247] md:text-base"
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#9E3248] py-3 text-sm font-medium text-white transition-all hover:bg-[#B33D54] md:text-base"
           >
             {copied ? (
               <>
@@ -875,7 +875,7 @@ const filteredGallery = selectedCategory === "All"
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#8B1E3F]/30 border-t-[#8B1E3F]"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#9E3248]/30 border-t-[#9E3248]"></div>
       </div>
     )
   }
@@ -897,13 +897,13 @@ const filteredGallery = selectedCategory === "All"
             className="object-cover grayscale"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#3D0F1E]/50 via-transparent to-[#0a0a0a]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#6B1B2D]/50 via-transparent to-[#0a0a0a]" />
         </div>
 
         {/* Back Button */}
         <Link
           href="/"
-          className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full bg-[#3D0F1E]/50 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-all hover:bg-[#8B1E3F]/50 hover:text-white"
+          className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full bg-[#6B1B2D]/50 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-all hover:bg-[#9E3248]/50 hover:text-white"
         >
           <ArrowLeft className="h-4 w-4" />
           Back
@@ -915,7 +915,7 @@ const filteredGallery = selectedCategory === "All"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center font-serif text-5xl italic text-[#C44569] md:text-7xl lg:text-8xl"
+            className="text-center font-serif text-5xl italic text-[#C74D64] md:text-7xl lg:text-8xl"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             infinite prompt
@@ -924,7 +924,7 @@ const filteredGallery = selectedCategory === "All"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-2 rounded-lg bg-[#8B1E3F] px-4 py-1 md:mt-3"
+            className="mt-2 rounded-lg bg-[#9E3248] px-4 py-1 md:mt-3"
           >
             <span className="text-lg font-semibold tracking-wider text-white md:text-xl">BANK</span>
           </motion.div>
@@ -957,8 +957,8 @@ const filteredGallery = selectedCategory === "All"
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all md:px-6 ${
                   selectedCategory === category
-                    ? "bg-[#8B1E3F] text-white"
-                    : "bg-white/10 text-white/70 hover:bg-[#8B1E3F]/30 hover:text-white"
+                    ? "bg-[#9E3248] text-white"
+                    : "bg-white/10 text-white/70 hover:bg-[#9E3248]/30 hover:text-white"
                 }`}
               >
                 {category}
@@ -991,7 +991,7 @@ const filteredGallery = selectedCategory === "All"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
-                    <span className="mb-1 inline-block rounded-full bg-[#8B1E3F]/30 px-2 py-0.5 text-xs text-[#C44569]">
+                    <span className="mb-1 inline-block rounded-full bg-[#9E3248]/30 px-2 py-0.5 text-xs text-[#C74D64]">
                       {item.category}
                     </span>
                     <h3 className="text-sm font-medium text-white">{item.title}</h3>
@@ -1012,7 +1012,7 @@ const filteredGallery = selectedCategory === "All"
           </motion.p>
 
           {/* Suggestion Section */}
-          <div className="mx-auto mt-20 w-full max-w-xl border-t border-[#8B1E3F]/20 pt-12 text-center">
+          <div className="mx-auto mt-20 w-full max-w-xl border-t border-[#9E3248]/25 pt-12 text-center">
             <h3 className="text-xl font-semibold text-white">
               Have an idea?
             </h3>
@@ -1047,14 +1047,14 @@ const filteredGallery = selectedCategory === "All"
                       value={suggestion}
                       onChange={(e) => setSuggestion(e.target.value)}
                       placeholder="E.g., More vintage film prompts, cyberpunk styles..."
-                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#8B1E3F]/30 focus:outline-none"
+                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#9E3248]/40 focus:outline-none"
                     />
                     <motion.button
                       type="submit"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       disabled={!suggestion.trim()}
-                      className="flex items-center gap-2 rounded-full bg-[#8B1E3F]/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#8B1E3F]/50 disabled:cursor-not-allowed disabled:opacity-40"
+                      className="flex items-center gap-2 rounded-full bg-[#9E3248]/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#9E3248]/50 disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <Send className="h-4 w-4" />
                       <span className="hidden sm:inline">Send</span>

@@ -365,8 +365,8 @@ export default function Home() {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(rgba(139,30,63,0.1) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(139,30,63,0.1) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(158,50,72,0.1) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(158,50,72,0.1) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -375,7 +375,7 @@ export default function Home() {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] pointer-events-none opacity-30"
           style={{
-            background: "radial-gradient(circle, rgba(139,30,63,0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(158,50,72,0.4) 0%, transparent 70%)",
           }}
         />
 
@@ -419,7 +419,7 @@ export default function Home() {
                     : "0 10px 40px -10px rgba(0, 0, 0, 0.5)",
                 }}
               >
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 hover:ring-[#C44569]/50 transition-all duration-300" />
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 hover:ring-[#C74D64]/50 transition-all duration-300" />
                 <Image
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
@@ -503,7 +503,7 @@ export default function Home() {
             <motion.div
               className="pointer-events-auto mt-6 sm:mt-8 mb-6 sm:mb-8 inline-block rounded-full p-[2px]"
               style={{
-                background: "linear-gradient(135deg, #C44569 0%, #8B1E3F 25%, #C44569 50%, #8B1E3F 75%, #C44569 100%)",
+                background: "linear-gradient(135deg, #C74D64 0%, #9E3248 25%, #C74D64 50%, #9E3248 75%, #C74D64 100%)",
               }}
               initial={{ opacity: 0, y: 40, scale: 0.8 }}
               animate={isLoaded ? { opacity: 1, y: 0, scale: 1 } : {}}

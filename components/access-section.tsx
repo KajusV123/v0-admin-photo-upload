@@ -77,7 +77,7 @@ export function AccessSection() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="mb-8 rounded-full bg-gradient-to-br from-[#8B1E3F]/20 to-[#C44569]/20 p-8"
+                className="mb-8 rounded-full bg-gradient-to-br from-[#9E3248]/25 to-[#C74D64]/25 p-8"
               >
                 <motion.div
                   initial={{ scale: 0, rotate: -180 }}
@@ -115,17 +115,17 @@ export function AccessSection() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity }}
-                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
+                  className="h-2 w-2 rounded-full bg-[#9E3248]"
                 />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
+                  className="h-2 w-2 rounded-full bg-[#9E3248]"
                 />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
+                  className="h-2 w-2 rounded-full bg-[#9E3248]"
                 />
               </motion.div>
             </motion.div>
@@ -142,8 +142,8 @@ export function AccessSection() {
               <div className="mb-20">
                 <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
                   <span className="relative inline-block">
-                    <span className="absolute left-0 top-0 text-[#C44569] opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
-                    <span className="absolute left-0 top-0 text-[#5C1028] opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-[#C74D64] opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-[#7D2235] opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
                     <span className="relative text-white">Get Full Access</span>
                   </span>
                 </h2>
@@ -155,7 +155,7 @@ export function AccessSection() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="rounded-full border border-[#8B1E3F]/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(139,30,63,0.4)] transition-all hover:shadow-[0_0_25px_rgba(139,30,63,0.6)] hover:bg-[#8B1E3F]/20"
+                    className="rounded-full border border-[#9E3248]/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(158,50,72,0.5)] transition-all hover:shadow-[0_0_25px_rgba(158,50,72,0.7)] hover:bg-[#9E3248]/20"
                   >
                     Get Access $50
                   </motion.button>
@@ -163,7 +163,7 @@ export function AccessSection() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setShowCodeModal(true)}
-                    className="rounded-full border border-[#C44569]/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-[#C44569]/50"
+                    className="rounded-full border border-[#C74D64]/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-[#C74D64]/50"
                   >
                     Access Code
                   </motion.button>
@@ -211,7 +211,7 @@ export function AccessSection() {
                             onChange={(e) => setAccessCode(e.target.value)}
                             placeholder="Enter access code"
                             autoFocus
-                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-[#8B1E3F]/50 focus:outline-none focus:ring-2 focus:ring-[#8B1E3F]/20"
+                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-[#9E3248]/50 focus:outline-none focus:ring-2 focus:ring-[#9E3248]/20"
                           />
                           
                           {error && (

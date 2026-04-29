@@ -52,7 +52,7 @@ export function WhatsInsideSection() {
       <motion.div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background: "radial-gradient(circle, #3D0F1E 0%, transparent 70%)",
+          background: "radial-gradient(circle, #6B1B2D 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -149,9 +149,9 @@ export function WhatsInsideSection() {
                 whileHover={{ x: 5 }}
               >
                 <motion.span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-[#8B1E3F]/20"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-[#9E3248]/25"
                   style={{
-                    background: "linear-gradient(135deg, #5C1028 0%, #3D0F1E 100%)",
+                    background: "linear-gradient(135deg, #7D2235 0%, #6B1B2D 100%)",
                   }}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}

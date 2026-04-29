@@ -72,11 +72,11 @@ export function InfiniteCarousel() {
         >
           {/* First set - preloaded */}
           {carouselImages.map((image, index) => (
-            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-[#C44569]/50" preload />
+            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-[#C74D64]/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {carouselImages.map((image, index) => (
-            <CarouselCard key={`row1-b-${index}`} image={image} hoverColor="hover:border-[#C44569]/50" />
+            <CarouselCard key={`row1-b-${index}`} image={image} hoverColor="hover:border-[#C74D64]/50" />
           ))}
         </div>
       </div>
@@ -88,11 +88,11 @@ export function InfiniteCarousel() {
         >
           {/* First set - preloaded */}
           {reversedImages.map((image, index) => (
-            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-[#8B1E3F]/50" preload />
+            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-[#9E3248]/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {reversedImages.map((image, index) => (
-            <CarouselCard key={`row2-b-${index}`} image={image} hoverColor="hover:border-[#8B1E3F]/50" />
+            <CarouselCard key={`row2-b-${index}`} image={image} hoverColor="hover:border-[#9E3248]/50" />
           ))}
         </div>
       </div>

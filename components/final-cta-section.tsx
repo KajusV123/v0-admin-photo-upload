@@ -26,7 +26,7 @@ export function FinalCtaSection() {
       <motion.div 
         className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-40 blur-[150px]"
         style={{
-          background: "radial-gradient(circle, #5C1028 0%, transparent 70%)",
+          background: "radial-gradient(circle, #7D2235 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.3, 1],
@@ -42,7 +42,7 @@ export function FinalCtaSection() {
       <motion.div 
         className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background: "radial-gradient(circle, #3D0F1E 0%, transparent 70%)",
+          background: "radial-gradient(circle, #6B1B2D 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -116,7 +116,7 @@ export function FinalCtaSection() {
           <motion.div
             className="group inline-block rounded-full p-[2px] transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #C44569 0%, #8B1E3F 25%, #C44569 50%, #8B1E3F 75%, #C44569 100%)",
+              background: "linear-gradient(135deg, #C74D64 0%, #9E3248 25%, #C74D64 50%, #9E3248 75%, #C74D64 100%)",
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -210,7 +210,7 @@ export function FinalCtaSection() {
       <motion.div 
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(139,30,63,0.4) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(158,50,72,0.5) 50%, transparent 100%)",
         }}
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
