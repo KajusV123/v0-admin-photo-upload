@@ -358,8 +358,8 @@ export default function Home() {
           }}
         />
         
-        {/* Light vignette for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+        {/* Light vignette for depth - only at top */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" />
 
         {/* Subtle light overlay for depth */}
         <div
