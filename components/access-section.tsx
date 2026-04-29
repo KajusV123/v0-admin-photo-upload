@@ -62,6 +62,9 @@ export function AccessSection() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
       
+      {/* Fade to black at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
+      
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
           {showSuccess ? (
