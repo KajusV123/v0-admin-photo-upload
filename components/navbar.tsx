@@ -83,13 +83,13 @@ export function Navbar() {
             <motion.a
               href="#full-access"
               onClick={(e) => handleSmoothScroll(e, { duration: 1200, offset: 80 })}
-              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-white bg-[#9E3248] overflow-hidden group"
+              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-black bg-white overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10">Get Access</span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#C74D64] to-[#9E3248]"
+                className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: 0 }}
                 transition={{ type: "tween", duration: 0.3 }}
