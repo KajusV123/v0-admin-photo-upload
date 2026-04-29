@@ -50,17 +50,17 @@ export function AccessSection() {
   }
 
   return (
-    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24 overflow-hidden">
-      {/* Velvet texture background */}
+    <section id="full-access" className="relative z-10 pt-48 pb-24 overflow-hidden">
+      {/* Striped burgundy background */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0"
         style={{
           backgroundImage: `url('/images/velvet-texture.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 to-[#0a0a0a]/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
       
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
