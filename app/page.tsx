@@ -348,9 +348,9 @@ export default function Home() {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {/* Velvet texture background */}
+        {/* Striped burgundy background */}
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url('/images/velvet-texture.jpg')`,
             backgroundSize: "cover",
@@ -358,24 +358,16 @@ export default function Home() {
           }}
         />
         
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/50 to-[#0a0a0a]/80" />
+        {/* Light vignette for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
 
-        {/* Subtle grid pattern */}
+        {/* Subtle light overlay for depth */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `linear-gradient(rgba(158,50,72,0.1) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(158,50,72,0.1) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
             backgroundSize: "40px 40px",
-          }}
-        />
-
-        {/* Burgundy gradient orb */}
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] pointer-events-none opacity-30"
-          style={{
-            background: "radial-gradient(circle, rgba(158,50,72,0.4) 0%, transparent 70%)",
           }}
         />
 
