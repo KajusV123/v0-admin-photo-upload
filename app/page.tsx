@@ -348,13 +348,15 @@ export default function Home() {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {/* Striped burgundy background */}
+        {/* Striped burgundy background - fixed position for seamless connection */}
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `url('/images/velvet-texture.jpg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundSize: "auto",
+            backgroundPosition: "top left",
+            backgroundAttachment: "fixed",
+            backgroundRepeat: "repeat",
           }}
         />
         

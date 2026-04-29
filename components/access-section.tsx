@@ -51,13 +51,15 @@ export function AccessSection() {
 
   return (
     <section id="full-access" className="relative z-10 pt-48 pb-24 overflow-hidden">
-      {/* Striped burgundy background */}
+      {/* Striped burgundy background - fixed position for seamless connection */}
       <div 
         className="absolute inset-0"
         style={{
           backgroundImage: `url('/images/velvet-texture.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: "auto",
+          backgroundPosition: "top left",
+          backgroundAttachment: "fixed",
+          backgroundRepeat: "repeat",
         }}
       />
       {/* No top overlay - seamless with hero */}
