@@ -39,8 +39,18 @@ export function InfiniteCarousel() {
   const reversedImages = [...carouselImages].reverse()
 
   return (
-    <section className="bg-[#0a0a0a] py-20 overflow-hidden">
-      <div className="mb-12 text-center">
+    <section className="relative bg-[#0a0a0a] py-20 overflow-hidden">
+      {/* Velvet texture background */}
+      <div 
+        className="absolute inset-0 opacity-15"
+        style={{
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/95" />
+      <div className="relative z-10 mb-12 text-center">
         <p
           className="text-3xl text-white/80 md:text-5xl mb-2"
           style={{ fontFamily: "var(--font-corinthia), cursive" }}
@@ -56,33 +66,33 @@ export function InfiniteCarousel() {
       </div>
 
       {/* First row - scrolling left */}
-      <div className="relative mb-6 group/row">
+      <div className="relative z-10 mb-6 group/row">
         <div 
           className="flex w-max animate-scroll-left group-hover/row:[animation-play-state:paused]"
         >
           {/* First set - preloaded */}
           {carouselImages.map((image, index) => (
-            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-pink-400/50" preload />
+            <CarouselCard key={`row1-a-${index}`} image={image} hoverColor="hover:border-[#C44569]/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {carouselImages.map((image, index) => (
-            <CarouselCard key={`row1-b-${index}`} image={image} hoverColor="hover:border-pink-400/50" />
+            <CarouselCard key={`row1-b-${index}`} image={image} hoverColor="hover:border-[#C44569]/50" />
           ))}
         </div>
       </div>
 
       {/* Second row - scrolling right */}
-      <div className="relative group/row">
+      <div className="relative z-10 group/row">
         <div 
           className="flex w-max animate-scroll-right group-hover/row:[animation-play-state:paused]"
         >
           {/* First set - preloaded */}
           {reversedImages.map((image, index) => (
-            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-purple-400/50" preload />
+            <CarouselCard key={`row2-a-${index}`} image={image} hoverColor="hover:border-[#8B1E3F]/50" preload />
           ))}
           {/* Duplicate set for seamless loop */}
           {reversedImages.map((image, index) => (
-            <CarouselCard key={`row2-b-${index}`} image={image} hoverColor="hover:border-purple-400/50" />
+            <CarouselCard key={`row2-b-${index}`} image={image} hoverColor="hover:border-[#8B1E3F]/50" />
           ))}
         </div>
       </div>

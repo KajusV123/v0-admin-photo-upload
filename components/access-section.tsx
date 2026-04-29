@@ -50,8 +50,19 @@ export function AccessSection() {
   }
 
   return (
-    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="full-access" className="relative z-10 bg-[#0a0a0a] pt-48 pb-24 overflow-hidden">
+      {/* Velvet texture background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 to-[#0a0a0a]/70" />
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
           {showSuccess ? (
             // Success State - Congratulations
@@ -66,7 +77,7 @@ export function AccessSection() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                className="mb-8 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-8"
+                className="mb-8 rounded-full bg-gradient-to-br from-[#8B1E3F]/20 to-[#C44569]/20 p-8"
               >
                 <motion.div
                   initial={{ scale: 0, rotate: -180 }}
@@ -104,17 +115,17 @@ export function AccessSection() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity }}
-                  className="h-2 w-2 rounded-full bg-purple-500"
+                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
                 />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                  className="h-2 w-2 rounded-full bg-purple-500"
+                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
                 />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                  className="h-2 w-2 rounded-full bg-purple-500"
+                  className="h-2 w-2 rounded-full bg-[#8B1E3F]"
                 />
               </motion.div>
             </motion.div>
@@ -131,8 +142,8 @@ export function AccessSection() {
               <div className="mb-20">
                 <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
                   <span className="relative inline-block">
-                    <span className="absolute left-0 top-0 text-cyan-400 opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
-                    <span className="absolute left-0 top-0 text-red-400 opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-[#C44569] opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-[#5C1028] opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
                     <span className="relative text-white">Get Full Access</span>
                   </span>
                 </h2>
@@ -144,7 +155,7 @@ export function AccessSection() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="rounded-full border border-purple-500/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] transition-all hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]"
+                    className="rounded-full border border-[#8B1E3F]/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(139,30,63,0.4)] transition-all hover:shadow-[0_0_25px_rgba(139,30,63,0.6)] hover:bg-[#8B1E3F]/20"
                   >
                     Get Access $50
                   </motion.button>
@@ -152,7 +163,7 @@ export function AccessSection() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setShowCodeModal(true)}
-                    className="rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-white/50"
+                    className="rounded-full border border-[#C44569]/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-[#C44569]/50"
                   >
                     Access Code
                   </motion.button>
@@ -200,7 +211,7 @@ export function AccessSection() {
                             onChange={(e) => setAccessCode(e.target.value)}
                             placeholder="Enter access code"
                             autoFocus
-                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-purple-500/50 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-[#8B1E3F]/50 focus:outline-none focus:ring-2 focus:ring-[#8B1E3F]/20"
                           />
                           
                           {error && (

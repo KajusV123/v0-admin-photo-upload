@@ -11,11 +11,22 @@ export function FinalCtaSection() {
 
   return (
     <section className="relative bg-[#0a0a0a] py-32 overflow-hidden">
-      {/* Animated gradient orbs */}
+      {/* Velvet texture background */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/85 via-[#0a0a0a]/60 to-[#0a0a0a]/90" />
+      
+      {/* Animated burgundy gradient orbs */}
       <motion.div 
         className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-40 blur-[150px]"
         style={{
-          background: "radial-gradient(circle, #2a2a2a 0%, transparent 70%)",
+          background: "radial-gradient(circle, #5C1028 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.3, 1],
@@ -31,7 +42,7 @@ export function FinalCtaSection() {
       <motion.div 
         className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background: "radial-gradient(circle, #1f1f1f 0%, transparent 70%)",
+          background: "radial-gradient(circle, #3D0F1E 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -105,7 +116,7 @@ export function FinalCtaSection() {
           <motion.div
             className="group inline-block rounded-full p-[2px] transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #6b6b6b 25%, #ffffff 50%, #6b6b6b 75%, #ffffff 100%)",
+              background: "linear-gradient(135deg, #C44569 0%, #8B1E3F 25%, #C44569 50%, #8B1E3F 75%, #C44569 100%)",
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -199,7 +210,7 @@ export function FinalCtaSection() {
       <motion.div 
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(139,30,63,0.4) 50%, transparent 100%)",
         }}
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}

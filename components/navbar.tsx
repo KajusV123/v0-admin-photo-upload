@@ -46,7 +46,7 @@ export function Navbar() {
               border border-white/10 backdrop-blur-xl
               transition-all duration-500 ease-out
               ${isScrolled 
-                ? "bg-black/60 shadow-lg shadow-black/20" 
+                ? "bg-[#1a0a0f]/80 shadow-lg shadow-[#8B1E3F]/10 border-[#8B1E3F]/20" 
                 : "bg-white/5"
               }
             `}
@@ -83,13 +83,13 @@ export function Navbar() {
             <motion.a
               href="#full-access"
               onClick={(e) => handleSmoothScroll(e, { duration: 1200, offset: 80 })}
-              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-black bg-white overflow-hidden group"
+              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-white bg-[#8B1E3F] overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10">Get Access</span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-pink-300 to-purple-300"
+                className="absolute inset-0 bg-gradient-to-r from-[#C44569] to-[#8B1E3F]"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: 0 }}
                 transition={{ type: "tween", duration: 0.3 }}

@@ -54,11 +54,23 @@ export function FaqSection() {
 
   return (
     <section id="faq" className="relative bg-[#0a0a0a] py-28 overflow-hidden">
-      <div
+      {/* Velvet texture background */}
+      <div 
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,250,0.03) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,250,0.03) 1px, transparent 1px)`,
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/90 via-[#0a0a0a]/75 to-[#0a0a0a]/90" />
+      
+      {/* Subtle grid overlay */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: `linear-gradient(rgba(139,30,63,0.1) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(139,30,63,0.1) 1px, transparent 1px)`,
           backgroundSize: "40px 40px",
         }}
       />

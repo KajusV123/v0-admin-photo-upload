@@ -6,11 +6,22 @@ import { motion } from "framer-motion"
 export function ShowcaseSection() {
   return (
     <section className="relative bg-[#0a0a0a] py-20 overflow-hidden">
+      {/* Velvet texture background */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a]/90" />
+      
       {/* Top gradient line */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px"
         style={{
-          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
+          background: "linear-gradient(90deg, transparent 0%, rgba(139,30,63,0.3) 50%, transparent 100%)",
         }}
       />
 

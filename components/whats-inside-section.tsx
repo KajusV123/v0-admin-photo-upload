@@ -37,11 +37,22 @@ const itemVariants = {
 export function WhatsInsideSection() {
   return (
     <section className="relative bg-[#0a0a0a] py-28 overflow-hidden">
-      {/* Ambient glow effects */}
+      {/* Velvet texture background */}
+      <div 
+        className="absolute inset-0 opacity-25"
+        style={{
+          backgroundImage: `url('/images/velvet-texture.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/85 via-[#0a0a0a]/70 to-[#0a0a0a]/85" />
+      
+      {/* Burgundy ambient glow effects */}
       <motion.div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background: "radial-gradient(circle, #2a2a2a 0%, transparent 70%)",
+          background: "radial-gradient(circle, #3D0F1E 0%, transparent 70%)",
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -138,9 +149,9 @@ export function WhatsInsideSection() {
                 whileHover={{ x: 5 }}
               >
                 <motion.span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-white/10"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-[#8B1E3F]/20"
                   style={{
-                    background: "linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%)",
+                    background: "linear-gradient(135deg, #5C1028 0%, #3D0F1E 100%)",
                   }}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
