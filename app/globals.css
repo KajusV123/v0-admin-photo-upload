@@ -96,14 +96,11 @@
   --burgundy-light: #C74D64;
   --cream: #FFF8F0;
   --gold: #D4AF61;
-  --pink-accent: #E8A4B8;
-  --pink-light: #F5D0DC;
 }
 
 @theme inline {
   --font-sans: 'Geist Mono', 'Geist Mono Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
-  --font-script: var(--font-corinthia), cursive;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

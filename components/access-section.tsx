@@ -4,7 +4,6 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Lock, X } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { TornPaperDivider } from "./torn-paper-divider"
 
 // ========================================
 // ACCESS CODE - Change this value anytime
@@ -65,13 +64,8 @@ export function AccessSection() {
       />
       {/* No top overlay - seamless with hero */}
       
-      {/* Torn paper divider at bottom - Stan Store style */}
-      <div className="absolute bottom-0 left-0 right-0 z-20">
-        <TornPaperDivider />
-      </div>
-      
-      {/* Fade to black below torn paper */}
-      <div className="absolute -bottom-1 left-0 right-0 h-8 bg-[#0a0a0a] z-30" />
+      {/* Fade to black at bottom - larger and smoother */}
+      <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-b from-transparent via-[#0a0a0a]/50 to-[#0a0a0a]" />
       
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <AnimatePresence mode="wait">
@@ -149,13 +143,15 @@ export function AccessSection() {
               exit={{ opacity: 0, y: -20 }}
               className="flex flex-col items-center text-center"
             >
-              {/* Get Full Access Section - Stan Store style */}
+              {/* Get Full Access Section */}
               <div className="mb-20">
-                <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
-                  Get Full Access
+                <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
+                  <span className="relative inline-block">
+                    <span className="absolute left-0 top-0 text-[#C74D64] opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
+                    <span className="absolute left-0 top-0 text-[#7D2235] opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
+                    <span className="relative text-white">Get Full Access</span>
+                  </span>
                 </h2>
-                {/* Decorative underline */}
-                <div className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]" />
                 <p className="mt-4 text-sm text-white/50 md:text-base">
                   Unlock all premium prompts and start creating<br />
                   stunning AI portraits today.
@@ -250,11 +246,6 @@ export function AccessSection() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-      
-      {/* Branding text - Stan Store style */}
-      <div className="absolute bottom-28 left-6 z-10 text-xs text-white/30 tracking-widest">
-        DEM.STUDIO.AI
       </div>
     </section>
   )

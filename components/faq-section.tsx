@@ -76,7 +76,6 @@ export function FaqSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6">
-        {/* Script heading with underline - Stan Store style */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -84,18 +83,10 @@ export function FaqSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
-            Common Questions:
+          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+            Common Questions
           </h2>
-          {/* Decorative underline */}
-          <motion.div 
-            className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          />
-          <p className="mt-6 text-white/50">
+          <p className="mt-4 text-white/50">
             Everything you need to know before getting started
           </p>
         </motion.div>

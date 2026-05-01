@@ -433,9 +433,10 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
         >
           <div className="text-center">
-            {/* Animated subtitle - Stan Store style */}
-            <motion.div
-              className="relative z-10"
+            {/* Animated subtitle */}
+            <motion.p
+              className="relative z-10 text-4xl text-white/90 sm:text-5xl md:text-[90px]"
+              style={{ fontFamily: "var(--font-corinthia), cursive", marginBottom: isMobile ? "-20px" : "-40px" }}
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={isLoaded ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{
@@ -445,21 +446,8 @@ export default function Home() {
                 delay: 0.2,
               }}
             >
-              <p
-                className="text-4xl text-white/90 sm:text-5xl md:text-[90px]"
-                style={{ fontFamily: "var(--font-corinthia), cursive", marginBottom: isMobile ? "-20px" : "-40px" }}
-              >
-                AI Portrait
-              </p>
-              {/* Decorative underline */}
-              <motion.div 
-                className="mx-auto h-[2px] w-24 sm:w-32 bg-[#9E3248]"
-                style={{ marginTop: isMobile ? "-15px" : "-35px", marginBottom: isMobile ? "5px" : "0" }}
-                initial={{ scaleX: 0 }}
-                animate={isLoaded ? { scaleX: 1 } : {}}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              />
-            </motion.div>
+              AI Portrait
+            </motion.p>
 
             {/* Animated main title */}
             <motion.h1 

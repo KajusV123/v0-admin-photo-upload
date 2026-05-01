@@ -50,14 +50,17 @@ export function InfiniteCarousel() {
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]/95" />
-      {/* Script heading with underline - Stan Store style */}
       <div className="relative z-10 mb-12 text-center">
-        <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
-          Preview Gallery:
+        <p
+          className="text-3xl text-white/80 md:text-5xl mb-2"
+          style={{ fontFamily: "var(--font-corinthia), cursive" }}
+        >
+          Preview Gallery
+        </p>
+        <h2 className="text-2xl font-bold text-white md:text-4xl tracking-tight">
+          Prompt Styles You&apos;ll Unlock
         </h2>
-        {/* Decorative underline */}
-        <div className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]" />
-        <p className="mt-6 text-white/50 max-w-md mx-auto text-sm md:text-base">
+        <p className="mt-4 text-white/50 max-w-md mx-auto text-sm md:text-base">
           Each card represents a unique prompt style included in your access
         </p>
       </div>
