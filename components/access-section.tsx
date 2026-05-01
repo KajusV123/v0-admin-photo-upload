@@ -156,12 +156,12 @@ export function AccessSection() {
                   stunning AI portraits today.
                 </p>
                 
-                {/* Polaroid-style locked cards - exact match to Stan Store */}
-                <div className="mt-10 flex flex-wrap justify-center items-end gap-2 md:gap-4">
+                {/* Polaroid-style locked cards with tape */}
+                <div className="mt-10 flex flex-wrap justify-center items-end gap-4 md:gap-6">
                   {[
-                    { label: "WILD", rotation: "-8deg", translateY: "5px" },
-                    { label: "ICONIC", rotation: "2deg", translateY: "0px" },
-                    { label: "EDITORIAL", rotation: "8deg", translateY: "8px" },
+                    { label: "WILD", rotation: "-12deg", translateY: "10px", tapeRotation: "5deg", tapeOffset: "-8px" },
+                    { label: "ICONIC", rotation: "0deg", translateY: "-5px", tapeRotation: "-2deg", tapeOffset: "0px" },
+                    { label: "LUXE", rotation: "10deg", translateY: "8px", tapeRotation: "-8deg", tapeOffset: "5px" },
                   ].map((card, index) => (
                     <motion.div
                       key={card.label}
@@ -171,17 +171,35 @@ export function AccessSection() {
                       className="relative"
                       style={{ transform: `rotate(${card.rotation}) translateY(${card.translateY})` }}
                     >
+                      {/* Tape at top */}
+                      <div 
+                        className="absolute -top-3 left-1/2 z-10 w-6 h-5 md:w-8 md:h-6"
+                        style={{ 
+                          transform: `translateX(calc(-50% + ${card.tapeOffset})) rotate(${card.tapeRotation})`,
+                          background: "linear-gradient(135deg, #d4c5a9 0%, #c4b494 50%, #b8a888 100%)",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
+                          opacity: 0.9,
+                        }}
+                      />
                       {/* Polaroid frame - cream/white with shadow */}
-                      <div className="bg-[#e8e4df] p-1.5 pb-6 shadow-lg" style={{ boxShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
-                        {/* Image area with lock - dark burgundy */}
-                        <div className="relative w-16 h-16 md:w-20 md:h-20 bg-[#4a1a25] flex items-center justify-center">
-                          <Lock className="w-6 h-6 md:w-8 md:h-8 text-[#c4a67c]" strokeWidth={1.5} />
+                      <div 
+                        className="bg-[#f5f2ed] p-2 pb-8 md:p-2.5 md:pb-10 shadow-xl" 
+                        style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2)" }}
+                      >
+                        {/* Image area with lock - dark burgundy with subtle gradient */}
+                        <div 
+                          className="relative w-20 h-20 md:w-28 md:h-28 flex items-center justify-center"
+                          style={{ 
+                            background: "radial-gradient(ellipse at center, #5a2030 0%, #3d1520 60%, #2a0f15 100%)",
+                          }}
+                        >
+                          <Lock className="w-7 h-7 md:w-10 md:h-10 text-[#c4a67c] drop-shadow-md" strokeWidth={1.5} />
                         </div>
+                        {/* Label inside polaroid */}
+                        <p className="mt-2 md:mt-3 text-center text-[10px] md:text-xs text-[#666] tracking-[0.2em] font-light">
+                          {card.label}
+                        </p>
                       </div>
-                      {/* Label below polaroid */}
-                      <p className="mt-1 text-center text-[9px] md:text-[10px] text-white/60 tracking-wider italic">
-                        {card.label}
-                      </p>
                     </motion.div>
                   ))}
                 </div>
