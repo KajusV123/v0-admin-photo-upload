@@ -143,20 +143,50 @@ export function AccessSection() {
               exit={{ opacity: 0, y: -20 }}
               className="flex flex-col items-center text-center"
             >
-              {/* Get Full Access Section */}
+              {/* Get Full Access Section - Stan Store style */}
               <div className="mb-20">
-                <h2 className="relative text-3xl font-bold italic text-white md:text-4xl">
-                  <span className="relative inline-block">
-                    <span className="absolute left-0 top-0 text-[#C74D64] opacity-60" style={{ transform: 'translateX(-2px)' }}>Get Full Access</span>
-                    <span className="absolute left-0 top-0 text-[#7D2235] opacity-60" style={{ transform: 'translateX(2px)' }}>Get Full Access</span>
-                    <span className="relative text-white">Get Full Access</span>
-                  </span>
+                <h2 
+                  className="text-4xl md:text-5xl text-white italic"
+                  style={{ fontFamily: "var(--font-corinthia), cursive" }}
+                >
+                  Get Full Access
                 </h2>
-                <p className="mt-4 text-sm text-white/50 md:text-base">
+                <p className="mt-4 text-sm text-white/60 md:text-base">
                   Unlock all premium prompts and start creating<br />
                   stunning AI portraits today.
                 </p>
-                <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                
+                {/* Polaroid-style locked cards */}
+                <div className="mt-10 flex flex-wrap justify-center gap-4 md:gap-6">
+                  {[
+                    { label: "WILD", rotation: "-6deg" },
+                    { label: "ICONIC", rotation: "0deg" },
+                    { label: "EDITORIAL", rotation: "6deg" },
+                  ].map((card, index) => (
+                    <motion.div
+                      key={card.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="relative"
+                      style={{ transform: `rotate(${card.rotation})` }}
+                    >
+                      {/* Polaroid frame */}
+                      <div className="bg-[#1a1a1a] p-2 pb-8 shadow-xl">
+                        {/* Image area with lock */}
+                        <div className="relative w-20 h-20 md:w-24 md:h-24 bg-[#4a1a25] flex items-center justify-center">
+                          <Lock className="w-8 h-8 md:w-10 md:h-10 text-[#8a4a55]" />
+                        </div>
+                        {/* Label */}
+                        <p className="absolute bottom-2 left-0 right-0 text-center text-[10px] md:text-xs text-white/70 tracking-wider">
+                          {card.label}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
