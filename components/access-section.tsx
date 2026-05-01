@@ -152,7 +152,7 @@ export function AccessSection() {
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="absolute hidden lg:block"
                   style={{ 
-                    right: "-180px",
+                    right: "-240px",
                     top: "-40px",
                   }}
                 >
@@ -160,9 +160,9 @@ export function AccessSection() {
                   <div 
                     className="absolute z-30"
                     style={{
-                      top: "-10px",
-                      right: "-30px",
-                      transform: "rotate(-45deg)",
+                      top: "-18px",
+                      left: "50%",
+                      transform: "translateX(-50%) rotate(-45deg)",
                     }}
                   >
                     <svg 
