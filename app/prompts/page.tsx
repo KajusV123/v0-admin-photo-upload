@@ -940,15 +940,15 @@ const filteredGallery = selectedCategory === "All"
       </section>
 
       {/* Prompt Gallery */}
-      <section className="relative px-6 py-12 md:py-16">
-        {/* Burgundy pinstripe background */}
+      <section className="relative px-6 py-12 pb-32 md:py-16 md:pb-40">
+        {/* Burgundy pinstripe background with torn paper bottom */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/background_only.png')",
-            backgroundSize: "cover",
+            backgroundImage: "url('/images/velvet_background_torn.png')",
+            backgroundSize: "100% 100%",
             backgroundPosition: "center",
-            backgroundRepeat: "repeat",
+            backgroundRepeat: "no-repeat",
           }}
         />
         <div className="relative z-10 mx-auto max-w-7xl">
