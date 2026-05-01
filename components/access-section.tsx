@@ -160,8 +160,8 @@ export function AccessSection() {
                   <div 
                     className="absolute z-30"
                     style={{
-                      top: "-18px",
-                      right: "-5px",
+                      top: "-10px",
+                      right: "-30px",
                       transform: "rotate(-45deg)",
                     }}
                   >
