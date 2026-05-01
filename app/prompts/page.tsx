@@ -952,9 +952,9 @@ const filteredGallery = selectedCategory === "All"
             imageRendering: "crisp-edges",
           }}
         />
-        {/* Torn paper edge at bottom */}
+        {/* Torn paper edge at bottom - z-0 so it stays behind content */}
         <div
-          className="pointer-events-none absolute bottom-0 left-0 right-0 z-20"
+          className="pointer-events-none absolute bottom-0 left-0 right-0 z-0"
           style={{ height: "150px" }}
         >
           <img 
