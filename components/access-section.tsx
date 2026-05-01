@@ -265,19 +265,91 @@ export function AccessSection() {
                   ))}
                 </div>
                 
-                <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                  {/* Get Access button - animated glow */}
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="rounded-full border border-[#9E3248]/60 bg-transparent px-6 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(158,50,72,0.5)] transition-all hover:shadow-[0_0_25px_rgba(158,50,72,0.7)] hover:bg-[#9E3248]/20"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="group relative rounded-full px-10 py-4 text-base font-semibold text-white md:px-12 md:py-5 md:text-lg"
                   >
-                    Get Access $50
+                    {/* Animated outer glow ring */}
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute -inset-1 rounded-full opacity-75 blur-xl"
+                      style={{
+                        background: "linear-gradient(90deg, #9E3248, #C74D64, #E56B82, #C74D64, #9E3248)",
+                        backgroundSize: "200% 100%",
+                      }}
+                      animate={{
+                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                        opacity: [0.6, 0.9, 0.6],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                    {/* Pulsing outer ring */}
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        boxShadow: "0 0 0 0 rgba(199, 77, 100, 0.7)",
+                      }}
+                      animate={{
+                        boxShadow: [
+                          "0 0 0 0 rgba(199, 77, 100, 0.7)",
+                          "0 0 0 12px rgba(199, 77, 100, 0)",
+                        ],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
+                    />
+                    {/* Inner gradient background */}
+                    <span
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg, #9E3248 0%, #C74D64 50%, #9E3248 100%)",
+                        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.3), 0 0 30px rgba(199, 77, 100, 0.5)",
+                      }}
+                    />
+                    {/* Shine sweep effect */}
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-0 overflow-hidden rounded-full"
+                    >
+                      <motion.span
+                        className="absolute inset-y-0 w-1/3"
+                        style={{
+                          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+                        }}
+                        animate={{
+                          x: ["-150%", "350%"],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          repeatDelay: 1,
+                        }}
+                      />
+                    </motion.span>
+                    {/* Button label */}
+                    <span className="relative z-10 flex items-center gap-2 tracking-wide drop-shadow-md">
+                      Get Access $50
+                    </span>
                   </motion.button>
+
+                  {/* Access Code button - bigger, refined */}
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => setShowCodeModal(true)}
-                    className="rounded-full border border-[#C74D64]/30 bg-transparent px-6 py-2.5 text-sm font-medium text-white transition-all hover:border-[#C74D64]/50"
+                    className="rounded-full border border-[#C74D64]/40 bg-white/5 px-10 py-4 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-[#C74D64]/70 hover:bg-white/10 md:px-12 md:py-5 md:text-lg"
                   >
                     Access Code
                   </motion.button>
