@@ -144,7 +144,24 @@ export function AccessSection() {
               className="flex flex-col items-center text-center"
             >
               {/* Get Full Access Section - Stan Store style */}
-              <div className="mb-20">
+              <div className="relative mb-20">
+                {/* Rotated girly image on the right */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:block"
+                  style={{ transform: "translateY(-50%) rotate(90deg)" }}
+                >
+                  <div className="rounded-lg border-4 border-white p-1 shadow-2xl" style={{ boxShadow: "0 25px 50px rgba(0,0,0,0.4)" }}>
+                    <img
+                      src="/images/girly-decor.jpg"
+                      alt="Feminine aesthetic decor"
+                      className="h-48 w-32 rounded object-cover"
+                    />
+                  </div>
+                </motion.div>
+                
                 <h2 
                   className="text-4xl md:text-5xl text-white italic"
                   style={{ fontFamily: "var(--font-corinthia), cursive" }}
