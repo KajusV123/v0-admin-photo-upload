@@ -885,7 +885,15 @@ const filteredGallery = selectedCategory === "All"
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundColor: "#5a1020",
+        backgroundImage:
+          "repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 22px), repeating-linear-gradient(90deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 22px)",
+        backgroundAttachment: "fixed",
+      }}
+    >
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden md:h-[70vh]">
         {/* Background Image */}
