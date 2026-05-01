@@ -945,9 +945,10 @@ const filteredGallery = selectedCategory === "All"
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: "#5a1020",
-            backgroundImage:
-              "repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 22px), repeating-linear-gradient(90deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 22px)",
+            backgroundImage: "url('/images/background_only.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "repeat",
           }}
         />
         <div className="relative z-10 mx-auto max-w-7xl">
