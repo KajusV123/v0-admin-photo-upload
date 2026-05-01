@@ -75,25 +75,26 @@ export function FinalCtaSection() {
           />
         </motion.div>
 
-        {/* Main heading */}
-        <motion.h2 
-          className="text-4xl font-bold tracking-tight text-white md:text-6xl leading-tight"
+        {/* Main heading - Stan Store style */}
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 80, damping: 15 }}
+          className="text-center"
         >
-          Ready to Create
-          <motion.span 
-            className="block mt-2 text-white/70"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
+            Ready to Create?
+          </h2>
+          {/* Decorative underline */}
+          <motion.div 
+            className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.15 }}
-          >
-            Stunning Portraits?
-          </motion.span>
-        </motion.h2>
+            transition={{ delay: 0.3, duration: 0.5 }}
+          />
+        </motion.div>
         
         <motion.p 
           className="mx-auto mt-6 max-w-lg text-lg text-white/50"

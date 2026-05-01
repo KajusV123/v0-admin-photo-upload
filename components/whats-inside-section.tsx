@@ -66,7 +66,7 @@ export function WhatsInsideSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl px-6">
-        {/* Header with decorative line */}
+        {/* Header with script font and underline - Stan Store style */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -74,18 +74,17 @@ export function WhatsInsideSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <motion.span 
-            className="inline-block px-4 py-1.5 mb-6 text-xs font-medium uppercase tracking-widest text-white/70 border border-white/20 rounded-full bg-white/5"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
-          >
-            The Complete Package
-          </motion.span>
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
-            What&apos;s Inside
+          <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
+            What&apos;s Inside:
           </h2>
+          {/* Decorative underline */}
+          <motion.div 
+            className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          />
         </motion.div>
 
         {/* Feature list with styled container */}

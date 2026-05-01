@@ -66,6 +66,7 @@ export function HowItWorksSection() {
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6">
+        {/* Script heading with underline - Stan Store style */}
         <motion.div 
           className="text-center mb-20"
           initial={{ opacity: 0, y: 40 }}
@@ -73,10 +74,18 @@ export function HowItWorksSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
-            How It Works
+          <h2 className="font-[family-name:var(--font-corinthia)] text-5xl md:text-7xl text-white tracking-wide">
+            How It Works:
           </h2>
-          <p className="mt-4 text-white/50">
+          {/* Decorative underline */}
+          <motion.div 
+            className="mx-auto mt-3 h-[2px] w-32 bg-[#9E3248]"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          />
+          <p className="mt-6 text-white/50">
             From prompt to portrait in minutes
           </p>
         </motion.div>
