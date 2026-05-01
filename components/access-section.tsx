@@ -161,7 +161,7 @@ export function AccessSection() {
                     className="absolute z-30"
                     style={{
                       top: "-18px",
-                      left: "50%",
+                      left: "70%",
                       transform: "translateX(-50%) rotate(-45deg)",
                     }}
                   >
