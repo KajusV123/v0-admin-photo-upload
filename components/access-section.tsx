@@ -147,8 +147,8 @@ export function AccessSection() {
               <div className="relative mb-20">
                 {/* Rotated girly image on the right */}
                 <motion.div
-                  initial={{ opacity: 0, x: 50, rotate: 90 }}
-                  animate={{ opacity: 1, x: 0, rotate: 90 }}
+                  initial={{ opacity: 0, x: 50, rotate: 45 }}
+                  animate={{ opacity: 1, x: 0, rotate: 45 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="absolute hidden lg:block"
                   style={{ 
