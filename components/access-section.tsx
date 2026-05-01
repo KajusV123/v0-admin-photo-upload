@@ -150,8 +150,12 @@ export function AccessSection() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
-                  className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:block"
-                  style={{ transform: "translateY(-50%) rotate(90deg)" }}
+                  className="absolute hidden lg:block"
+                  style={{ 
+                    right: "-180px",
+                    top: "-40px",
+                    transform: "rotate(90deg)",
+                  }}
                 >
                   <div className="rounded-lg border-4 border-white p-1 shadow-2xl" style={{ boxShadow: "0 25px 50px rgba(0,0,0,0.4)" }}>
                     <img
