@@ -270,7 +270,7 @@ export function AccessSection() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
-                    className="group relative rounded-full px-10 py-4 text-base font-semibold text-white md:px-12 md:py-5 md:text-lg"
+                    className="group relative rounded-full px-7 py-3 text-sm font-semibold text-white md:px-8 md:py-3 md:text-[15px]"
                   >
                     {/* Animated outer glow ring */}
                     <motion.span
@@ -349,7 +349,7 @@ export function AccessSection() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setShowCodeModal(true)}
-                    className="rounded-full border border-[#C74D64]/40 bg-white/5 px-10 py-4 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-[#C74D64]/70 hover:bg-white/10 md:px-12 md:py-5 md:text-lg"
+                    className="rounded-full border border-[#C74D64]/40 bg-white/5 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-[#C74D64]/70 hover:bg-white/10 md:px-8 md:py-3 md:text-[15px]"
                   >
                     Access Code
                   </motion.button>
