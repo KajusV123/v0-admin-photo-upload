@@ -50,7 +50,7 @@ export function AccessSection() {
   }
 
   return (
-    <section id="full-access" className="relative z-10 pt-48 pb-24 overflow-hidden">
+    <section id="full-access" className="relative z-10 pt-48 pb-24 overflow-visible">
       {/* Striped burgundy background - fixed position for seamless connection */}
       <div 
         className="absolute inset-0"
