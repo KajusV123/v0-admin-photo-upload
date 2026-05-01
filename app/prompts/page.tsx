@@ -941,16 +941,15 @@ const filteredGallery = selectedCategory === "All"
 
       {/* Prompt Gallery */}
       <section className="relative px-6 py-12 md:py-16">
-        {/* Velvet texture background */}
-        <div 
-          className="absolute inset-0 opacity-15"
+        {/* Burgundy pinstripe background */}
+        <div
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url('/images/velvet-texture.jpg')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundColor: "#5a1020",
+            backgroundImage:
+              "repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 22px), repeating-linear-gradient(90deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 22px)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/95 via-[#0a0a0a]/80 to-[#0a0a0a]" />
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Category Filter */}
           <motion.div
