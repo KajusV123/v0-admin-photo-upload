@@ -941,16 +941,33 @@ const filteredGallery = selectedCategory === "All"
 
       {/* Prompt Gallery */}
       <section className="relative px-6 py-12 pb-32 md:py-16 md:pb-40">
-        {/* Burgundy pinstripe background with torn paper bottom */}
+        {/* Burgundy pinstripe background - high quality, no stretching */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/images/velvet_background_torn.png')",
-            backgroundSize: "100% 100%",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+            backgroundImage: "url('/images/background_only.png')",
+            backgroundSize: "auto",
+            backgroundPosition: "top center",
+            backgroundRepeat: "repeat",
+            imageRendering: "crisp-edges",
           }}
         />
+        {/* Torn paper edge at bottom */}
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 right-0 z-20"
+          style={{ height: "150px" }}
+        >
+          <img 
+            src="/images/velvet_background_torn.png" 
+            alt=""
+            className="absolute bottom-0 w-full"
+            style={{
+              height: "auto",
+              objectFit: "contain",
+              objectPosition: "bottom",
+            }}
+          />
+        </div>
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Category Filter */}
           <motion.div
