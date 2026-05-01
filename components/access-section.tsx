@@ -156,47 +156,65 @@ export function AccessSection() {
                   stunning AI portraits today.
                 </p>
                 
-                {/* Polaroid-style locked cards with tape */}
-                <div className="mt-10 flex flex-wrap justify-center items-end gap-4 md:gap-6">
+                {/* Polaroid-style locked cards with tape - staggered heights */}
+                <div className="mt-10 flex justify-center items-start gap-0 md:gap-0">
                   {[
-                    { label: "WILD", rotation: "-12deg", translateY: "10px", tapeRotation: "5deg", tapeOffset: "-8px" },
-                    { label: "ICONIC", rotation: "0deg", translateY: "-5px", tapeRotation: "-2deg", tapeOffset: "0px" },
-                    { label: "LUXE", rotation: "10deg", translateY: "8px", tapeRotation: "-8deg", tapeOffset: "5px" },
+                    { label: "WILD", rotation: "-15deg", marginTop: "40px", tapeStyle: "clip" },
+                    { label: "ICONIC", rotation: "3deg", marginTop: "0px", tapeStyle: "tape" },
+                    { label: "LUXE", rotation: "12deg", marginTop: "30px", tapeStyle: "clip" },
                   ].map((card, index) => (
                     <motion.div
                       key={card.label}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="relative"
-                      style={{ transform: `rotate(${card.rotation}) translateY(${card.translateY})` }}
+                      className="relative -mx-2 md:-mx-3"
+                      style={{ 
+                        transform: `rotate(${card.rotation})`,
+                        marginTop: card.marginTop,
+                        zIndex: index === 1 ? 10 : 5 - index,
+                      }}
                     >
-                      {/* Tape at top */}
-                      <div 
-                        className="absolute -top-3 left-1/2 z-10 w-6 h-5 md:w-8 md:h-6"
-                        style={{ 
-                          transform: `translateX(calc(-50% + ${card.tapeOffset})) rotate(${card.tapeRotation})`,
-                          background: "linear-gradient(135deg, #d4c5a9 0%, #c4b494 50%, #b8a888 100%)",
-                          boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
-                          opacity: 0.9,
-                        }}
-                      />
-                      {/* Polaroid frame - cream/white with shadow */}
-                      <div 
-                        className="bg-[#f5f2ed] p-2 pb-8 md:p-2.5 md:pb-10 shadow-xl" 
-                        style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.2)" }}
-                      >
-                        {/* Image area with lock - dark burgundy with subtle gradient */}
+                      {/* Tape or clip at top */}
+                      {card.tapeStyle === "tape" ? (
                         <div 
-                          className="relative w-20 h-20 md:w-28 md:h-28 flex items-center justify-center"
+                          className="absolute -top-2 left-1/2 z-10 w-8 h-5 md:w-10 md:h-6"
                           style={{ 
-                            background: "radial-gradient(ellipse at center, #5a2030 0%, #3d1520 60%, #2a0f15 100%)",
+                            transform: "translateX(-50%) rotate(-3deg)",
+                            background: "linear-gradient(180deg, #d9cdb8 0%, #c4b69a 100%)",
+                            boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                            opacity: 0.95,
+                          }}
+                        />
+                      ) : (
+                        <div 
+                          className="absolute -top-1 right-2 md:right-3 z-10 w-3 h-4 md:w-4 md:h-5"
+                          style={{ 
+                            background: "linear-gradient(135deg, #888 0%, #666 100%)",
+                            boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
+                            clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
+                          }}
+                        />
+                      )}
+                      {/* Polaroid frame - cream/off-white with shadow */}
+                      <div 
+                        className="bg-[#f8f6f2] p-2 pb-7 md:p-3 md:pb-9 shadow-xl" 
+                        style={{ 
+                          boxShadow: "0 10px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3)",
+                          border: "1px solid rgba(0,0,0,0.05)",
+                        }}
+                      >
+                        {/* Image area with lock - dark burgundy with vignette */}
+                        <div 
+                          className="relative w-20 h-24 md:w-28 md:h-32 flex items-center justify-center overflow-hidden"
+                          style={{ 
+                            background: "radial-gradient(ellipse at center, #6a2535 0%, #4a1a28 40%, #2d0f18 100%)",
                           }}
                         >
-                          <Lock className="w-7 h-7 md:w-10 md:h-10 text-[#c4a67c] drop-shadow-md" strokeWidth={1.5} />
+                          <Lock className="w-6 h-6 md:w-9 md:h-9 text-[#c9a968] drop-shadow-lg" strokeWidth={1.5} />
                         </div>
-                        {/* Label inside polaroid */}
-                        <p className="mt-2 md:mt-3 text-center text-[10px] md:text-xs text-[#666] tracking-[0.2em] font-light">
+                        {/* Label inside polaroid - handwritten style positioning */}
+                        <p className="mt-1.5 md:mt-2 text-center text-[9px] md:text-[11px] text-[#555] tracking-[0.15em] font-light uppercase">
                           {card.label}
                         </p>
                       </div>
