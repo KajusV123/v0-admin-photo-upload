@@ -1077,15 +1077,14 @@ const filteredGallery = selectedCategory === "All"
         </div>
       </section>
 
-      {/* Torn paper transition - positioned below gallery section */}
-      <div className="relative -mt-1 h-24 w-full overflow-hidden md:h-32">
+      {/* Torn paper transition - shows ripped edge below gallery */}
+      <div className="relative h-20 w-full overflow-hidden md:h-28">
         <img 
           src="/images/velvet_background_torn.png" 
           alt=""
-          className="absolute top-0 w-full"
+          className="absolute bottom-0 w-full"
           style={{
             height: "auto",
-            transform: "translateY(-85%)",
           }}
         />
       </div>
