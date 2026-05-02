@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Lock, X } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -30,6 +31,11 @@ export function AccessSection() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [error, setError] = useState("")
   const [showCodeModal, setShowCodeModal] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -481,75 +487,77 @@ export function AccessSection() {
               </div>
 
               {/* Access Code Modal */}
-              <AnimatePresence>
-                {showCodeModal && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-                    style={{ pointerEvents: "auto" }}
-                    onClick={() => setShowCodeModal(false)}
-                  >
+              {/* Modal rendered via portal to ensure it's always on top and clickable */}
+              {mounted && createPortal(
+                <AnimatePresence>
+                  {showCodeModal && (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                      className="relative w-full max-w-md rounded-3xl bg-[#141414] p-8"
-                      style={{ pointerEvents: "auto" }}
-                      onClick={(e) => e.stopPropagation()}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+                      onClick={() => setShowCodeModal(false)}
                     >
-                      <button
-                        onClick={() => setShowCodeModal(false)}
-                        className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        className="relative w-full max-w-md rounded-3xl bg-[#141414] p-8"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        <X className="h-5 w-5" />
-                      </button>
+                        <button
+                          onClick={() => setShowCodeModal(false)}
+                          className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white/60 transition-colors hover:bg-white/20 hover:text-white"
+                        >
+                          <X className="h-5 w-5" />
+                        </button>
 
-                      <div className="flex flex-col items-center text-center">
-                        <div className="mb-6 rounded-full bg-white/5 p-4">
-                          <Lock className="h-10 w-10 text-white/60" />
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-white">Enter Access Code</h3>
-                        <p className="mt-2 text-sm text-white/50">
-                          Enter your code to unlock premium prompts
-                        </p>
-
-                        <form onSubmit={handleSubmit} className="mt-6 w-full">
-                          <input
-                            type="text"
-                            value={accessCode}
-                            onChange={(e) => setAccessCode(e.target.value)}
-                            placeholder="Enter access code"
-                            autoFocus
-                            className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-[#9E3248]/50 focus:outline-none focus:ring-2 focus:ring-[#9E3248]/20"
-                          />
+                        <div className="flex flex-col items-center text-center">
+                          <div className="mb-6 rounded-full bg-white/5 p-4">
+                            <Lock className="h-10 w-10 text-white/60" />
+                          </div>
                           
-                          {error && (
-                            <motion.p
-                              initial={{ opacity: 0, y: -10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              className="mt-3 text-sm text-red-400"
-                            >
-                              {error}
-                            </motion.p>
-                          )}
+                          <h3 className="text-2xl font-bold text-white">Enter Access Code</h3>
+                          <p className="mt-2 text-sm text-white/50">
+                            Enter your code to unlock premium prompts
+                          </p>
 
-                          <motion.button
-                            type="submit"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="mt-4 w-full rounded-full bg-white py-4 text-base font-semibold text-black transition-colors hover:bg-white/90"
-                          >
-                            Unlock Access
-                          </motion.button>
-                        </form>
-                      </div>
+                          <form onSubmit={handleSubmit} className="mt-6 w-full">
+                            <input
+                              type="text"
+                              value={accessCode}
+                              onChange={(e) => setAccessCode(e.target.value)}
+                              placeholder="Enter access code"
+                              autoFocus
+                              className="w-full rounded-full border border-white/10 bg-white/5 px-6 py-4 text-center text-lg tracking-widest text-white placeholder:text-white/30 focus:border-[#9E3248]/50 focus:outline-none focus:ring-2 focus:ring-[#9E3248]/20"
+                            />
+                            
+                            {error && (
+                              <motion.p
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-3 text-sm text-red-400"
+                              >
+                                {error}
+                              </motion.p>
+                            )}
+
+                            <motion.button
+                              type="submit"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="mt-4 w-full rounded-full bg-white py-4 text-base font-semibold text-black transition-colors hover:bg-white/90"
+                            >
+                              Unlock Access
+                            </motion.button>
+                          </form>
+                        </div>
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  )}
+                </AnimatePresence>,
+                document.body
+              )}
             </motion.div>
           )}
         </AnimatePresence>
