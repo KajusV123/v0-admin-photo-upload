@@ -1,13 +1,25 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
 export function FinalCtaSection() {
+  const router = useRouter()
   const [showCodeInput, setShowCodeInput] = useState(false)
   const [accessCode, setAccessCode] = useState("")
+  const [error, setError] = useState("")
+
+  const handleCodeSubmit = () => {
+    if (accessCode === "italy") {
+      localStorage.setItem("promptAccess", "granted")
+      router.push("/prompts")
+    } else {
+      setError("Invalid access code. Please try again.")
+    }
+  }
 
   return (
     <section className="relative bg-[#0a0a0a] py-32 overflow-hidden">
@@ -161,25 +173,45 @@ export function FinalCtaSection() {
             </motion.button>
           ) : (
             <motion.div 
-              className="flex items-center justify-center gap-2"
+              className="flex flex-col items-center gap-3"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
             >
-              <input
-                type="text"
-                value={accessCode}
-                onChange={(e) => setAccessCode(e.target.value)}
-                placeholder="Enter code"
-                className="rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
-              />
-              <motion.button 
-                className="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Apply
-              </motion.button>
+              <div className="flex items-center justify-center gap-2">
+                <input
+                  type="text"
+                  value={accessCode}
+                  onChange={(e) => {
+                    setAccessCode(e.target.value)
+                    setError("")
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleCodeSubmit()
+                    }
+                  }}
+                  placeholder="Enter code"
+                  className="rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                />
+                <motion.button 
+                  onClick={handleCodeSubmit}
+                  className="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Apply
+                </motion.button>
+              </div>
+              {error && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-sm text-red-400"
+                >
+                  {error}
+                </motion.p>
+              )}
             </motion.div>
           )}
         </motion.div>
