@@ -12,8 +12,11 @@ export function FinalCtaSection() {
   const [accessCode, setAccessCode] = useState("")
   const [error, setError] = useState("")
 
+  // Access code - must match the one in access-section.tsx
+  const ACCESS_CODE = "1234"
+
   const handleCodeSubmit = () => {
-    if (accessCode === "italy") {
+    if (accessCode === ACCESS_CODE) {
       localStorage.setItem("promptAccess", "granted")
       router.push("/prompts")
     } else {
