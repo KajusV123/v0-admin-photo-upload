@@ -952,22 +952,7 @@ const filteredGallery = selectedCategory === "All"
             imageRendering: "crisp-edges",
           }}
         />
-        {/* Torn paper edge at bottom - z-0 so it stays behind content */}
-        <div
-          className="pointer-events-none absolute bottom-0 left-0 right-0 z-0"
-          style={{ height: "150px" }}
-        >
-          <img 
-            src="/images/velvet_background_torn.png" 
-            alt=""
-            className="absolute bottom-0 w-full"
-            style={{
-              height: "auto",
-              objectFit: "contain",
-              objectPosition: "bottom",
-            }}
-          />
-        </div>
+
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Category Filter */}
           <motion.div
@@ -1091,6 +1076,19 @@ const filteredGallery = selectedCategory === "All"
           </div>
         </div>
       </section>
+
+      {/* Torn paper transition - positioned below gallery section */}
+      <div className="relative -mt-1 h-24 w-full overflow-hidden md:h-32">
+        <img 
+          src="/images/velvet_background_torn.png" 
+          alt=""
+          className="absolute top-0 w-full"
+          style={{
+            height: "auto",
+            transform: "translateY(-85%)",
+          }}
+        />
+      </div>
 
       {/* Prompt Modal */}
       <AnimatePresence>
