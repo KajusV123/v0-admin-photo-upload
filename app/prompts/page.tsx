@@ -1078,16 +1078,17 @@ const filteredGallery = selectedCategory === "All"
       </section>
 
       {/* Torn paper transition - shows ripped edge below gallery */}
-      <div className="relative h-20 w-full overflow-hidden md:h-28">
-        <img 
-          src="/images/velvet_background_torn.png" 
-          alt=""
-          className="absolute bottom-0 w-full"
-          style={{
-            height: "auto",
-          }}
-        />
-      </div>
+      <div 
+        className="relative w-full"
+        style={{
+          height: "80px",
+          marginTop: "-2px",
+          backgroundImage: "url('/images/velvet_background_torn.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "bottom center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
 
       {/* Prompt Modal */}
       <AnimatePresence>
