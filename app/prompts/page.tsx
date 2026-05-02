@@ -905,7 +905,7 @@ const filteredGallery = selectedCategory === "All"
             className="object-cover grayscale"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#6B1B2D]/50 via-transparent to-[#0a0a0a]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#6B1B2D]/50 via-transparent to-[#5a1020]" />
         </div>
 
         {/* Back Button */}
@@ -1078,15 +1078,13 @@ const filteredGallery = selectedCategory === "All"
       </section>
 
       {/* Torn paper transition - shows ripped edge below gallery */}
-      <div className="relative w-full overflow-hidden" style={{ height: "120px", marginTop: "-1px" }}>
+      <div className="relative w-full" style={{ marginTop: "-1px" }}>
         <img 
           src="/images/velvet_background_torn.png" 
           alt=""
-          className="absolute left-0 w-full"
+          className="block w-full"
           style={{
-            bottom: "0",
             height: "auto",
-            minWidth: "100%",
           }}
         />
       </div>
