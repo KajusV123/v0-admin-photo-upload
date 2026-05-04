@@ -36,7 +36,7 @@ const itemVariants = {
 
 export function WhatsInsideSection() {
   return (
-    <section className="relative bg-[#0a0a0a] py-28 overflow-hidden">
+    <section className="relative bg-[#0a0a0a] py-16 md:py-28 overflow-hidden">
       {/* Velvet texture background */}
       <div 
         className="absolute inset-0 opacity-25"
@@ -65,17 +65,17 @@ export function WhatsInsideSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 md:px-6">
         {/* Header with decorative line */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
           <motion.span 
-            className="inline-block px-4 py-1.5 mb-6 text-xs font-medium uppercase tracking-widest text-white/70 border border-white/20 rounded-full bg-white/5"
+            className="inline-block px-3 md:px-4 py-1 md:py-1.5 mb-4 md:mb-6 text-[10px] md:text-xs font-medium uppercase tracking-widest text-white/70 border border-white/20 rounded-full bg-white/5"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -83,14 +83,14 @@ export function WhatsInsideSection() {
           >
             The Complete Package
           </motion.span>
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
             What&apos;s Inside
           </h2>
         </motion.div>
 
         {/* Feature list with styled container */}
         <motion.div 
-          className="relative rounded-3xl p-8 md:p-12"
+          className="relative rounded-2xl md:rounded-3xl p-5 md:p-8 lg:p-12"
           style={{
             background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -100,9 +100,9 @@ export function WhatsInsideSection() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
         >
-          {/* Decorative corner accents */}
+          {/* Decorative corner accents - hidden on small mobile */}
           <motion.div 
-            className="absolute top-0 left-8 w-16 h-[1px] bg-gradient-to-r from-white/20 to-transparent"
+            className="absolute top-0 left-8 w-16 h-[1px] bg-gradient-to-r from-white/20 to-transparent hidden md:block"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -110,7 +110,7 @@ export function WhatsInsideSection() {
             style={{ originX: 0 }}
           />
           <motion.div 
-            className="absolute top-0 left-8 w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent"
+            className="absolute top-0 left-8 w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent hidden md:block"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
@@ -118,7 +118,7 @@ export function WhatsInsideSection() {
             style={{ originY: 0 }}
           />
           <motion.div 
-            className="absolute bottom-0 right-8 w-16 h-[1px] bg-gradient-to-l from-white/15 to-transparent"
+            className="absolute bottom-0 right-8 w-16 h-[1px] bg-gradient-to-l from-white/15 to-transparent hidden md:block"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -126,7 +126,7 @@ export function WhatsInsideSection() {
             style={{ originX: 1 }}
           />
           <motion.div 
-            className="absolute bottom-0 right-8 w-[1px] h-16 bg-gradient-to-t from-white/15 to-transparent"
+            className="absolute bottom-0 right-8 w-[1px] h-16 bg-gradient-to-t from-white/15 to-transparent hidden md:block"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
@@ -135,7 +135,7 @@ export function WhatsInsideSection() {
           />
 
           <motion.ul 
-            className="grid gap-6 md:grid-cols-2"
+            className="grid gap-4 md:gap-6 md:grid-cols-2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -144,21 +144,21 @@ export function WhatsInsideSection() {
             {features.map((feature, index) => (
               <motion.li
                 key={index}
-                className="group flex items-start gap-4 p-4 rounded-xl transition-all duration-300 hover:bg-white/[0.02]"
+                className="group flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-xl transition-all duration-300 hover:bg-white/[0.02]"
                 variants={itemVariants}
                 whileHover={{ x: 5 }}
               >
                 <motion.span
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-[#9E3248]/25"
+                  className="flex h-6 w-6 md:h-7 md:w-7 shrink-0 items-center justify-center rounded-lg shadow-lg shadow-[#9E3248]/25"
                   style={{
                     background: "linear-gradient(135deg, #7D2235 0%, #6B1B2D 100%)",
                   }}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  <Check className="h-3.5 w-3.5 md:h-4 md:w-4 text-white" strokeWidth={3} />
                 </motion.span>
-                <span className="text-base text-white/70 group-hover:text-white/90 transition-colors leading-relaxed pt-0.5">
+                <span className="text-sm md:text-base text-white/70 group-hover:text-white/90 transition-colors leading-relaxed pt-0.5">
                   {feature}
                 </span>
               </motion.li>
@@ -168,7 +168,7 @@ export function WhatsInsideSection() {
 
         {/* Bottom accent */}
         <motion.div 
-          className="flex justify-center mt-12"
+          className="flex justify-center mt-8 md:mt-12"
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}

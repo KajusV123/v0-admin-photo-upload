@@ -17,7 +17,7 @@ import { smoothScrollTo } from "@/lib/smooth-scroll"
 import { Navbar } from "@/components/navbar"
 
 const initialImages = [
-  // Top left area
+  // Top left area - positioned around center text on mobile
   {
     src: "/portrait-1.jpg",
     alt: "Fashion editorial portrait",
@@ -26,10 +26,10 @@ const initialImages = [
     rotate: -12,
     width: 220,
     height: 280,
-    mobileTop: 2,
-    mobileLeft: -15,
-    mobileWidth: 100,
-    mobileHeight: 130,
+    mobileTop: 3,
+    mobileLeft: -8,
+    mobileWidth: 70,
+    mobileHeight: 90,
   },
   {
     src: "/portrait-2.jpg",
@@ -39,10 +39,10 @@ const initialImages = [
     rotate: 5,
     width: 180,
     height: 240,
-    mobileTop: 5,
-    mobileLeft: 15,
-    mobileWidth: 85,
-    mobileHeight: 110,
+    mobileTop: 2,
+    mobileLeft: 70,
+    mobileWidth: 65,
+    mobileHeight: 85,
   },
   {
     src: "/portrait-3.jpg",
@@ -52,10 +52,10 @@ const initialImages = [
     rotate: -3,
     width: 200,
     height: 260,
-    mobileTop: -2,
-    mobileLeft: 75,
-    mobileWidth: 90,
-    mobileHeight: 120,
+    mobileTop: 15,
+    mobileLeft: -5,
+    mobileWidth: 60,
+    mobileHeight: 80,
   },
   // Top right area
   {
@@ -66,10 +66,10 @@ const initialImages = [
     rotate: 8,
     width: 200,
     height: 250,
-    mobileTop: 15,
-    mobileLeft: -10,
-    mobileWidth: 80,
-    mobileHeight: 105,
+    mobileTop: 12,
+    mobileLeft: 75,
+    mobileWidth: 60,
+    mobileHeight: 78,
   },
   {
     src: "/portrait-5.jpg",
@@ -79,10 +79,10 @@ const initialImages = [
     rotate: -5,
     width: 180,
     height: 230,
-    mobileTop: 18,
-    mobileLeft: 80,
-    mobileWidth: 85,
-    mobileHeight: 110,
+    mobileTop: 68,
+    mobileLeft: -6,
+    mobileWidth: 65,
+    mobileHeight: 85,
   },
   {
     src: "/portrait-6.jpg",
@@ -92,12 +92,12 @@ const initialImages = [
     rotate: 12,
     width: 180,
     height: 240,
-    mobileTop: 68,
-    mobileLeft: -12,
-    mobileWidth: 90,
-    mobileHeight: 115,
+    mobileTop: 70,
+    mobileLeft: 72,
+    mobileWidth: 65,
+    mobileHeight: 85,
   },
-  // Left side middle
+  // Left side middle - hide more on mobile
   {
     src: "/portrait-7.jpg",
     alt: "Golden hour portrait",
@@ -106,10 +106,7 @@ const initialImages = [
     rotate: 6,
     width: 200,
     height: 260,
-    mobileTop: 70,
-    mobileLeft: 78,
-    mobileWidth: 95,
-    mobileHeight: 125,
+    mobileHidden: true,
   },
   {
     src: "/portrait-8.jpg",
@@ -119,10 +116,7 @@ const initialImages = [
     rotate: -8,
     width: 160,
     height: 210,
-    mobileTop: 75,
-    mobileLeft: 20,
-    mobileWidth: 75,
-    mobileHeight: 100,
+    mobileHidden: true,
   },
   // Right side middle
   {
@@ -133,10 +127,7 @@ const initialImages = [
     rotate: -6,
     width: 180,
     height: 230,
-    mobileTop: 78,
-    mobileLeft: 55,
-    mobileWidth: 80,
-    mobileHeight: 105,
+    mobileHidden: true,
   },
   {
     src: "/portrait-10.jpg",
@@ -146,12 +137,9 @@ const initialImages = [
     rotate: 10,
     width: 190,
     height: 250,
-    mobileTop: 85,
-    mobileLeft: -5,
-    mobileWidth: 85,
-    mobileHeight: 110,
+    mobileHidden: true,
   },
-  // Bottom left area - hide some on mobile for cleaner look
+  // Bottom left area - hide all on mobile
   {
     src: "/portrait-11.jpg",
     alt: "Bohemian style portrait",
@@ -343,19 +331,19 @@ export default function Home() {
       <Navbar />
       <main
         ref={containerRef}
-        className="relative z-20 h-screen overflow-x-hidden md:overflow-visible"
+        className="relative z-20 h-screen overflow-hidden"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {/* Striped burgundy background - fixed position for seamless connection */}
+        {/* Striped burgundy background - scroll attachment on mobile for better performance */}
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `url('/images/velvet-texture.jpg')`,
             backgroundSize: "auto",
             backgroundPosition: "top left",
-            backgroundAttachment: "fixed",
+            backgroundAttachment: isMobile ? "scroll" : "fixed",
             backgroundRepeat: "repeat",
           }}
         />

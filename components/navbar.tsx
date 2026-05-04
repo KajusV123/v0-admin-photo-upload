@@ -38,7 +38,7 @@ export function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
+          className="fixed top-3 md:top-4 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-24px)]"
         >
           <div
             className={`
@@ -55,14 +55,14 @@ export function Navbar() {
             <button 
               type="button"
               onClick={() => scrollToTop({ duration: 1000 })}
-              className="flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10 cursor-pointer"
+              className="flex items-center gap-2 px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors hover:bg-white/10 cursor-pointer"
             >
               <Image
                 src="/images/logo.png"
                 alt="DEMO Studio"
                 width={140}
                 height={36}
-                className="h-6 sm:h-8 w-auto"
+                className="h-5 sm:h-8 w-auto"
               />
             </button>
 
@@ -83,7 +83,7 @@ export function Navbar() {
             <motion.a
               href="#full-access"
               onClick={(e) => handleSmoothScroll(e, { duration: 1200, offset: 80 })}
-              className="relative ml-1 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-black bg-white overflow-hidden group"
+              className="relative ml-0.5 sm:ml-1 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-sm font-medium text-black bg-white overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

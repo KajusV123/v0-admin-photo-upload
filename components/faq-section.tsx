@@ -53,7 +53,7 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="relative bg-[#0a0a0a] py-28 overflow-hidden">
+    <section id="faq" className="relative bg-[#0a0a0a] py-16 md:py-28 overflow-hidden">
       {/* Velvet texture background */}
       <div 
         className="absolute inset-0 opacity-20"
@@ -75,24 +75,24 @@ export function FaqSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 md:px-6">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
             Common Questions
           </h2>
-          <p className="mt-4 text-white/50">
+          <p className="mt-3 md:mt-4 text-white/50 text-sm md:text-base">
             Everything you need to know before getting started
           </p>
         </motion.div>
 
         <motion.div 
-          className="space-y-4"
+          className="space-y-3 md:space-y-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -107,17 +107,17 @@ export function FaqSection() {
             >
               <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between p-6 text-left"
+                className="flex w-full items-center justify-between p-4 md:p-6 text-left"
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.02)" }}
               >
-                <span className="text-lg font-medium text-white pr-4">
+                <span className="text-base md:text-lg font-medium text-white pr-4">
                   {faq.question}
                 </span>
                 <motion.div
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
-                  <ChevronDown className="h-5 w-5 shrink-0 text-white/50" />
+                  <ChevronDown className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-white/50" />
                 </motion.div>
               </motion.button>
               <AnimatePresence initial={false}>
@@ -128,7 +128,7 @@ export function FaqSection() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   >
-                    <p className="px-6 pb-6 text-white/60 leading-relaxed">
+                    <p className="px-4 pb-4 md:px-6 md:pb-6 text-sm md:text-base text-white/60 leading-relaxed">
                       {faq.answer}
                     </p>
                   </motion.div>

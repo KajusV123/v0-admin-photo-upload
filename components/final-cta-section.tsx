@@ -25,7 +25,7 @@ export function FinalCtaSection() {
   }
 
   return (
-    <section className="relative bg-[#0a0a0a] py-32 overflow-hidden">
+    <section className="relative bg-[#0a0a0a] py-20 md:py-32 overflow-hidden">
       {/* Velvet texture background */}
       <div 
         className="absolute inset-0 opacity-30"
@@ -72,10 +72,10 @@ export function FinalCtaSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 md:px-6 text-center">
         {/* Logo */}
         <motion.div
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-6 md:mb-8"
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -86,13 +86,13 @@ export function FinalCtaSection() {
             alt="DEMO Studio"
             width={320}
             height={90}
-            className="h-24 md:h-32 w-auto"
+            className="h-16 md:h-24 lg:h-32 w-auto"
           />
         </motion.div>
 
         {/* Main heading */}
         <motion.h2 
-          className="text-4xl font-bold tracking-tight text-white md:text-6xl leading-tight"
+          className="text-3xl font-bold tracking-tight text-white md:text-6xl leading-tight"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -100,7 +100,7 @@ export function FinalCtaSection() {
         >
           Ready to Create
           <motion.span 
-            className="block mt-2 text-white/70"
+            className="block mt-1 md:mt-2 text-white/70"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -111,7 +111,7 @@ export function FinalCtaSection() {
         </motion.h2>
         
         <motion.p 
-          className="mx-auto mt-6 max-w-lg text-lg text-white/50"
+          className="mx-auto mt-4 md:mt-6 max-w-lg text-base md:text-lg text-white/50"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -122,7 +122,7 @@ export function FinalCtaSection() {
 
         {/* CTA Buttons */}
         <motion.div 
-          className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-8 md:mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 40, scale: 0.9 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
@@ -146,13 +146,13 @@ export function FinalCtaSection() {
               },
             }}
           >
-            <button className="flex items-center gap-3 rounded-full bg-[#0a0a0a] px-10 py-5 text-lg font-medium text-white transition-all hover:bg-white hover:text-black">
+            <button className="flex items-center gap-2 md:gap-3 rounded-full bg-[#0a0a0a] px-6 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white transition-all hover:bg-white hover:text-black">
               <span>Get Instant Access</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
               </motion.div>
             </button>
           </motion.div>
@@ -160,7 +160,7 @@ export function FinalCtaSection() {
 
         {/* Access code */}
         <motion.div 
-          className="mt-8"
+          className="mt-6 md:mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -169,7 +169,7 @@ export function FinalCtaSection() {
           {!showCodeInput ? (
             <motion.button
               onClick={() => setShowCodeInput(true)}
-              className="text-sm text-white/40 hover:text-white/60 transition-colors underline underline-offset-4"
+              className="text-xs md:text-sm text-white/40 hover:text-white/60 transition-colors underline underline-offset-4"
               whileHover={{ scale: 1.05 }}
             >
               Have an access code?
@@ -195,11 +195,11 @@ export function FinalCtaSection() {
                     }
                   }}
                   placeholder="Enter code"
-                  className="rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
+                  className="rounded-full border border-white/20 bg-transparent px-4 py-2.5 md:px-5 md:py-3 text-sm text-white placeholder:text-white/40 focus:border-white/40 focus:outline-none"
                 />
                 <motion.button 
                   onClick={handleCodeSubmit}
-                  className="rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
+                  className="rounded-full border border-white/20 bg-white/10 px-4 py-2.5 md:px-5 md:py-3 text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -221,7 +221,7 @@ export function FinalCtaSection() {
 
         {/* Trust badges */}
         <motion.div 
-          className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-white/30"
+          className="mt-10 md:mt-16 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-xs md:text-sm text-white/30"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

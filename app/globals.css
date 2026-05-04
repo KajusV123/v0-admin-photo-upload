@@ -159,15 +159,25 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html,
+  html {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
   }
 }
 
 /* Infinite carousel animations */
-/* Card width: 256px (w-64) + 24px (px-3 = 12px each side) = 280px per card */
-/* 8 cards = 2240px total for one set */
+/* Desktop: Card width: 256px (w-64) + 24px (px-3 = 12px each side) = 280px per card */
+/* Mobile: Card width: 192px (w-48) + 16px (px-2 = 8px each side) = 208px per card */
+/* 8 cards total for one set */
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
@@ -186,10 +196,37 @@
   }
 }
 
+@keyframes scroll-left-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-208px * 8));
+  }
+}
+
+@keyframes scroll-right-mobile {
+  0% {
+    transform: translateX(calc(-208px * 8));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .animate-scroll-left {
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left-mobile 30s linear infinite;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 40s linear infinite;
+  animation: scroll-right-mobile 30s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-scroll-left {
+    animation: scroll-left 40s linear infinite;
+  }
+  .animate-scroll-right {
+    animation: scroll-right 40s linear infinite;
+  }
 }

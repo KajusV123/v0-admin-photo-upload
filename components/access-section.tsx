@@ -32,9 +32,14 @@ export function AccessSection() {
   const [error, setError] = useState("")
   const [showCodeModal, setShowCodeModal] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,7 +61,7 @@ export function AccessSection() {
   }
 
   return (
-    <section id="full-access" className="relative z-10 pt-48 pb-24 overflow-visible">
+    <section id="full-access" className="relative z-10 pt-32 md:pt-48 pb-16 md:pb-24 overflow-visible">
       {/* Striped burgundy background - fixed position for seamless connection */}
       <div 
         className="absolute inset-0"
@@ -150,7 +155,7 @@ export function AccessSection() {
               className="flex flex-col items-center text-center"
             >
               {/* Get Full Access Section - Stan Store style */}
-              <div className="relative mb-20">
+              <div className="relative mb-12 md:mb-20">
                 {/* Rotated girly image on the right */}
                 <motion.div
                   initial={{ opacity: 0, x: 50, rotate: 45 }}
@@ -276,23 +281,24 @@ export function AccessSection() {
                 </motion.div>
                 
                 <h2 
-                  className="text-4xl md:text-5xl text-white italic"
+                  className="text-3xl md:text-4xl md:text-5xl text-white italic"
                   style={{ fontFamily: "var(--font-corinthia), cursive" }}
                 >
                   Get Full Access
                 </h2>
-                <p className="mt-4 text-sm text-white/60 md:text-base">
-                  Unlock all premium prompts and start creating<br />
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-white/60 md:text-base px-4 md:px-0">
+                  Unlock all premium prompts and start creating<br className="hidden md:block" />
                   stunning AI portraits today.
                 </p>
                 
                 {/* Polaroid-style locked cards - matched to reference photo */}
-                <div className="mt-10 flex justify-center items-start gap-3 md:gap-5">
+                <div className="mt-6 md:mt-10 flex justify-center items-start gap-2 md:gap-5">
                   {[
                     { 
                       label: "WILD", 
                       rotation: "-8deg", 
-                      marginTop: "28px",
+                      marginTop: "20px",
+                      mobileMarginTop: "14px",
                       tapeType: "clip",
                       tapePosition: "right",
                       tapeRotation: "8deg",
@@ -301,6 +307,7 @@ export function AccessSection() {
                       label: "ICONIC", 
                       rotation: "2deg", 
                       marginTop: "0px",
+                      mobileMarginTop: "0px",
                       tapeType: "tape",
                       tapePosition: "center",
                       tapeRotation: "-2deg",
@@ -308,7 +315,8 @@ export function AccessSection() {
                     { 
                       label: "LUXE", 
                       rotation: "8deg", 
-                      marginTop: "20px",
+                      marginTop: "16px",
+                      mobileMarginTop: "10px",
                       tapeType: "clip",
                       tapePosition: "left",
                       tapeRotation: "-10deg",
@@ -322,7 +330,7 @@ export function AccessSection() {
                       className="relative"
                       style={{ 
                         transform: `rotate(${card.rotation})`,
-                        marginTop: card.marginTop,
+                        marginTop: isMobile ? card.mobileMarginTop : card.marginTop,
                         zIndex: index === 1 ? 10 : 5,
                       }}
                     >
@@ -361,30 +369,30 @@ export function AccessSection() {
                       )}
                       {/* Polaroid frame - cream/off-white */}
                       <div 
-                        className="bg-[#f5f1e8] p-2.5 pb-10 md:p-3 md:pb-12" 
+                        className="bg-[#f5f1e8] p-2 pb-8 md:p-3 md:pb-12" 
                         style={{ 
                           boxShadow: "0 12px 25px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.3)",
                         }}
                       >
                         {/* Image area - square dark burgundy with radial vignette */}
                         <div 
-                          className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center"
+                          className="relative w-20 h-20 md:w-32 md:h-32 flex items-center justify-center"
                           style={{ 
                             background: "radial-gradient(ellipse at center, #7a2838 0%, #5a1d2a 35%, #3a121c 70%, #2a0c14 100%)",
                           }}
                         >
                           <Lock 
-                            className="w-5 h-5 md:w-6 md:h-6" 
+                            className="w-4 h-4 md:w-6 md:h-6" 
                             strokeWidth={2}
                             style={{ color: "#a87a3e" }}
                           />
                         </div>
                         {/* Label below image */}
                         <p 
-                          className="mt-3 md:mt-4 text-center text-[9px] md:text-[10px] uppercase"
+                          className="mt-2 md:mt-4 text-center text-[8px] md:text-[10px] uppercase"
                           style={{ 
                             color: "#5a5a5a",
-                            letterSpacing: "0.25em",
+                            letterSpacing: "0.2em",
                             fontFamily: "var(--font-mono), monospace",
                           }}
                         >
@@ -395,12 +403,12 @@ export function AccessSection() {
                   ))}
                 </div>
                 
-                <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                <div className="mt-8 md:mt-12 flex flex-col items-center gap-3 md:gap-4 sm:flex-row sm:justify-center px-4 md:px-0">
                   {/* Get Access button - animated glow */}
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
-                    className="group relative rounded-full px-7 py-3 text-sm font-semibold text-white md:px-8 md:py-3 md:text-[15px]"
+                    className="group relative rounded-full px-6 py-2.5 text-sm font-semibold text-white md:px-8 md:py-3 md:text-[15px]"
                   >
                     {/* Animated outer glow ring */}
                     <motion.span
@@ -479,7 +487,7 @@ export function AccessSection() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setShowCodeModal(true)}
-                    className="rounded-full border border-[#C74D64]/40 bg-white/5 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-[#C74D64]/70 hover:bg-white/10 md:px-8 md:py-3 md:text-[15px]"
+                    className="rounded-full border border-[#C74D64]/40 bg-white/5 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-[#C74D64]/70 hover:bg-white/10 md:px-8 md:py-3 md:text-[15px]"
                   >
                     Access Code
                   </motion.button>

@@ -761,7 +761,7 @@ function PromptModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/80 p-0 md:p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
@@ -769,19 +769,19 @@ function PromptModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-[#141414] border border-[#9E3248]/25 md:h-[70vh] md:flex-row"
+        className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-t-3xl md:rounded-3xl bg-[#141414] border border-[#9E3248]/25 max-h-[90vh] md:max-h-[70vh] md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white/60 transition-colors hover:bg-black/70 hover:text-white"
+          className="absolute right-3 top-3 md:right-4 md:top-4 z-10 rounded-full bg-black/50 p-1.5 md:p-2 text-white/60 transition-colors hover:bg-black/70 hover:text-white"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4 md:h-5 md:w-5" />
         </button>
 
         {/* Image - left side on desktop, top on mobile */}
-        <div className="relative h-64 w-full shrink-0 md:h-full md:w-[45%]">
+        <div className="relative h-48 md:h-full w-full shrink-0 md:w-[45%]">
           <Image
             src={item.image}
             alt={item.title}
@@ -791,34 +791,34 @@ function PromptModal({
         </div>
 
         {/* Content - right side on desktop, bottom on mobile */}
-        <div className="flex flex-1 flex-col justify-between p-5 md:p-6">
+        <div className="flex flex-1 flex-col justify-between p-4 md:p-6 overflow-y-auto">
           <div>
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-[#9E3248]/25 px-3 py-1 text-xs font-medium text-[#C74D64]">
+              <span className="rounded-full bg-[#9E3248]/25 px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-medium text-[#C74D64]">
                 {item.category}
               </span>
             </div>
-            <h3 className="mt-3 text-lg font-semibold text-white md:text-xl">{item.title}</h3>
+            <h3 className="mt-2 md:mt-3 text-base md:text-xl font-semibold text-white">{item.title}</h3>
             
             {/* Prompt box */}
-            <div className="mt-4 rounded-xl bg-white/5 p-4">
-              <p className="text-xs leading-relaxed text-white/70 md:text-sm">{item.prompt}</p>
+            <div className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4">
+              <p className="text-[11px] md:text-sm leading-relaxed text-white/70">{item.prompt}</p>
             </div>
           </div>
 
           {/* Copy button */}
           <button
             onClick={copyToClipboard}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#9E3248] py-3 text-sm font-medium text-white transition-all hover:bg-[#B33D54] md:text-base"
+            className="mt-3 md:mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#9E3248] py-2.5 md:py-3 text-sm font-medium text-white transition-all hover:bg-[#B33D54]"
           >
             {copied ? (
               <>
-                <Check className="h-5 w-5" />
+                <Check className="h-4 w-4 md:h-5 md:w-5" />
                 Copied to Clipboard
               </>
             ) : (
               <>
-                <Copy className="h-5 w-5" />
+                <Copy className="h-4 w-4 md:h-5 md:w-5" />
                 Copy Prompt
               </>
             )}
@@ -886,16 +886,16 @@ const filteredGallery = selectedCategory === "All"
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen overflow-x-hidden"
       style={{
         backgroundColor: "#5a1020",
         backgroundImage:
           "repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 22px), repeating-linear-gradient(90deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 22px)",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: "scroll",
       }}
     >
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full overflow-hidden md:h-[70vh]">
+      <section className="relative h-[50vh] w-full overflow-hidden md:h-[70vh]">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -911,19 +911,19 @@ const filteredGallery = selectedCategory === "All"
         {/* Back Button */}
         <Link
           href="/"
-          className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full bg-[#6B1B2D]/50 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-all hover:bg-[#9E3248]/50 hover:text-white"
+          className="absolute left-4 top-4 md:left-6 md:top-6 z-20 flex items-center gap-1.5 md:gap-2 rounded-full bg-[#6B1B2D]/50 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm text-white/80 backdrop-blur-sm transition-all hover:bg-[#9E3248]/50 hover:text-white"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-3.5 w-3.5 md:h-4 md:w-4" />
           Back
         </Link>
 
         {/* Hero Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center font-serif text-5xl italic text-[#C74D64] md:text-7xl lg:text-8xl"
+            className="text-center font-serif text-4xl italic text-[#C74D64] sm:text-5xl md:text-7xl lg:text-8xl"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             infinite prompt
@@ -940,7 +940,7 @@ const filteredGallery = selectedCategory === "All"
       </section>
 
       {/* Prompt Gallery */}
-      <section className="relative px-6 py-12 pb-32 md:py-16 md:pb-40">
+      <section className="relative px-4 py-8 pb-24 md:px-6 md:py-16 md:pb-40">
         {/* Burgundy pinstripe background - high quality, no stretching */}
         <div
           className="absolute inset-0"
@@ -959,13 +959,13 @@ const filteredGallery = selectedCategory === "All"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-8 flex flex-wrap justify-center gap-2 md:mb-12"
+            className="mb-6 flex flex-wrap justify-center gap-1.5 md:mb-12 md:gap-2"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-all md:px-6 ${
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all md:px-6 md:py-2 md:text-sm ${
                   selectedCategory === category
                     ? "bg-[#9E3248] text-white"
                     : "bg-white/10 text-white/70 hover:bg-[#9E3248]/30 hover:text-white"
@@ -979,7 +979,7 @@ const filteredGallery = selectedCategory === "All"
           {/* Gallery Grid */}
           <motion.div
             layout
-            className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
+            className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
           >
             <AnimatePresence mode="popLayout">
               {filteredGallery.map((item, index) => (
@@ -1022,11 +1022,11 @@ const filteredGallery = selectedCategory === "All"
           </motion.p>
 
           {/* Suggestion Section */}
-          <div className="mx-auto mt-20 w-full max-w-xl border-t border-[#9E3248]/25 pt-12 text-center">
-            <h3 className="text-xl font-semibold text-white">
+          <div className="mx-auto mt-12 md:mt-20 w-full max-w-xl border-t border-[#9E3248]/25 pt-8 md:pt-12 text-center px-2">
+            <h3 className="text-lg md:text-xl font-semibold text-white">
               Have an idea?
             </h3>
-            <p className="mt-2 text-sm text-white/50">
+            <p className="mt-2 text-xs md:text-sm text-white/50">
               Want to see something specific in the prompt gallery? Share your idea below.
             </p>
             
@@ -1049,22 +1049,22 @@ const filteredGallery = selectedCategory === "All"
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSuggestionSubmit}
-                  className="mt-6"
+                  className="mt-4 md:mt-6"
                 >
-                  <div className="flex gap-3">
+                  <div className="flex flex-col gap-2 md:flex-row md:gap-3">
                     <input
                       type="text"
                       value={suggestion}
                       onChange={(e) => setSuggestion(e.target.value)}
-                      placeholder="E.g., More vintage film prompts, cyberpunk styles..."
-                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/30 focus:border-[#9E3248]/40 focus:outline-none"
+                      placeholder="E.g., More vintage film prompts..."
+                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 md:px-5 md:py-3 text-sm text-white placeholder:text-white/30 focus:border-[#9E3248]/40 focus:outline-none"
                     />
                     <motion.button
                       type="submit"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       disabled={!suggestion.trim()}
-                      className="flex items-center gap-2 rounded-full bg-[#9E3248]/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#9E3248]/50 disabled:cursor-not-allowed disabled:opacity-40"
+                      className="flex items-center justify-center gap-2 rounded-full bg-[#9E3248]/30 px-5 py-2.5 md:py-3 text-sm font-medium text-white transition-colors hover:bg-[#9E3248]/50 disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <Send className="h-4 w-4" />
                       <span className="hidden sm:inline">Send</span>

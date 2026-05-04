@@ -45,7 +45,7 @@ const itemVariants = {
 
 export function HowItWorksSection() {
   return (
-    <section className="relative bg-[#0a0a0a] py-28 overflow-hidden">
+    <section className="relative bg-[#0a0a0a] py-16 md:py-28 overflow-hidden">
       {/* Velvet texture background */}
       <div 
         className="absolute inset-0 opacity-15"
@@ -65,24 +65,24 @@ export function HowItWorksSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 md:px-6">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
         >
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
             How It Works
           </h2>
-          <p className="mt-4 text-white/50">
+          <p className="mt-3 md:mt-4 text-white/50 text-sm md:text-base">
             From prompt to portrait in minutes
           </p>
         </motion.div>
 
         <motion.div 
-          className="grid gap-8 md:grid-cols-3"
+          className="grid gap-6 md:gap-8 md:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -107,16 +107,16 @@ export function HowItWorksSection() {
               )}
               
               <motion.div 
-                className="relative rounded-3xl p-8 text-center transition-all duration-500"
+                className="relative rounded-3xl p-6 md:p-8 text-center transition-all duration-500"
                 whileHover={{ 
                   backgroundColor: "rgba(255,255,255,0.02)",
                   y: -5,
                 }}
               >
                 {/* Large number background */}
-                <div className="relative mb-6 inline-flex">
+                <div className="relative mb-4 md:mb-6 inline-flex">
                   <motion.span 
-                    className="text-8xl font-bold tracking-tighter"
+                    className="text-6xl md:text-8xl font-bold tracking-tighter"
                     style={{
                       background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)",
                       WebkitBackgroundClip: "text",
@@ -139,10 +139,10 @@ export function HowItWorksSection() {
                   />
                 </div>
 
-                <h3 className="mb-3 text-xl font-semibold text-white">
+                <h3 className="mb-2 md:mb-3 text-lg md:text-xl font-semibold text-white">
                   {step.title}
                 </h3>
-                <p className="text-white/50 leading-relaxed">
+                <p className="text-white/50 leading-relaxed text-sm md:text-base">
                   {step.description}
                 </p>
               </motion.div>
