@@ -17,7 +17,7 @@ import { smoothScrollTo } from "@/lib/smooth-scroll"
 import { Navbar } from "@/components/navbar"
 
 const initialImages = [
-  // Top left area - positioned around center text on mobile
+  // Row 1 - Top edge
   {
     src: "/portrait-1.jpg",
     alt: "Fashion editorial portrait",
@@ -26,10 +26,10 @@ const initialImages = [
     rotate: -12,
     width: 220,
     height: 280,
-    mobileTop: 3,
-    mobileLeft: -8,
-    mobileWidth: 70,
-    mobileHeight: 90,
+    mobileTop: -2,
+    mobileLeft: -5,
+    mobileWidth: 72,
+    mobileHeight: 95,
   },
   {
     src: "/portrait-2.jpg",
@@ -39,10 +39,10 @@ const initialImages = [
     rotate: 5,
     width: 180,
     height: 240,
-    mobileTop: 2,
-    mobileLeft: 70,
-    mobileWidth: 65,
-    mobileHeight: 85,
+    mobileTop: 0,
+    mobileLeft: 22,
+    mobileWidth: 60,
+    mobileHeight: 80,
   },
   {
     src: "/portrait-3.jpg",
@@ -52,12 +52,11 @@ const initialImages = [
     rotate: -3,
     width: 200,
     height: 260,
-    mobileTop: 15,
-    mobileLeft: -5,
-    mobileWidth: 60,
-    mobileHeight: 80,
+    mobileTop: -3,
+    mobileLeft: 50,
+    mobileWidth: 65,
+    mobileHeight: 85,
   },
-  // Top right area
   {
     src: "/portrait-4.jpg",
     alt: "Natural light portrait",
@@ -66,11 +65,12 @@ const initialImages = [
     rotate: 8,
     width: 200,
     height: 250,
-    mobileTop: 12,
-    mobileLeft: 75,
-    mobileWidth: 60,
-    mobileHeight: 78,
+    mobileTop: 2,
+    mobileLeft: 78,
+    mobileWidth: 58,
+    mobileHeight: 75,
   },
+  // Row 2 - Upper middle (left side)
   {
     src: "/portrait-5.jpg",
     alt: "Artistic floral portrait",
@@ -79,8 +79,8 @@ const initialImages = [
     rotate: -5,
     width: 180,
     height: 230,
-    mobileTop: 68,
-    mobileLeft: -6,
+    mobileTop: 18,
+    mobileLeft: -8,
     mobileWidth: 65,
     mobileHeight: 85,
   },
@@ -92,12 +92,12 @@ const initialImages = [
     rotate: 12,
     width: 180,
     height: 240,
-    mobileTop: 70,
-    mobileLeft: 72,
-    mobileWidth: 65,
-    mobileHeight: 85,
+    mobileTop: 16,
+    mobileLeft: 78,
+    mobileWidth: 62,
+    mobileHeight: 82,
   },
-  // Left side middle - hide more on mobile
+  // Row 3 - Middle sides (avoiding center text area)
   {
     src: "/portrait-7.jpg",
     alt: "Golden hour portrait",
@@ -106,7 +106,10 @@ const initialImages = [
     rotate: 6,
     width: 200,
     height: 260,
-    mobileHidden: true,
+    mobileTop: 35,
+    mobileLeft: -10,
+    mobileWidth: 58,
+    mobileHeight: 75,
   },
   {
     src: "/portrait-8.jpg",
@@ -116,9 +119,12 @@ const initialImages = [
     rotate: -8,
     width: 160,
     height: 210,
-    mobileHidden: true,
+    mobileTop: 38,
+    mobileLeft: 82,
+    mobileWidth: 55,
+    mobileHeight: 72,
   },
-  // Right side middle
+  // Row 4 - Lower middle sides
   {
     src: "/portrait-9.jpg",
     alt: "Fresh natural beauty",
@@ -127,7 +133,10 @@ const initialImages = [
     rotate: -6,
     width: 180,
     height: 230,
-    mobileHidden: true,
+    mobileTop: 55,
+    mobileLeft: -6,
+    mobileWidth: 60,
+    mobileHeight: 78,
   },
   {
     src: "/portrait-10.jpg",
@@ -137,9 +146,12 @@ const initialImages = [
     rotate: 10,
     width: 190,
     height: 250,
-    mobileHidden: true,
+    mobileTop: 52,
+    mobileLeft: 80,
+    mobileWidth: 58,
+    mobileHeight: 76,
   },
-  // Bottom left area - hide all on mobile
+  // Row 5 - Bottom area
   {
     src: "/portrait-11.jpg",
     alt: "Bohemian style portrait",
@@ -148,7 +160,10 @@ const initialImages = [
     rotate: -4,
     width: 200,
     height: 260,
-    mobileHidden: true,
+    mobileTop: 70,
+    mobileLeft: -8,
+    mobileWidth: 68,
+    mobileHeight: 88,
   },
   {
     src: "/portrait-12.jpg",
@@ -158,7 +173,10 @@ const initialImages = [
     rotate: 7,
     width: 170,
     height: 220,
-    mobileHidden: true,
+    mobileTop: 72,
+    mobileLeft: 20,
+    mobileWidth: 55,
+    mobileHeight: 72,
   },
   {
     src: "/portrait-13.jpg",
@@ -168,9 +186,11 @@ const initialImages = [
     rotate: -2,
     width: 160,
     height: 200,
-    mobileHidden: true,
+    mobileTop: 75,
+    mobileLeft: 45,
+    mobileWidth: 52,
+    mobileHeight: 68,
   },
-  // Bottom center-right area
   {
     src: "/portrait-14.jpg",
     alt: "Urban chic portrait",
@@ -179,8 +199,12 @@ const initialImages = [
     rotate: 4,
     width: 180,
     height: 230,
-    mobileHidden: true,
+    mobileTop: 68,
+    mobileLeft: 72,
+    mobileWidth: 65,
+    mobileHeight: 85,
   },
+  // Row 6 - Extra bottom edge images
   {
     src: "/portrait-15.jpg",
     alt: "Fantasy portrait",
@@ -189,7 +213,10 @@ const initialImages = [
     rotate: -6,
     width: 190,
     height: 250,
-    mobileHidden: true,
+    mobileTop: 88,
+    mobileLeft: 5,
+    mobileWidth: 58,
+    mobileHeight: 75,
   },
   {
     src: "/portrait-16.jpg",
@@ -199,7 +226,10 @@ const initialImages = [
     rotate: 8,
     width: 180,
     height: 230,
-    mobileHidden: true,
+    mobileTop: 86,
+    mobileLeft: 35,
+    mobileWidth: 55,
+    mobileHeight: 72,
   },
   {
     src: "/portrait-17.jpg",
@@ -209,7 +239,10 @@ const initialImages = [
     rotate: -10,
     width: 170,
     height: 220,
-    mobileHidden: true,
+    mobileTop: 85,
+    mobileLeft: 68,
+    mobileWidth: 60,
+    mobileHeight: 78,
   },
 ]
 
@@ -237,14 +270,12 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    // Only trigger animations after all images are loaded (or mobile subset)
-    const mobileVisibleCount = initialImages.filter(img => !img.mobileHidden).length
-    const requiredImages = isMobile ? mobileVisibleCount : totalImages
-    if (imagesLoaded >= requiredImages) {
+    // Trigger animations after enough images are loaded
+    if (imagesLoaded >= totalImages) {
       const timer = setTimeout(() => setIsLoaded(true), 100)
       return () => clearTimeout(timer)
     }
-  }, [imagesLoaded, totalImages, isMobile])
+  }, [imagesLoaded, totalImages])
 
   const handleMouseDown = (e: React.MouseEvent, index: number) => {
     e.preventDefault()
@@ -364,9 +395,6 @@ export default function Home() {
         {/* Scattered draggable images */}
         {images.map((image, index) => {
           const isDragging = draggingIndex === index
-          
-          // Hide certain images on mobile
-          if (isMobile && image.mobileHidden) return null
           
           // Use mobile positions if on mobile and they exist
           const top = isMobile && image.mobileTop !== undefined ? image.mobileTop : image.top
