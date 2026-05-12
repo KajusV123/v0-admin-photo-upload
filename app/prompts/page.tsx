@@ -162,6 +162,13 @@ const promptGallery = [
     prompt: "She is standing in a grand marble luxury bathroom, tight medium close-up framing from bust up, face prominently centered. She holds the YSL lip gloss bottle open in one hand — transparent glass cylinder with silver YSL logo and silver chrome cap, peachy pink liquid visible inside. With the other hand she delicately applies the round doe-foot applicator to her full lips, mouth slightly open in a relaxed, sensual expression, eyes gazing straight into the camera with confidence. Her makeup is absolutely flawless — sculpted brows, smoky golden eye, perfectly defined cheekbones. Her long golden blonde hair is immaculate — sleek, mirror-glossy, perfectly straight, falling like silk over both shoulders. Warm golden wall sconces on both sides cast soft symmetrical light. Plush pink robe. Ultra-realistic 4K editorial mood, final beauty touch atmosphere, cinematic soft light, extreme beauty close-up. Negative prompt: dark hair, brunette, messy hair, capped bottle, wand missing, cartoonish, plastic skin, distorted hands, distorted bottle, wrong logo, harsh shadows, flat lighting, full body, low resolution, text artifacts, watermark.",
   },
   {
+    id: 20,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00023.png-lNaRDBmMeXmlDca1hnRagrxYRTtvi3.jpeg",
+    title: "Golden Hour Serum Ritual",
+    prompt: "A close-up eye-level portrait of a young Caucasian woman with striking dyed yellow hair. She applies a clear liquid skincare serum from a dropper directly to her cheek, the dropper held in her uplifted right hand. Her light skin, pronounced eyebrows, and full lips are accentuated by the dappled sunlight casting shadows across her face, creating a play of light and dark that adds dimensionality and highlights her freckles. She has a visible tattoo with a floral and serpent design on her neck and wears a thin black strapped top, gold hoop earrings, and layered gold necklaces, including one with a daisy-shaped pendant. The shallow depth of field blurs the softly lit bathroom background, keeping focus on her face and the skincare product. The image displays a warm color palette with golden sunlight and yellow hair contrasting against natural skin tones. The mood is intimate, highlighting a beauty or skincare routine in a soft, contemporary style, likely taken with a modern digital camera or smartphone.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
