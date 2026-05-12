@@ -170,6 +170,13 @@ Post-processing: minimal retouching — skin texture fully preserved, no plastic
 
 Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaar aesthetic, photorealistic, not illustrated, not CGI — indistinguishable from a real photograph.`,
   },
+  {
+    id: 101,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00002.png-IvHuYOlRhhw5tu6qmOIH7UPpJQHEjE.jpeg",
+    title: "Wellness Morning Routine",
+    prompt: `She stands against a dark olive-grey wall, thick white clay face mask applied all over her face, one hand holding a clear glass of bright green matcha juice up to her lips drinking it, other hand raised making a peace sign, hair pulled back in a messy low bun, wearing a white oversized cropped graphic t-shirt with collegiate text print, light grey baggy sweatpants, toned abs visible, multiple silver ear studs and pearl drop earrings, silver link bracelet watch on wrist, soft natural side light casting subtle shadows, clean minimal background, effortless cool girl aesthetic, candid wellness morning routine vibe, hyperrealistic skin texture under clay mask, matte clay mask texture with micro cracks visible, ultra sharp detail, 4K hyperrealistic photography`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
