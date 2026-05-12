@@ -147,6 +147,29 @@ const promptGallery = [
     title: "Glossy Lips Focus",
     prompt: "Extreme close-up glossy lips portrait, high-shine lip gloss, plump hydrated lips, lip care aesthetic, beauty detail macro photography, cosmetics product shot style, mirror-like reflection",
   },
+  {
+    id: 100,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
+    title: "Gucci Eye Patch Editorial",
+    prompt: `Ultra-close-up beauty editorial photograph of a woman's eye, extreme macro shot, hyper-realistic skin texture visible in every pore, professional studio lighting.
+
+Framing: extreme close-up macro beauty shot, single eye centered slightly above midframe, partial cheekbone and brow visible, cropped tightly — forehead cut at top, nose cut at bottom, temples cut at sides, straight-on slightly elevated angle, camera parallel to face, macro 100mm equivalent, razor-sharp focus on iris and lash line, slight natural bokeh on skin edges.
+
+Skin: photorealistic human skin with visible pores, micro-fine peach fuzz, subtle sebaceous shine on the cheekbone highlight zone, warm medium-deep brown complexion, golden undertones, natural skin variation — slightly darker under eye, lighter on brow bone, natural satin finish, not airbrushed, real skin imperfections retained, micro-capillary warmth near the eye socket, 8K dermatological realism — individual pores, skin grain, subtle texture mapping.
+
+Eye: deep warm brown iris with golden amber limbal ring, specular catchlight visible at 11 o'clock position, intense direct slightly sensual gaze — confident and editorial, bright sclera with subtle natural vein detail, not overexposed, almond-shaped eye, full upper lid visible, lower waterline exposed.
+
+Makeup: warm champagne-gold shimmer on the mobile lid, finely milled micro-glitter particles catching light, blended seamlessly, soft warm bronze blended into the crease for depth, subtle gold highlight inner corner, precise black liquid liner with a sharp elongated cat-eye wing, crisp edge, voluminous black false lashes, dramatically long and fanned, individual lash clusters visible, slight natural curl upward — full glam editorial lashes, natural mascara on real lower lashes, full slightly arched well-groomed natural brow, individual hairs visible, dark brown-black softly defined.
+
+Eye Patch: luxury under-eye gel patch / hydrogel eye mask, placed directly under the eye, curved upper edge touching the lower lash line, extending across the full under-eye and upper cheekbone area, classic crescent / half-moon eye patch silhouette, satin-finish fabric eye patch with slight translucency and soft sheen, warm beige / tan / camel — classic GG canvas background color, official GUCCI GG Supreme monogram pattern — interlocking double-G logo repeated in an all-over print, dark chocolate brown interlocking GG symbols on the beige canvas, accurate Gucci GG Supreme canvas print — each GG logo clearly legible, evenly spaced grid pattern, includes the subtle floral/diamond dividers between logos typical of GG Supreme, slightly padded fabric surface, soft specular highlight showing it is slightly raised and three-dimensional against the skin, clean smooth rounded edges with slight translucent border touching the skin naturally, the patch sits naturally on the skin, casting a very subtle soft shadow at its upper edge where it meets the lower eyelid area.
+
+Lighting: high-end beauty editorial studio lighting, large softbox positioned front-left, creating a smooth Rembrandt-adjacent wrap, subtle specular highlight on brow bone, cheekbone, and patch surface, soft natural shadow in the eye socket, under the brow, and at the patch edge, warm neutral mood — not cold, not overly warm, clean editorial tone.
+
+Post-processing: minimal retouching — skin texture fully preserved, no plastic smoothing, warm neutral color grade, slight desaturation of background skin tones to emphasize the eye, rich contrast in the iris and lashes, maximum sharpness on eye, lashes, and patch logo; natural roll-off on peripheral skin.
+
+Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaar aesthetic, photorealistic, not illustrated, not CGI — indistinguishable from a real photograph.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
