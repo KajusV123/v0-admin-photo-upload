@@ -8,7 +8,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 // Number of items to load per batch for infinite scroll
-const ITEMS_PER_BATCH = 20
+// Desktop shows 5 columns, so load enough to fill multiple rows
+const ITEMS_PER_BATCH = 30
 
 // Cookie utilities
 const COOKIE_NAME = "prompt_bank_access"
@@ -970,7 +971,7 @@ Negative prompt: dark hair, brunette, wand inserted in tube, capped mascara, mes
   },
 ]
 
-// Optimized Gallery Item Component - memoized to prevent unnecessary re-renders
+// Optimized Gallery Item Component - memoized with GPU-accelerated animations
 const GalleryItem = memo(function GalleryItem({
   item,
   onClick,
@@ -980,62 +981,30 @@ const GalleryItem = memo(function GalleryItem({
   onClick: () => void
   priority?: boolean
 }) {
-  const [isInView, setIsInView] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const itemRef = useRef<HTMLDivElement>(null)
-
-  // Use Intersection Observer for lazy loading
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-          observer.disconnect()
-        }
-      },
-      {
-        rootMargin: '100px', // Start loading 100px before entering viewport
-        threshold: 0.01,
-      }
-    )
-
-    if (itemRef.current) {
-      observer.observe(itemRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <div
-      ref={itemRef}
       onClick={onClick}
-      className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-2xl bg-white/5"
+      className="gallery-item group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1a1a]"
     >
-      {(isInView || priority) && (
-        <>
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-            className={`object-cover transition-all duration-500 group-hover:scale-110 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={() => setImageLoaded(true)}
-            loading={priority ? "eager" : "lazy"}
-            placeholder="empty"
-          />
-          {!imageLoaded && (
-            <div className="absolute inset-0 animate-pulse bg-white/10" />
-          )}
-        </>
+      <Image
+        src={item.image}
+        alt={item.title}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+        className={`gallery-image object-cover ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        onLoad={() => setImageLoaded(true)}
+        loading={priority ? "eager" : "lazy"}
+        quality={75}
+      />
+      {!imageLoaded && (
+        <div className="absolute inset-0 bg-white/5" />
       )}
-      {!isInView && !priority && (
-        <div className="absolute inset-0 animate-pulse bg-white/5" />
-      )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
+      <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+      <div className="gallery-content absolute bottom-0 left-0 right-0 p-4">
         <span className="mb-1 inline-block rounded-full bg-[#9E3248]/30 px-2 py-0.5 text-xs text-[#C74D64]">
           {item.category}
         </span>
@@ -1336,14 +1305,20 @@ export default function PromptsPage() {
             ))}
           </motion.div>
 
-          {/* Gallery Grid - Optimized with lazy loading and virtualization */}
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
+          {/* Gallery Grid - Optimized with CSS containment and lazy loading */}
+          <div 
+            className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
+            style={{ 
+              contain: 'layout style',
+              contentVisibility: 'auto',
+            }}
+          >
             {visibleItems.map((item, index) => (
               <GalleryItem
                 key={item.id}
                 item={item}
                 onClick={() => handleItemClick(item)}
-                priority={index < 10} // First 10 items load eagerly
+                priority={index < 15} // First 15 items load eagerly (3 rows on desktop)
               />
             ))}
           </div>

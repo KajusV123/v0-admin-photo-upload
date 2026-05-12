@@ -230,3 +230,57 @@
     animation: scroll-right 40s linear infinite;
   }
 }
+
+/* Gallery Performance Optimizations - GPU accelerated transforms */
+.gallery-item {
+  contain: layout style paint;
+  will-change: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.gallery-item:hover {
+  will-change: transform;
+}
+
+.gallery-image {
+  transition: opacity 0.3s ease-out, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+}
+
+.gallery-item:hover .gallery-image {
+  transform: translateZ(0) scale(1.05);
+}
+
+.gallery-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-content {
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-content {
+  transform: translateY(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-image,
+  .gallery-overlay,
+  .gallery-content {
+    transition: none;
+  }
+  .gallery-item:hover .gallery-image {
+    transform: translateZ(0) scale(1);
+  }
+}
