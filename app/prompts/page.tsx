@@ -155,6 +155,13 @@ const promptGallery = [
     prompt: "She is standing in a grand marble luxury bathroom, medium close-up framing from chest up. She runs a GHD Gold hair straightener — pale pink and black body with rose gold ghd logo detail — slowly through a section of her long golden blonde hair, gliding it downward with a smooth elegant motion. Her head is slightly tilted to one side to give access to the hair section being straightened. Expression calm and focused, lips softly closed. Her makeup is flawless — sculpted brows, smoky eye, defined cheekbones, glossy lips. Warm golden wall sconces on both sides cast soft balanced light. Plush pink robe. Ultra-realistic 4K editorial mood, luxury hair styling atmosphere, cinematic soft light. Negative prompt: dark hair, brunette, curly hair, messy hair, wrong tool, cartoonish, plastic skin, distorted hands, distorted straightener, harsh shadows, flat lighting, full body, low resolution, text artifacts, watermark.",
   },
   {
+    id: 19,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00022.png-GBGPt4j12fNVVNQUdUIGUz1gzGUxpo.jpeg",
+    title: "YSL Lip Gloss Application",
+    prompt: "She is standing in a grand marble luxury bathroom, tight medium close-up framing from bust up, face prominently centered. She holds the YSL lip gloss bottle open in one hand — transparent glass cylinder with silver YSL logo and silver chrome cap, peachy pink liquid visible inside. With the other hand she delicately applies the round doe-foot applicator to her full lips, mouth slightly open in a relaxed, sensual expression, eyes gazing straight into the camera with confidence. Her makeup is absolutely flawless — sculpted brows, smoky golden eye, perfectly defined cheekbones. Her long golden blonde hair is immaculate — sleek, mirror-glossy, perfectly straight, falling like silk over both shoulders. Warm golden wall sconces on both sides cast soft symmetrical light. Plush pink robe. Ultra-realistic 4K editorial mood, final beauty touch atmosphere, cinematic soft light, extreme beauty close-up. Negative prompt: dark hair, brunette, messy hair, capped bottle, wand missing, cartoonish, plastic skin, distorted hands, distorted bottle, wrong logo, harsh shadows, flat lighting, full body, low resolution, text artifacts, watermark.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
