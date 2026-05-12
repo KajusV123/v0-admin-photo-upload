@@ -221,6 +221,13 @@ Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed
     title: "Luxury Beauty Flatlay",
     prompt: `A styled beauty flatlay arranged on a marble bathroom countertop with grey veined marble wall behind. A cream quilted makeup pouch with small pink rose print sits center background. In front of it: a pink CAIA "That Dewy Look" spray bottle with gold cap, a small Clinique white tube, two Clinique glass cream jars with beige lids, and a round gold decorative candle tin with pink floral embossed lid. In the foreground an open white lined notebook lies flat showing several pink lipstick kiss marks pressed onto the page with a small "x" written in pink, and resting on the notebook a pink and gold handheld face sculpting roller tool. A brushed gold tap fixture is partially visible on the right edge. Shot from directly above, soft diffused natural light, ultra-realistic 4K, editorial beauty lifestyle aesthetic, clean and feminine luxury mood.`,
   },
+  {
+    id: 108,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00009.png-BA7pBMkflCXTeeB2drCcBUNFQ3vJjz.jpeg",
+    title: "Hotel Getting Ready Selfie",
+    prompt: `She takes a mirror selfie in a luxury hotel bathroom, holding a beige smartphone, lips slightly pursed, one arm crossed over her waist. She wears a white silk robe. Hair up in large velcro rollers. White under-eye patches on her face. Delicate heart pendant necklace, small pearl earrings. Skincare and serum bottles lined up on the marble sink counter beside her. Rolled white towels on a heated gold towel rail, glass shower visible. Warm wall sconce lighting, soft and bright. Half body mirror selfie. Luxury lifestyle editorial photography, ultra-realistic, 4K. Defined bold brows, glossy nude lips, blinding highlight on high cheekbones, long voluminous glossy blowout hair.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
