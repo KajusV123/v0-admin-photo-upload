@@ -794,22 +794,15 @@ function PromptModal({
 }) {
   const [copied, setCopied] = useState(false)
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when modal is open - without causing layout shift
   useEffect(() => {
-    const scrollY = window.scrollY
-    document.documentElement.style.overflow = 'hidden'
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
     document.body.style.overflow = 'hidden'
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.width = '100%'
+    document.body.style.paddingRight = `${scrollBarWidth}px`
     
     return () => {
-      document.documentElement.style.overflow = ''
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      window.scrollTo(0, scrollY)
+      document.body.style.paddingRight = ''
     }
   }, [])
 
