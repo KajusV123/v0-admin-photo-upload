@@ -298,6 +298,15 @@ Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, l
 
 Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light, text overlay, smiling, looking at camera, busy background, multiple people.`,
   },
+  {
+    id: 117,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00018.png-ov3fU25ezU5wdU0tIuniFuAEyeSGwr.jpeg",
+    title: "Luxury Morning Hair Routine",
+    prompt: `She is standing in a grand marble luxury bathroom, medium close-up framing from chest up, holding a white Dyson hair dryer, blow-drying her long wet hair to the side with a slow graceful movement. She gazes softly off-camera. Warm golden wall sconces cast ambient light on the marble walls behind her. Plush pink robe loosely draped over her shoulders. Ultra-realistic 4K editorial mood, intimate morning luxury atmosphere, cinematic soft light.
+
+Negative prompt: cartoonish, plastic skin, harsh shadows, flat lighting, full body, wide shot, low resolution, text, watermark.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
