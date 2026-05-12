@@ -169,6 +169,13 @@ const promptGallery = [
     prompt: "A close-up eye-level portrait of a young Caucasian woman with striking dyed yellow hair. She applies a clear liquid skincare serum from a dropper directly to her cheek, the dropper held in her uplifted right hand. Her light skin, pronounced eyebrows, and full lips are accentuated by the dappled sunlight casting shadows across her face, creating a play of light and dark that adds dimensionality and highlights her freckles. She has a visible tattoo with a floral and serpent design on her neck and wears a thin black strapped top, gold hoop earrings, and layered gold necklaces, including one with a daisy-shaped pendant. The shallow depth of field blurs the softly lit bathroom background, keeping focus on her face and the skincare product. The image displays a warm color palette with golden sunlight and yellow hair contrasting against natural skin tones. The mood is intimate, highlighting a beauty or skincare routine in a soft, contemporary style, likely taken with a modern digital camera or smartphone.",
   },
   {
+    id: 21,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00024.png-bcb1bRBElnT5DU0Dnj60ErD5lYUefI.jpeg",
+    title: "Mirror Reflection Lip Gloss",
+    prompt: "She is standing in front of a large round mirror with a brushed gold frame, applying lip gloss with a wand applicator, reflected in the mirror, three-quarter upper body framing, soft warm bathroom light from above, steam-lit atmosphere, beige and cream ribbed tile walls, matte black shower fixtures visible in background, handheld shot with slight natural tilt, ultra-realistic 4K editorial beauty mood, golden hour warmth, skin luminosity, intimate morning routine feel. Outfit base color: pink. Negative prompt: cartoonish, flat lighting, overexposed, plastic skin, stiff pose, symmetrical framing, studio backdrop, full body, blurry background, cluttered scene.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
