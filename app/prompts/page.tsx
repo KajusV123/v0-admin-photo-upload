@@ -190,6 +190,13 @@ const promptGallery = [
     prompt: "She is taking a selfie from slightly below eye level, large velcro hair rollers set throughout her hair secured with black clips, direct gaze into camera, confident neutral expression, standing in a walk-in closet with open white shelving units visible in background, natural daylight from a window behind her, soft overexposed background creating depth separation, upper body close-up framing, handheld selfie angle with slight upward tilt, ultra-realistic 4K candid editorial mood, raw morning energy, skin texture visible, no makeup look. Outfit base color: black. Negative prompt: cartoonish, plastic skin, studio lighting, flat background, hair down, no rollers, blurry face, overposed, symmetrical framing, artificial bokeh, stiff expression.",
   },
   {
+    id: 24,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00027.png-cascy0GjqWaRpAdezKBOcChGCkwFSs.jpeg",
+    title: "Matcha Wellness Morning",
+    prompt: "She is standing in a luxury open-plan kitchen, holding a tall glass of iced matcha latte with a metal straw in one hand, silver hydrogel under-eye patches applied to both eyes, fluffy pink bubble headband pushing hair back, slight attitude in expression — lips slightly parted, eyes looking sideways at camera, three-quarter upper body framing, natural daylight from ceiling recessed lights, warm wood cabinetry and marble countertops visible in background, candid selfie-style angle, ultra-realistic 4K editorial wellness lifestyle mood, effortless morning energy. Outfit base color: cream/white. Negative prompt: cartoonish, plastic skin, studio backdrop, flat lighting, no eye patches, empty hands, blurry background, overposed, symmetrical framing, stiff expression, no headband.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
