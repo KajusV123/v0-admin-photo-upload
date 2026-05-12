@@ -176,6 +176,13 @@ const promptGallery = [
     prompt: "She is standing in front of a large round mirror with a brushed gold frame, applying lip gloss with a wand applicator, reflected in the mirror, three-quarter upper body framing, soft warm bathroom light from above, steam-lit atmosphere, beige and cream ribbed tile walls, matte black shower fixtures visible in background, handheld shot with slight natural tilt, ultra-realistic 4K editorial beauty mood, golden hour warmth, skin luminosity, intimate morning routine feel. Outfit base color: pink. Negative prompt: cartoonish, flat lighting, overexposed, plastic skin, stiff pose, symmetrical framing, studio backdrop, full body, blurry background, cluttered scene.",
   },
   {
+    id: 22,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00025.png-bEzcthSRVU3jRBqtP6Ymq3HfpSJetk.jpeg",
+    title: "Behind-the-Scenes Glam Studio",
+    prompt: "She is seated facing the camera in a professional glam studio, two makeup artists' hands working simultaneously — one applying blush with a large fluffy brush to her cheek, one lining her lips with a fine detail brush, a third hand holding a paddle hairbrush near her shoulder, direct soft studio light, neutral warm grey seamless backdrop, upper body framing, slightly low angle, sharp focus on face, ultra-realistic 4K editorial beauty campaign mood, behind-the-scenes luxury glam atmosphere. Outfit base color: black. Negative prompt: cartoonish, plastic skin, overexposed, flat lighting, single brush only, empty hands, blurry backdrop, full body, cluttered background, stiff expression, symmetrical pose.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
