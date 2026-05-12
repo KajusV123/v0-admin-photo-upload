@@ -824,8 +824,11 @@ function PromptModal({
         </div>
 
         {/* Content - right side on desktop, bottom on mobile */}
-        <div className="flex flex-1 flex-col justify-between p-4 md:p-6 overflow-y-auto">
-          <div>
+        <div 
+          className="flex flex-1 flex-col p-4 md:p-6 overflow-y-auto"
+          onWheel={(e) => e.stopPropagation()}
+        >
+          <div className="flex-1">
             <div className="flex items-center gap-2">
               <span className="rounded-full bg-[#9E3248]/25 px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-medium text-[#C74D64]">
                 {item.category}
@@ -834,10 +837,7 @@ function PromptModal({
             <h3 className="mt-2 md:mt-3 text-base md:text-xl font-semibold text-white">{item.title}</h3>
             
             {/* Prompt box */}
-            <div 
-              className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4 max-h-[200px] md:max-h-[300px] overflow-y-auto"
-              onWheel={(e) => e.stopPropagation()}
-            >
+            <div className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4">
               <p className="text-[11px] md:text-sm leading-relaxed text-white/70 whitespace-pre-wrap">{item.prompt}</p>
             </div>
           </div>
@@ -845,7 +845,7 @@ function PromptModal({
           {/* Copy button */}
           <button
             onClick={copyToClipboard}
-            className="mt-3 md:mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#9E3248] py-2.5 md:py-3 text-sm font-medium text-white transition-all hover:bg-[#B33D54]"
+            className="mt-3 md:mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#9E3248] py-2.5 md:py-3 text-sm font-medium text-white transition-all hover:bg-[#B33D54] shrink-0"
           >
             {copied ? (
               <>
