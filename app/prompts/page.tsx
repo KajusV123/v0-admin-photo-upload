@@ -280,6 +280,15 @@ Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light
 
 Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, low quality, dark lighting, artificial light, text overlay, smiling, looking away.`,
   },
+  {
+    id: 115,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00016.png-8yMgsXJfLdNN9g8kk4gyZ88pcc7Qbh.jpeg",
+    title: "Glowing Skin Lip Gloss Portrait",
+    prompt: `She is holding a lip gloss tube with a white wand applicator in her own hand, applying it to her lips herself, looking slightly off camera with a relaxed, focused expression — lips slightly parted, chin tilted subtly upward. Hair sleek and straight pulled back with two small metal clips on either side. Intensely glowing skin with warm bronze highlight on cheekbones and nose, soft warm eye makeup with full lashes. Lips full and freshly coated in a sheer nude gloss. A delicate thin gold chain necklace visible at the neck. Bright strong natural daylight coming from a window to the side creating dramatic luminosity on the skin. Background softly blurred, cool grey tones. Vertical framing, extreme face close-up portrait, chin to top of head. Beauty campaign macro mood. Ultra-realistic, 4K.
+
+Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, low quality, dark lighting, artificial light, text overlay, smiling, looking directly at camera, busy background.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
