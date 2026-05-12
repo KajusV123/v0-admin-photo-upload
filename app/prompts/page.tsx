@@ -228,6 +228,15 @@ Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed
     title: "Hotel Getting Ready Selfie",
     prompt: `She takes a mirror selfie in a luxury hotel bathroom, holding a beige smartphone, lips slightly pursed, one arm crossed over her waist. She wears a white silk robe. Hair up in large velcro rollers. White under-eye patches on her face. Delicate heart pendant necklace, small pearl earrings. Skincare and serum bottles lined up on the marble sink counter beside her. Rolled white towels on a heated gold towel rail, glass shower visible. Warm wall sconce lighting, soft and bright. Half body mirror selfie. Luxury lifestyle editorial photography, ultra-realistic, 4K. Defined bold brows, glossy nude lips, blinding highlight on high cheekbones, long voluminous glossy blowout hair.`,
   },
+  {
+    id: 109,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00010.png-0yi6bu2RSlyC3DqJzVYwQ9WU3GoBUu.jpeg",
+    title: "Heart Mirror Vanity Close-up",
+    prompt: `Close-up shot of a pink heart-shaped handheld mirror held up by manicured hands with long nails, warm ambient light, dark moody background, luxury vanity editorial aesthetic, gold bracelets visible on wrist, ultra-realistic 4K editorial mood.
+
+Negative prompt: full face visible, text, watermark, blurry, cartoon, low quality`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
