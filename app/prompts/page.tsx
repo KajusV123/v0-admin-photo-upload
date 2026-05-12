@@ -183,6 +183,13 @@ const promptGallery = [
     prompt: "She is seated facing the camera in a professional glam studio, two makeup artists' hands working simultaneously — one applying blush with a large fluffy brush to her cheek, one lining her lips with a fine detail brush, a third hand holding a paddle hairbrush near her shoulder, direct soft studio light, neutral warm grey seamless backdrop, upper body framing, slightly low angle, sharp focus on face, ultra-realistic 4K editorial beauty campaign mood, behind-the-scenes luxury glam atmosphere. Outfit base color: black. Negative prompt: cartoonish, plastic skin, overexposed, flat lighting, single brush only, empty hands, blurry backdrop, full body, cluttered background, stiff expression, symmetrical pose.",
   },
   {
+    id: 23,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00026.png-w2ae17FJb0jjBDPqLtfWJ2a5masoWF.jpeg",
+    title: "Hair Rollers Morning Selfie",
+    prompt: "She is taking a selfie from slightly below eye level, large velcro hair rollers set throughout her hair secured with black clips, direct gaze into camera, confident neutral expression, standing in a walk-in closet with open white shelving units visible in background, natural daylight from a window behind her, soft overexposed background creating depth separation, upper body close-up framing, handheld selfie angle with slight upward tilt, ultra-realistic 4K candid editorial mood, raw morning energy, skin texture visible, no makeup look. Outfit base color: black. Negative prompt: cartoonish, plastic skin, studio lighting, flat background, hair down, no rollers, blurry face, overposed, symmetrical framing, artificial bokeh, stiff expression.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
