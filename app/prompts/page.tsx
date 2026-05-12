@@ -253,6 +253,15 @@ Negative prompt: full face visible, text, watermark, blurry, cartoon, low qualit
 
 Negative prompt: illustration, cartoon, blurry, low quality, empty background, outdoor, cold light, text overlay, stiff pose, staged look.`,
   },
+  {
+    id: 112,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00013.png-EA8qu2vPo36TT7qSe1wcWclq5Mu7B1.jpeg",
+    title: "Studio Getting Ready Editorial",
+    prompt: `She is sitting upright in a director's chair in a clean modern studio, hands resting composed in her lap, looking directly into the camera with a calm, serious, neutral expression. One makeup artist standing behind her to the side is working on her hair with both hands, clipping a section. Another hand from the right holds a large powder brush applying makeup to her cheek. Large round vanity mirror with bright bulb lights visible in the background. Clothing rack softly blurred behind. Bright clean white studio lighting, soft and even. Vertical framing, full torso shot. Polished, professional, editorial getting-ready mood. Ultra-realistic, 4K.
+
+Negative prompt: illustration, cartoon, blurry, low quality, outdoor, dark background, warm lighting, text overlay, smiling, casual setting, messy environment.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
