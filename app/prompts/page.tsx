@@ -237,6 +237,13 @@ Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed
 
 Negative prompt: full face visible, text, watermark, blurry, cartoon, low quality`,
   },
+  {
+    id: 110,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00011-oK5gJji6cqbJgkPQeDVkR6pbgsV1c8.png",
+    title: "Parisian Street Chanel Editorial",
+    prompt: `A waist-up, three-quarter angle shot captures a young adult Caucasian woman with long, sleek platinum blonde hair standing on a sunlit city street. She wears a fitted, rose pink and white boucle tweed dress with pearlescent buttons and a high neckline that has a crisp, tailored texture. Her left hand, which shows a pale pink manicure and diamond engagement ring, holds a pink, gold-accented Chanel compact mirror close to her face, while her right hand applies product to her cheek. She accessorizes with a white quilted Chanel bag boasting gold chain straps and logo medallions, and sparkling silver stud earrings. The background features an urban cityscape with stone buildings and a blurred sidewalk stretching into the distance, captured with a deep depth of field but with the subject in crisp focus. The scene is lit by soft, natural daylight providing even illumination and gentle, natural shadows, contributing to a pastel color palette dominated by blush, pale gold, white, and taupe gray. Taken with a modern digital camera, the image is high-resolution with smooth textures and fine detail, creating an elegant, aspirational, and fashion-forward mood.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
