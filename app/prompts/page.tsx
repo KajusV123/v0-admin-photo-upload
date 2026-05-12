@@ -1,11 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, useMemo, memo, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Copy, X, ArrowLeft, Send } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+
+// Number of items to load per batch for infinite scroll
+const ITEMS_PER_BATCH = 20
 
 // Cookie utilities
 const COOKIE_NAME = "prompt_bank_access"
@@ -967,6 +970,81 @@ Negative prompt: dark hair, brunette, wand inserted in tube, capped mascara, mes
   },
 ]
 
+// Optimized Gallery Item Component - memoized to prevent unnecessary re-renders
+const GalleryItem = memo(function GalleryItem({
+  item,
+  onClick,
+  priority = false,
+}: {
+  item: typeof promptGallery[0]
+  onClick: () => void
+  priority?: boolean
+}) {
+  const [isInView, setIsInView] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const itemRef = useRef<HTMLDivElement>(null)
+
+  // Use Intersection Observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      {
+        rootMargin: '100px', // Start loading 100px before entering viewport
+        threshold: 0.01,
+      }
+    )
+
+    if (itemRef.current) {
+      observer.observe(itemRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={itemRef}
+      onClick={onClick}
+      className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-2xl bg-white/5"
+    >
+      {(isInView || priority) && (
+        <>
+          <Image
+            src={item.image}
+            alt={item.title}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            className={`object-cover transition-all duration-500 group-hover:scale-110 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => setImageLoaded(true)}
+            loading={priority ? "eager" : "lazy"}
+            placeholder="empty"
+          />
+          {!imageLoaded && (
+            <div className="absolute inset-0 animate-pulse bg-white/10" />
+          )}
+        </>
+      )}
+      {!isInView && !priority && (
+        <div className="absolute inset-0 animate-pulse bg-white/5" />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
+        <span className="mb-1 inline-block rounded-full bg-[#9E3248]/30 px-2 py-0.5 text-xs text-[#C74D64]">
+          {item.category}
+        </span>
+        <h3 className="text-sm font-medium text-white">{item.title}</h3>
+      </div>
+    </div>
+  )
+})
+
 // Prompt Modal Component
 function PromptModal({ 
   item, 
@@ -1078,9 +1156,11 @@ export default function PromptsPage() {
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState("All")
-const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
+  const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
   const [suggestion, setSuggestion] = useState("")
   const [suggestionSubmitted, setSuggestionSubmitted] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_BATCH)
+  const loadMoreRef = useRef<HTMLDivElement>(null)
   
   // Check authorization on mount - must run client-side only
   useEffect(() => {
@@ -1099,9 +1179,45 @@ const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>
     checkAuth()
   }, [router])
 
-const filteredGallery = selectedCategory === "All"
-  ? promptGallery
-  : promptGallery.filter(item => item.category === selectedCategory)
+  // Memoize filtered gallery to prevent recalculation on every render
+  const filteredGallery = useMemo(() => {
+    return selectedCategory === "All"
+      ? promptGallery
+      : promptGallery.filter(item => item.category === selectedCategory)
+  }, [selectedCategory])
+
+  // Reset visible count when category changes
+  useEffect(() => {
+    setVisibleCount(ITEMS_PER_BATCH)
+  }, [selectedCategory])
+
+  // Infinite scroll - load more items when reaching the bottom
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && visibleCount < filteredGallery.length) {
+          setVisibleCount(prev => Math.min(prev + ITEMS_PER_BATCH, filteredGallery.length))
+        }
+      },
+      { rootMargin: '200px', threshold: 0.1 }
+    )
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [visibleCount, filteredGallery.length])
+
+  // Memoize visible items
+  const visibleItems = useMemo(() => {
+    return filteredGallery.slice(0, visibleCount)
+  }, [filteredGallery, visibleCount])
+
+  // Memoize the item click handler
+  const handleItemClick = useCallback((item: typeof promptGallery[0]) => {
+    setSelectedItem(item)
+  }, [])
 
   const handleSuggestionSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -1220,50 +1336,32 @@ const filteredGallery = selectedCategory === "All"
             ))}
           </motion.div>
 
-          {/* Gallery Grid */}
-          <motion.div
-            layout
-            className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredGallery.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.02 }}
-                  onClick={() => setSelectedItem(item)}
-                  className="group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-2xl bg-white/5"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="absolute bottom-0 left-0 right-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
-                    <span className="mb-1 inline-block rounded-full bg-[#9E3248]/30 px-2 py-0.5 text-xs text-[#C74D64]">
-                      {item.category}
-                    </span>
-                    <h3 className="text-sm font-medium text-white">{item.title}</h3>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          {/* Gallery Grid - Optimized with lazy loading and virtualization */}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5">
+            {visibleItems.map((item, index) => (
+              <GalleryItem
+                key={item.id}
+                item={item}
+                onClick={() => handleItemClick(item)}
+                priority={index < 10} // First 10 items load eagerly
+              />
+            ))}
+          </div>
+
+          {/* Load More Trigger for Infinite Scroll */}
+          {visibleCount < filteredGallery.length && (
+            <div
+              ref={loadMoreRef}
+              className="flex justify-center py-8"
+            >
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#9E3248]/30 border-t-[#9E3248]" />
+            </div>
+          )}
 
           {/* Prompt Count */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-8 text-center text-sm text-white/40"
-          >
-            {filteredGallery.length} prompts available
-          </motion.p>
+          <p className="mt-8 text-center text-sm text-white/40">
+            Showing {visibleItems.length} of {filteredGallery.length} prompts
+          </p>
 
           {/* Suggestion Section */}
           <div className="mx-auto mt-12 md:mt-20 w-full max-w-xl border-t border-[#9E3248]/25 pt-8 md:pt-12 text-center px-2">
