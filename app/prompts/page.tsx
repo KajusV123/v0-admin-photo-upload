@@ -271,6 +271,15 @@ Negative prompt: illustration, cartoon, blurry, low quality, outdoor, dark backg
 
 Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light, serious expression, empty background, text overlay, staged look.`,
   },
+  {
+    id: 114,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00015.png-xyKiYCgVTZXmCEfBn3jaRPw132BwM7.jpeg",
+    title: "Lip Gloss Beauty Campaign",
+    prompt: `She is facing the camera in an extreme close-up portrait, applying lip gloss with a clear wand applicator directly to her lips, hand visible holding the gloss tube at the bottom of the frame. Her gaze is directed straight into the lens, intense and focused. Hair sleek and pulled back with two small butterfly clips on either side. Skin intensely glowing with heavy highlight on cheekbones and nose bridge, warm bronzed tone. Smoky warm brown eye makeup with full lashes. Lips full and glossy, freshly coated. A delicate gold chain necklace visible at the neck. Bright natural daylight from a window hitting her face from the side creating strong skin luminosity. Vertical framing, extreme face close-up, chin to top of head filling most of the frame. Ultra-realistic, 4K, beauty campaign macro mood.
+
+Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, low quality, dark lighting, artificial light, text overlay, smiling, looking away.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
