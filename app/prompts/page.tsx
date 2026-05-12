@@ -262,6 +262,15 @@ Negative prompt: illustration, cartoon, blurry, low quality, empty background, o
 
 Negative prompt: illustration, cartoon, blurry, low quality, outdoor, dark background, warm lighting, text overlay, smiling, casual setting, messy environment.`,
   },
+  {
+    id: 113,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00014.png-L4AVUuVvUUTGtACJAZlLAtc2TWiGHS.jpeg",
+    title: "Backstage Candid Laughing",
+    prompt: `She is sitting in a director's chair in a glamorous backstage dressing room, laughing openly with a wide genuine smile, mouth open, eyes sparkling with joy. Two pairs of hands work around her simultaneously — one pair from behind adjusting her hair on both sides of her head, another hand from the right applying a fine lip brush to the corner of her mouth. She is completely relaxed and joyful despite all the activity around her. Large vanity mirror with round bulb lights fills the background, reflecting the busy backstage crowd in black. Warm golden tungsten vanity lighting. Vertical framing, three-quarter shot. Candid, energetic, glamorous backstage mood. Ultra-realistic, 4K, editorial reportage style.
+
+Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light, serious expression, empty background, text overlay, staged look.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
