@@ -773,6 +773,14 @@ function PromptModal({
 }) {
   const [copied, setCopied] = useState(false)
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [])
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(item.prompt)
     setCopied(true)
