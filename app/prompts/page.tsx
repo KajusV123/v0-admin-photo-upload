@@ -191,6 +191,13 @@ Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaa
     title: "Luxury Hotel Spa Editorial",
     prompt: `Luxury hotel spa editorial shot, she reclines in a white marble bathtub filled with thick white foam bubbles, arms resting over the tub edge, chin resting lightly on her hands, gaze directed sideways with dreamy soft expression, lips slightly parted, golden blonde hair pulled up in a messy high bun with a dark brown scrunchie, gold and marble print hydrogel under-eye patches applied below both eyes, delicate gold chain bracelet, thin gold ring, white square manicure, full glam natural makeup — defined brows, heavy lashes, glossy nude lips, blinding highlight, luxury five-star hotel bathroom interior, white and gold veined marble walls and surfaces, gold brass wall hooks with white hotel robe hanging, gold framed full-length mirror, luxury perfume bottles and gold skincare products on marble shelf, rolled white towels stacked, soft warm ambient lighting, hotel spa self-care editorial photography, hyperrealistic skin texture, dewy glowing skin catching warm light, foam bubbles hyperrealistic detail, ultra sharp marble and product detail, 4K hyperrealistic photography`,
   },
+  {
+    id: 104,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00005-K3KeHGRf1nSaSfjB3g8Tc83z9Z9tpj.png",
+    title: "Luxury Makeup Routine Selfie",
+    prompt: `She takes a mirror selfie in a luxury bathroom, holding a pink fluffy teddy case iPhone toward mirror, other hand applying lip gloss with a wand to her pursed lips, lips puckered in a kiss applying gloss, direct gaze into mirror, platinum blonde straight hair falling loose, pink padded quilted spa headband, transparent hydrogel under-eye patches applied below both eyes, wearing a lavender lilac fluffy soft oversized bath robe falling off one shoulder, diamond tennis choker necklace, gold Rolex Datejust watch, Cartier love bracelet gold, diamond tennis bracelet stacked, gold rings on multiple fingers, nude square manicure, luxury marble vanity counter in foreground — open black Tom Ford makeup compact, makeup brush set laid out, black zip makeup bag, gold lid skincare cream jar, white skincare products, dark grey tiled bathroom interior visible, soft warm ambient vanity lighting, getting ready beauty routine editorial photography, hyperrealistic skin texture, glossy under-eye patches catching light, ultra sharp jewelry and makeup product detail, 4K hyperrealistic photography`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
