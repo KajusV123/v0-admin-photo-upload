@@ -207,6 +207,13 @@ Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaa
 
 Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed, cartoon, CGI, unnatural skin, stiff pose, flat hair, dull hair`,
   },
+  {
+    id: 106,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00007.png-Z8YsRBAjVNJcQgYIGoU1hF361wlrhP.jpeg",
+    title: "Serene Spa Bath Editorial",
+    prompt: `She reclines inside a large freestanding oval white matte bathtub filled with thick white foam bubbles, photographed from a slight elevated angle showing the full tub. She wears a white towel twisted and wrapped around her head turban-style with all her hair tucked inside. Behind the tub a brushed silver floor-mounted freestanding tap. On the windowsill in the background: two Glov skincare bottles, a small yellow cream jar, a white Diptyque Figuier candle, and a black Diptyque candle. A Missoni multicolour zigzag chevron bath rug in warm browns, beige, black and blue tones lies on the floor in front of the tub. Warm natural light filters through white slatted blinds on the window behind. The bathroom walls and floor are warm greige tones. Ultra-realistic 4K, editorial luxury lifestyle, serene and intimate spa mood, soft natural light, no harsh shadows.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
