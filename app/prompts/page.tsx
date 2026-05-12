@@ -289,6 +289,15 @@ Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, l
 
 Negative prompt: illustration, cartoon, deformed hands, extra fingers, blurry, low quality, dark lighting, artificial light, text overlay, smiling, looking directly at camera, busy background.`,
   },
+  {
+    id: 116,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00017.png-fJRQksqUwkTdkkak7GtojGCOcwPNDr.jpeg",
+    title: "On-Set Editorial Meta Shot",
+    prompt: `She is standing on a photo shoot set, seen in profile and three-quarter view, looking away from the camera off to the side with a calm, composed expression. In the foreground a professional camera on a rig is partially visible with a small external monitor screen attached, showing her face displayed on the screen as if she is being filmed. Soft warm neutral grey studio backdrop behind her. Hair long and wavy falling over one shoulder. Glowing skin, soft glamour makeup. Warm directional studio light from the front creating gentle shadows. Vertical framing, chest-up shot with camera and monitor visible in the lower foreground. Meta on-set editorial mood — she and her image on screen simultaneously. Ultra-realistic, 4K.
+
+Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light, text overlay, smiling, looking at camera, busy background, multiple people.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
