@@ -184,6 +184,13 @@ Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaa
     title: "Luxury Getting Ready Editorial",
     prompt: `She stands in a dark luxury interior hallway, holding a pink heart-shaped handheld mirror raised at face level, gaze directed sideways off camera, lips slightly parted, soft sultry expression, platinum blonde hair styled in a sleek high French twist updo, brown cat-eye sunglasses pushed up on head, wearing a blush pink sheer mesh bustier corset mini dress, diamond tennis choker necklace, long diamond tennis pendant necklace layered, large pink oval gemstone cocktail ring, pink oval drop earrings with diamond halo, gold Rolex Datejust watch, diamond tennis bracelet, stacked gold bracelets, blinding highlight on cheekbones and nose, full glam makeup — heavy lashes, defined brows, glossy nude lips, bronzed sculpted contour, dark moody luxury apartment interior background, dark grey walls, soft warm ambient lighting, shallow depth of field, luxury nightout getting ready editorial photography, hyperrealistic skin texture, pores visible, subsurface scattering, ultra sharp jewelry and mirror detail, 4K hyperrealistic photography`,
   },
+  {
+    id: 103,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00004-RrHyUPBfSwGM3oAkxrzd6CPKdUr9S2.png",
+    title: "Luxury Hotel Spa Editorial",
+    prompt: `Luxury hotel spa editorial shot, she reclines in a white marble bathtub filled with thick white foam bubbles, arms resting over the tub edge, chin resting lightly on her hands, gaze directed sideways with dreamy soft expression, lips slightly parted, golden blonde hair pulled up in a messy high bun with a dark brown scrunchie, gold and marble print hydrogel under-eye patches applied below both eyes, delicate gold chain bracelet, thin gold ring, white square manicure, full glam natural makeup — defined brows, heavy lashes, glossy nude lips, blinding highlight, luxury five-star hotel bathroom interior, white and gold veined marble walls and surfaces, gold brass wall hooks with white hotel robe hanging, gold framed full-length mirror, luxury perfume bottles and gold skincare products on marble shelf, rolled white towels stacked, soft warm ambient lighting, hotel spa self-care editorial photography, hyperrealistic skin texture, dewy glowing skin catching warm light, foam bubbles hyperrealistic detail, ultra sharp marble and product detail, 4K hyperrealistic photography`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
