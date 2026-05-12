@@ -198,6 +198,15 @@ Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaa
     title: "Luxury Makeup Routine Selfie",
     prompt: `She takes a mirror selfie in a luxury bathroom, holding a pink fluffy teddy case iPhone toward mirror, other hand applying lip gloss with a wand to her pursed lips, lips puckered in a kiss applying gloss, direct gaze into mirror, platinum blonde straight hair falling loose, pink padded quilted spa headband, transparent hydrogel under-eye patches applied below both eyes, wearing a lavender lilac fluffy soft oversized bath robe falling off one shoulder, diamond tennis choker necklace, gold Rolex Datejust watch, Cartier love bracelet gold, diamond tennis bracelet stacked, gold rings on multiple fingers, nude square manicure, luxury marble vanity counter in foreground — open black Tom Ford makeup compact, makeup brush set laid out, black zip makeup bag, gold lid skincare cream jar, white skincare products, dark grey tiled bathroom interior visible, soft warm ambient vanity lighting, getting ready beauty routine editorial photography, hyperrealistic skin texture, glossy under-eye patches catching light, ultra sharp jewelry and makeup product detail, 4K hyperrealistic photography`,
   },
+  {
+    id: 105,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00006.png-VG0cADyGjnP6Bv7vz61aAk4yFoMnQT.jpeg",
+    title: "Cozy Morning Rhode Lip Tint",
+    prompt: `Extreme close-up shot from above, she is lying down. The frame fills with her baby pink oversized crewneck sweatshirt featuring a small dark red embroidered bow and heart detail on the sleeve cuff. Her long dark wavy hair fans across the lower half of the frame. In the upper right corner her face is partially visible — only her glossy full lips and lower nose showing beneath a white silicone face mask. She holds a dark brown Rhode Peptide Lip Tint pencil with the dark brown "rhode" branded packaging visible, pressing it close to her lips. Her nails are short and natural pink. Shot from directly above, tight intimate crop, soft diffused indoor light, ultra-realistic 4K, cozy morning beauty editorial mood.
+
+Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed, cartoon, CGI, unnatural skin, stiff pose, flat hair, dull hair`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
