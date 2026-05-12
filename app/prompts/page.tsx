@@ -825,8 +825,8 @@ function PromptModal({
             <h3 className="mt-2 md:mt-3 text-base md:text-xl font-semibold text-white">{item.title}</h3>
             
             {/* Prompt box */}
-            <div className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4">
-              <p className="text-[11px] md:text-sm leading-relaxed text-white/70">{item.prompt}</p>
+            <div className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4 max-h-[200px] md:max-h-[300px] overflow-y-auto overscroll-contain">
+              <p className="text-[11px] md:text-sm leading-relaxed text-white/70 whitespace-pre-wrap">{item.prompt}</p>
             </div>
           </div>
 
