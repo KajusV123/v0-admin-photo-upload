@@ -148,6 +148,13 @@ const promptGallery = [
     prompt: "Extreme close-up glossy lips portrait, high-shine lip gloss, plump hydrated lips, lip care aesthetic, beauty detail macro photography, cosmetics product shot style, mirror-like reflection",
   },
   {
+    id: 18,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00021.png-IYAVYlEmoPFO4qfcy0JdrAeYRt9ntW.jpeg",
+    title: "GHD Hair Styling Luxury",
+    prompt: "She is standing in a grand marble luxury bathroom, medium close-up framing from chest up. She runs a GHD Gold hair straightener — pale pink and black body with rose gold ghd logo detail — slowly through a section of her long golden blonde hair, gliding it downward with a smooth elegant motion. Her head is slightly tilted to one side to give access to the hair section being straightened. Expression calm and focused, lips softly closed. Her makeup is flawless — sculpted brows, smoky eye, defined cheekbones, glossy lips. Warm golden wall sconces on both sides cast soft balanced light. Plush pink robe. Ultra-realistic 4K editorial mood, luxury hair styling atmosphere, cinematic soft light. Negative prompt: dark hair, brunette, curly hair, messy hair, wrong tool, cartoonish, plastic skin, distorted hands, distorted straightener, harsh shadows, flat lighting, full body, low resolution, text artifacts, watermark.",
+  },
+  {
     id: 100,
     category: "Beauty",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00001%20%281%29.png-z4KpRnKMnf7yLWYpZtQmTH1crls7j4.jpeg",
