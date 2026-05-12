@@ -316,6 +316,15 @@ Negative prompt: cartoonish, plastic skin, harsh shadows, flat lighting, full bo
 
 Negative prompt: cartoonish, plastic skin, distorted hands, distorted compact, wrong logo, harsh shadows, flat lighting, full body, wide shot, low resolution, text artifacts, watermark.`,
   },
+  {
+    id: 119,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00020.png-2OC818h6lG374rz64jb0OLjtoD7WdI.jpeg",
+    title: "Gucci Mascara Luxury Application",
+    prompt: `She is standing in a grand marble luxury bathroom, tight medium close-up framing from bust up, face prominently centered. In one hand she holds the Gucci mascara tube — pale pink cylinder with gold ribbed cap, "Gucci" written in gold lettering — open without the wand. With the other hand she brings the black mascara wand close to her upper lashes, applying it with a precise upward stroke, mouth slightly open in that natural mascara-application expression. Her makeup is already fully done — sculpted brows, smoky eye, flushed cheeks, glossy lips. Her long golden blonde hair is perfectly sleek, straight and glossy, falling immaculate over her shoulders. Warm golden wall sconces on both sides cast soft balanced light. Plush pink robe. Ultra-realistic 4K editorial mood, luxury makeup ritual atmosphere, cinematic soft light, beauty close-up framing.
+
+Negative prompt: dark hair, brunette, wand inserted in tube, capped mascara, messy hair, no makeup, cartoonish, plastic skin, distorted hands, harsh shadows, flat lighting, full body, low resolution, text artifacts, watermark.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
