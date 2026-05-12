@@ -214,6 +214,13 @@ Negative prompt: blurry, distorted face, extra fingers, bad anatomy, overexposed
     title: "Serene Spa Bath Editorial",
     prompt: `She reclines inside a large freestanding oval white matte bathtub filled with thick white foam bubbles, photographed from a slight elevated angle showing the full tub. She wears a white towel twisted and wrapped around her head turban-style with all her hair tucked inside. Behind the tub a brushed silver floor-mounted freestanding tap. On the windowsill in the background: two Glov skincare bottles, a small yellow cream jar, a white Diptyque Figuier candle, and a black Diptyque candle. A Missoni multicolour zigzag chevron bath rug in warm browns, beige, black and blue tones lies on the floor in front of the tub. Warm natural light filters through white slatted blinds on the window behind. The bathroom walls and floor are warm greige tones. Ultra-realistic 4K, editorial luxury lifestyle, serene and intimate spa mood, soft natural light, no harsh shadows.`,
   },
+  {
+    id: 107,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00008.png-9t1fNwoyt5p5jQA19wB2SqSElUlJKx.jpeg",
+    title: "Luxury Beauty Flatlay",
+    prompt: `A styled beauty flatlay arranged on a marble bathroom countertop with grey veined marble wall behind. A cream quilted makeup pouch with small pink rose print sits center background. In front of it: a pink CAIA "That Dewy Look" spray bottle with gold cap, a small Clinique white tube, two Clinique glass cream jars with beige lids, and a round gold decorative candle tin with pink floral embossed lid. In the foreground an open white lined notebook lies flat showing several pink lipstick kiss marks pressed onto the page with a small "x" written in pink, and resting on the notebook a pink and gold handheld face sculpting roller tool. A brushed gold tap fixture is partially visible on the right edge. Shot from directly above, soft diffused natural light, ultra-realistic 4K, editorial beauty lifestyle aesthetic, clean and feminine luxury mood.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
