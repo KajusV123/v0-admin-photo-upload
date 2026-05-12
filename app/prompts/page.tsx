@@ -244,6 +244,15 @@ Negative prompt: full face visible, text, watermark, blurry, cartoon, low qualit
     title: "Parisian Street Chanel Editorial",
     prompt: `A waist-up, three-quarter angle shot captures a young adult Caucasian woman with long, sleek platinum blonde hair standing on a sunlit city street. She wears a fitted, rose pink and white boucle tweed dress with pearlescent buttons and a high neckline that has a crisp, tailored texture. Her left hand, which shows a pale pink manicure and diamond engagement ring, holds a pink, gold-accented Chanel compact mirror close to her face, while her right hand applies product to her cheek. She accessorizes with a white quilted Chanel bag boasting gold chain straps and logo medallions, and sparkling silver stud earrings. The background features an urban cityscape with stone buildings and a blurred sidewalk stretching into the distance, captured with a deep depth of field but with the subject in crisp focus. The scene is lit by soft, natural daylight providing even illumination and gentle, natural shadows, contributing to a pastel color palette dominated by blush, pale gold, white, and taupe gray. Taken with a modern digital camera, the image is high-resolution with smooth textures and fine detail, creating an elegant, aspirational, and fashion-forward mood.`,
   },
+  {
+    id: 111,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00012.png-cQYpLi6Qyp4XSPdJHecy5n3UbYlt3J.jpeg",
+    title: "Fashion Week Backstage",
+    prompt: `She is sitting in a director's chair in a busy fashion show backstage area, wearing a white fluffy robe loosely draped off one shoulder. One makeup artist's hand is applying lip gloss to her lips from the side, another hand holds a professional hair dryer blowing her hair from the other side. A third person behind her holds a makeup brush near her face. She looks directly into the camera with a calm, composed, slightly pouty expression — completely unbothered by all the hands around her. The background is full of activity — other models, makeup stations, bright vanity lights, brushes and products scattered on tables. Warm tungsten backstage lighting, slightly chaotic energy around her but she is perfectly still at the center. Vertical framing, three-quarter shot. Glamorous backstage fashion week mood. Ultra-realistic, 4K, editorial reportage style.
+
+Negative prompt: illustration, cartoon, blurry, low quality, empty background, outdoor, cold light, text overlay, stiff pose, staged look.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
