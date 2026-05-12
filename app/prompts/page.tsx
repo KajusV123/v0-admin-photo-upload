@@ -177,6 +177,13 @@ Technical: 8K ultra-high detail, luxury beauty editorial, Vogue / Harper's Bazaa
     title: "Wellness Morning Routine",
     prompt: `She stands against a dark olive-grey wall, thick white clay face mask applied all over her face, one hand holding a clear glass of bright green matcha juice up to her lips drinking it, other hand raised making a peace sign, hair pulled back in a messy low bun, wearing a white oversized cropped graphic t-shirt with collegiate text print, light grey baggy sweatpants, toned abs visible, multiple silver ear studs and pearl drop earrings, silver link bracelet watch on wrist, soft natural side light casting subtle shadows, clean minimal background, effortless cool girl aesthetic, candid wellness morning routine vibe, hyperrealistic skin texture under clay mask, matte clay mask texture with micro cracks visible, ultra sharp detail, 4K hyperrealistic photography`,
   },
+  {
+    id: 102,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00003-EPfyW0RKpQza4K5rZj0RQGUKkpK8YT.png",
+    title: "Luxury Getting Ready Editorial",
+    prompt: `She stands in a dark luxury interior hallway, holding a pink heart-shaped handheld mirror raised at face level, gaze directed sideways off camera, lips slightly parted, soft sultry expression, platinum blonde hair styled in a sleek high French twist updo, brown cat-eye sunglasses pushed up on head, wearing a blush pink sheer mesh bustier corset mini dress, diamond tennis choker necklace, long diamond tennis pendant necklace layered, large pink oval gemstone cocktail ring, pink oval drop earrings with diamond halo, gold Rolex Datejust watch, diamond tennis bracelet, stacked gold bracelets, blinding highlight on cheekbones and nose, full glam makeup — heavy lashes, defined brows, glossy nude lips, bronzed sculpted contour, dark moody luxury apartment interior background, dark grey walls, soft warm ambient lighting, shallow depth of field, luxury nightout getting ready editorial photography, hyperrealistic skin texture, pores visible, subsurface scattering, ultra sharp jewelry and mirror detail, 4K hyperrealistic photography`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
