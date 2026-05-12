@@ -307,6 +307,15 @@ Negative prompt: illustration, cartoon, blurry, low quality, outdoor, cold light
 
 Negative prompt: cartoonish, plastic skin, harsh shadows, flat lighting, full body, wide shot, low resolution, text, watermark.`,
   },
+  {
+    id: 118,
+    category: "Beauty",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image00019.png-6KjD369UcCoKVzTKojxvVXWzueFeZy.jpeg",
+    title: "YSL Blush Luxury Routine",
+    prompt: `She is standing in a grand marble luxury bathroom, medium close-up framing from chest up. In one hand she holds an open YSL blush compact — round black case with gold trim and quilted pink leather lid, YSL logo in gold visible — displayed toward the camera. With the other hand she gently sweeps a fluffy powder brush across her cheekbone with a soft, elegant motion. She gazes slightly off-camera, lips softly parted, expression relaxed and glamorous. Warm golden wall sconces on both sides cast soft balanced light on her face. Plush pink robe loosely draped over her shoulders. Ultra-realistic 4K editorial mood, intimate luxury makeup ritual atmosphere, cinematic soft light.
+
+Negative prompt: cartoonish, plastic skin, distorted hands, distorted compact, wrong logo, harsh shadows, flat lighting, full body, wide shot, low resolution, text artifacts, watermark.`,
+  },
 
   // FASHION CATEGORY (17 prompts)
   {
