@@ -802,6 +802,7 @@ function PromptModal({
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
         className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-t-3xl md:rounded-3xl bg-[#141414] border border-[#9E3248]/25 max-h-[90vh] md:max-h-[70vh] md:flex-row"
         onClick={(e) => e.stopPropagation()}
+        onWheel={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
@@ -833,7 +834,10 @@ function PromptModal({
             <h3 className="mt-2 md:mt-3 text-base md:text-xl font-semibold text-white">{item.title}</h3>
             
             {/* Prompt box */}
-            <div className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4 max-h-[200px] md:max-h-[300px] overflow-y-auto overscroll-contain">
+            <div 
+              className="mt-3 md:mt-4 rounded-xl bg-white/5 p-3 md:p-4 max-h-[200px] md:max-h-[300px] overflow-y-auto"
+              onWheel={(e) => e.stopPropagation()}
+            >
               <p className="text-[11px] md:text-sm leading-relaxed text-white/70 whitespace-pre-wrap">{item.prompt}</p>
             </div>
           </div>
