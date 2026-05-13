@@ -140,10 +140,10 @@ export default function AdminPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    // Check file size on client side first (Vercel serverless has ~4.5MB body limit)
-    const maxSize = 4.5 * 1024 * 1024
+    // Check file size on client side first (max 30MB)
+    const maxSize = 30 * 1024 * 1024
     if (file.size > maxSize) {
-      showNotification("error", "File too large. Maximum size is 4.5MB. Please compress the image first.")
+      showNotification("error", "File too large. Maximum size is 30MB.")
       return
     }
 
@@ -508,7 +508,7 @@ export default function AdminPage() {
                           <ImageIcon className="mb-2 h-10 w-10 text-white/40" />
                           <span className="text-sm text-white/60">Click to upload</span>
                           <span className="mt-1 text-xs text-white/40">
-                            JPEG, PNG, WebP, GIF (max 4.5MB)
+                            JPEG, PNG, WebP, GIF (max 30MB)
                           </span>
                         </label>
                       )}
