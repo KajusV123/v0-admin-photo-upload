@@ -44,6 +44,7 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [password, setPassword] = useState("")
+  const [authToken, setAuthToken] = useState("") // Store password for API calls
   const [authError, setAuthError] = useState("")
   const [prompts, setPrompts] = useState<Prompt[]>([])
   const [isAddingPrompt, setIsAddingPrompt] = useState(false)
@@ -93,6 +94,7 @@ export default function AdminPage() {
 
       if (res.ok) {
         setIsAuthenticated(true)
+        setAuthToken(password) // Store for API calls
         setPassword("")
         fetchPrompts()
       } else {
@@ -145,6 +147,18 @@ export default function AdminPage() {
       return
     }
 
+    // If no auth token stored, prompt for password
+    let token = authToken
+    if (!token) {
+      const pwd = window.prompt("Please enter your admin password to upload:")
+      if (!pwd) {
+        showNotification("error", "Password required for upload")
+        return
+      }
+      token = pwd
+      setAuthToken(pwd)
+    }
+
     setUploadProgress(true)
     
     // Show preview immediately
@@ -155,6 +169,7 @@ export default function AdminPage() {
     try {
       const formData = new FormData()
       formData.append("file", file)
+      formData.append("auth", token)
 
       const res = await fetch("/api/admin/upload", {
         method: "POST",
@@ -177,6 +192,10 @@ export default function AdminPage() {
         setNewPrompt(prev => ({ ...prev, image_url: data.url }))
         showNotification("success", "Image uploaded successfully")
       } else {
+        // If unauthorized, clear stored token so user is prompted again
+        if (res.status === 401) {
+          setAuthToken("")
+        }
         showNotification("error", data.error || "Upload failed")
         setPreviewImage(null)
       }
