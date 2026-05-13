@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server"
-import { cookies } from "next/headers"
 import { put, del } from "@vercel/blob"
 
 // Configure route to handle large file uploads
@@ -8,10 +7,16 @@ export const dynamic = "force-dynamic"
 
 const ADMIN_COOKIE_NAME = "admin_session"
 
-async function isAuthenticated() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get(ADMIN_COOKIE_NAME)
-  return session?.value === "authenticated"
+function isAuthenticated(request: NextRequest): boolean {
+  // Read cookie directly from request headers to avoid issues with FormData requests
+  const cookieHeader = request.headers.get("cookie") || ""
+  const cookies = cookieHeader.split(";").reduce((acc, cookie) => {
+    const [key, value] = cookie.trim().split("=")
+    if (key && value) acc[key] = value
+    return acc
+  }, {} as Record<string, string>)
+  
+  return cookies[ADMIN_COOKIE_NAME] === "authenticated"
 }
 
 // POST - Upload an image
@@ -19,8 +24,8 @@ export async function POST(request: NextRequest) {
   console.log("[v0] Upload route called")
   
   try {
-    // Check authentication
-    const isAuth = await isAuthenticated()
+    // Check authentication from request cookies
+    const isAuth = isAuthenticated(request)
     console.log("[v0] Auth check result:", isAuth)
     
     if (!isAuth) {
@@ -92,7 +97,7 @@ export async function POST(request: NextRequest) {
 // DELETE - Delete an image from blob storage
 export async function DELETE(request: NextRequest) {
   try {
-    if (!(await isAuthenticated())) {
+    if (!isAuthenticated(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
