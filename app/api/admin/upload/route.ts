@@ -59,12 +59,16 @@ export async function POST(request: NextRequest) {
     const extension = file.name.split(".").pop() || "jpg"
     const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
 
-    // Upload to Vercel Blob
+    // Upload to Vercel Blob (private store)
     const blob = await put(filename, file, {
-      access: "public",
+      access: "private",
     })
 
-    return NextResponse.json({ url: blob.url })
+    // Return the pathname for use with delivery route
+    return NextResponse.json({ 
+      url: `/api/image?path=${encodeURIComponent(blob.pathname)}`,
+      pathname: blob.pathname 
+    })
   } catch (error) {
     console.error("Upload error:", error)
     const errorMessage = error instanceof Error ? error.message : "Upload failed"
