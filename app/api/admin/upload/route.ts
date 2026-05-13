@@ -37,11 +37,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate file size (max 4.5MB for serverless)
-    const maxSize = 4.5 * 1024 * 1024
+    // Validate file size (max 30MB)
+    const maxSize = 30 * 1024 * 1024
     if (file.size > maxSize) {
       return NextResponse.json(
-        { error: "File too large. Maximum size is 4.5MB" },
+        { error: "File too large. Maximum size is 30MB" },
         { status: 400 }
       )
     }
