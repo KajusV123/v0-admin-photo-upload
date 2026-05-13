@@ -16,7 +16,7 @@ export async function GET() {
     const supabase = await createClient()
     
     const { data: prompts, error } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .select("*")
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: false })
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     const supabase = await createClient()
 
     const { data, error } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .insert({
         category,
         image_url,
@@ -95,7 +95,7 @@ export async function PUT(request: NextRequest) {
     if (sort_order !== undefined) updateData.sort_order = sort_order
 
     const { data, error } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .update(updateData)
       .eq("id", id)
       .select()
@@ -130,7 +130,7 @@ export async function DELETE(request: NextRequest) {
     const supabase = await createClient()
 
     const { error } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .delete()
       .eq("id", id)
 

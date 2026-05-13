@@ -67,7 +67,7 @@ export async function POST() {
 
     // Check how many prompts already exist
     const { count: existingCount } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .select("*", { count: "exact", head: true })
 
     if (existingCount && existingCount > 0) {
@@ -85,7 +85,7 @@ export async function POST() {
     }))
 
     const { data, error } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .insert(promptsToInsert)
       .select()
 
@@ -113,7 +113,7 @@ export async function GET() {
     const supabase = await createClient()
 
     const { count } = await supabase
-      .from("prompts")
+      .from("gallery_images")
       .select("*", { count: "exact", head: true })
 
     return NextResponse.json({
