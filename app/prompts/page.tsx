@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, memo, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Copy, X, ArrowLeft, Send } from "lucide-react"
+import { Check, Copy, X, ArrowLeft, Send, Loader2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -10,6 +10,26 @@ import { useRouter } from "next/navigation"
 // Number of items to load per batch for infinite scroll
 // Desktop shows 5 columns, so load enough to fill multiple rows
 const ITEMS_PER_BATCH = 30
+
+// Type for prompt data from database
+interface PromptItem {
+  id: string
+  category: string
+  image_url: string
+  title: string
+  prompt: string
+  sort_order: number
+  created_at: string
+}
+
+// Legacy type for hardcoded data (for fallback)
+interface LegacyPromptItem {
+  id: number
+  category: string
+  image: string
+  title: string
+  prompt: string
+}
 
 // Cookie utilities
 const COOKIE_NAME = "prompt_bank_access"
@@ -971,13 +991,22 @@ Negative prompt: dark hair, brunette, wand inserted in tube, capped mascara, mes
   },
 ]
 
+// Unified gallery item type that works with both database and legacy data
+type GalleryItemData = {
+  id: string | number
+  category: string
+  image: string
+  title: string
+  prompt: string
+}
+
 // Optimized Gallery Item Component - memoized with GPU-accelerated animations
 const GalleryItem = memo(function GalleryItem({
   item,
   onClick,
   priority = false,
 }: {
-  item: typeof promptGallery[0]
+  item: GalleryItemData
   onClick: () => void
   priority?: boolean
 }) {
@@ -1019,7 +1048,7 @@ function PromptModal({
   item, 
   onClose 
 }: { 
-  item: typeof promptGallery[0]
+  item: GalleryItemData
   onClose: () => void 
 }) {
   const [copied, setCopied] = useState(false)
@@ -1124,12 +1153,66 @@ export default function PromptsPage() {
   const router = useRouter()
   const [isAuthorized, setIsAuthorized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingPrompts, setIsLoadingPrompts] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [selectedItem, setSelectedItem] = useState<typeof promptGallery[0] | null>(null)
+  const [selectedItem, setSelectedItem] = useState<GalleryItemData | null>(null)
   const [suggestion, setSuggestion] = useState("")
   const [suggestionSubmitted, setSuggestionSubmitted] = useState(false)
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_BATCH)
+  const [galleryData, setGalleryData] = useState<GalleryItemData[]>([])
+  const [availableCategories, setAvailableCategories] = useState<string[]>(["All"])
   const loadMoreRef = useRef<HTMLDivElement>(null)
+
+  // Fetch prompts from database
+  const fetchPrompts = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin/prompts")
+      if (res.ok) {
+        const data = await res.json()
+        const prompts: PromptItem[] = data.prompts || []
+        
+        // Transform database format to gallery format
+        const transformedData: GalleryItemData[] = prompts.map(p => ({
+          id: p.id,
+          category: p.category,
+          image: p.image_url,
+          title: p.title,
+          prompt: p.prompt,
+        }))
+        
+        setGalleryData(transformedData)
+        
+        // Extract unique categories
+        const cats = ["All", ...new Set(prompts.map(p => p.category))]
+        setAvailableCategories(cats)
+      } else {
+        // Fallback to hardcoded data if API fails
+        const legacyData: GalleryItemData[] = promptGallery.map(p => ({
+          id: p.id,
+          category: p.category,
+          image: p.image,
+          title: p.title,
+          prompt: p.prompt,
+        }))
+        setGalleryData(legacyData)
+        setAvailableCategories(categories)
+      }
+    } catch (error) {
+      console.error("Error fetching prompts:", error)
+      // Fallback to hardcoded data
+      const legacyData: GalleryItemData[] = promptGallery.map(p => ({
+        id: p.id,
+        category: p.category,
+        image: p.image,
+        title: p.title,
+        prompt: p.prompt,
+      }))
+      setGalleryData(legacyData)
+      setAvailableCategories(categories)
+    } finally {
+      setIsLoadingPrompts(false)
+    }
+  }, [])
   
   // Check authorization on mount - must run client-side only
   useEffect(() => {
@@ -1138,6 +1221,7 @@ export default function PromptsPage() {
       if (cookieValue === "unlocked") {
         setIsAuthorized(true)
         setIsLoading(false)
+        fetchPrompts()
       } else {
         // Redirect to home if not authorized
         router.push("/")
@@ -1146,14 +1230,14 @@ export default function PromptsPage() {
     
     // Run immediately since we're already client-side
     checkAuth()
-  }, [router])
+  }, [router, fetchPrompts])
 
   // Memoize filtered gallery to prevent recalculation on every render
   const filteredGallery = useMemo(() => {
     return selectedCategory === "All"
-      ? promptGallery
-      : promptGallery.filter(item => item.category === selectedCategory)
-  }, [selectedCategory])
+      ? galleryData
+      : galleryData.filter(item => item.category === selectedCategory)
+  }, [selectedCategory, galleryData])
 
   // Reset visible count when category changes
   useEffect(() => {
@@ -1184,7 +1268,7 @@ export default function PromptsPage() {
   }, [filteredGallery, visibleCount])
 
   // Memoize the item click handler
-  const handleItemClick = useCallback((item: typeof promptGallery[0]) => {
+  const handleItemClick = useCallback((item: GalleryItemData) => {
     setSelectedItem(item)
   }, [])
 
@@ -1290,7 +1374,7 @@ export default function PromptsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-6 flex flex-wrap justify-center gap-1.5 md:mb-12 md:gap-2"
           >
-            {categories.map((category) => (
+            {availableCategories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -1306,37 +1390,50 @@ export default function PromptsPage() {
           </motion.div>
 
           {/* Gallery Grid - Optimized with CSS containment and lazy loading */}
-          <div 
-            className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
-            style={{ 
-              contain: 'layout style',
-              contentVisibility: 'auto',
-            }}
-          >
-            {visibleItems.map((item, index) => (
-              <GalleryItem
-                key={item.id}
-                item={item}
-                onClick={() => handleItemClick(item)}
-                priority={index < 15} // First 15 items load eagerly (3 rows on desktop)
-              />
-            ))}
-          </div>
-
-          {/* Load More Trigger for Infinite Scroll */}
-          {visibleCount < filteredGallery.length && (
-            <div
-              ref={loadMoreRef}
-              className="flex justify-center py-8"
-            >
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#9E3248]/30 border-t-[#9E3248]" />
+          {isLoadingPrompts ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <Loader2 className="h-8 w-8 animate-spin text-[#9E3248]" />
+              <p className="mt-4 text-sm text-white/40">Loading prompts...</p>
             </div>
-          )}
+          ) : galleryData.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <p className="text-white/60">No prompts available yet.</p>
+            </div>
+          ) : (
+            <>
+              <div 
+                className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5"
+                style={{ 
+                  contain: 'layout style',
+                  contentVisibility: 'auto',
+                }}
+              >
+                {visibleItems.map((item, index) => (
+                  <GalleryItem
+                    key={item.id}
+                    item={item}
+                    onClick={() => handleItemClick(item)}
+                    priority={index < 15} // First 15 items load eagerly (3 rows on desktop)
+                  />
+                ))}
+              </div>
 
-          {/* Prompt Count */}
-          <p className="mt-8 text-center text-sm text-white/40">
-            Showing {visibleItems.length} of {filteredGallery.length} prompts
-          </p>
+              {/* Load More Trigger for Infinite Scroll */}
+              {visibleCount < filteredGallery.length && (
+                <div
+                  ref={loadMoreRef}
+                  className="flex justify-center py-8"
+                >
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#9E3248]/30 border-t-[#9E3248]" />
+                </div>
+              )}
+
+              {/* Prompt Count */}
+              <p className="mt-8 text-center text-sm text-white/40">
+                Showing {visibleItems.length} of {filteredGallery.length} prompts
+              </p>
+            </>
+          )}
 
           {/* Suggestion Section */}
           <div className="mx-auto mt-12 md:mt-20 w-full max-w-xl border-t border-[#9E3248]/25 pt-8 md:pt-12 text-center px-2">
