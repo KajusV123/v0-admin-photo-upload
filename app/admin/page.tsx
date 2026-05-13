@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { upload } from "@vercel/blob/client"
 import { motion, AnimatePresence } from "framer-motion"
 import { 
   Lock, 
@@ -167,42 +168,26 @@ export default function AdminPage() {
     reader.readAsDataURL(file)
 
     try {
-      const formData = new FormData()
-      formData.append("file", file)
-      formData.append("auth", token)
+      // Use client-side direct upload to bypass serverless body limit
+      const timestamp = Date.now()
+      const extension = file.name.split(".").pop() || "jpg"
+      const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
 
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        headers: { "x-admin-password": token },
-        body: formData,
+      const blob = await upload(filename, file, {
+        access: "public",
+        handleUploadUrl: "/api/admin/upload/client",
+        clientPayload: JSON.stringify({ auth: token }),
       })
 
-      // Check if response is JSON before parsing
-      const contentType = res.headers.get("content-type")
-      if (!contentType?.includes("application/json")) {
-        const text = await res.text()
-        console.error("Non-JSON response:", text)
-        showNotification("error", "Upload failed - file may be too large")
-        setPreviewImage(null)
-        return
-      }
-
-      const data = await res.json()
-
-      if (res.ok) {
-        setNewPrompt(prev => ({ ...prev, image_url: data.url }))
-        showNotification("success", "Image uploaded successfully")
-      } else {
-        // If unauthorized, clear stored token so user is prompted again
-        if (res.status === 401) {
-          setAuthToken("")
-        }
-        showNotification("error", data.error || "Upload failed")
-        setPreviewImage(null)
-      }
+      setNewPrompt(prev => ({ ...prev, image_url: blob.url }))
+      showNotification("success", "Image uploaded successfully")
     } catch (error) {
       console.error("Upload error:", error)
-      showNotification("error", "Upload failed - please try a smaller image")
+      const errorMessage = error instanceof Error ? error.message : "Upload failed"
+      if (errorMessage.includes("Unauthorized")) {
+        setAuthToken("")
+      }
+      showNotification("error", errorMessage)
       setPreviewImage(null)
     } finally {
       setUploadProgress(false)
