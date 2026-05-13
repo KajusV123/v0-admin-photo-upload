@@ -48,14 +48,26 @@ export async function POST(request: NextRequest) {
     const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
 
     // Upload to Vercel Blob
-    const blob = await put(filename, file, {
-      access: "public",
-    })
+    // Try public access first, fall back to private if the store is private
+    let blob
+    try {
+      blob = await put(filename, file, {
+        access: "public",
+      })
+    } catch (publicError) {
+      console.log("[v0] Public upload failed, trying private:", publicError)
+      // If public fails, try private access
+      blob = await put(filename, file, {
+        access: "private",
+      })
+    }
 
+    console.log("[v0] Blob upload success:", blob.url)
     return NextResponse.json({ url: blob.url })
   } catch (error) {
-    console.error("Upload error:", error)
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 })
+    console.error("[v0] Upload error details:", error)
+    const errorMessage = error instanceof Error ? error.message : "Upload failed"
+    return NextResponse.json({ error: errorMessage }, { status: 500 })
   }
 }
 
