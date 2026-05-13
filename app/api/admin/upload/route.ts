@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
     const file = formData.get("file") as File
-    const authToken = formData.get("auth") as string
+    const authToken = formData.get("auth") as string || request.headers.get("x-admin-password")
 
     // Verify auth token matches admin password
     const adminPassword = getAdminPassword()
@@ -79,11 +79,12 @@ export async function POST(request: NextRequest) {
 // DELETE - Delete an image from blob storage
 export async function DELETE(request: NextRequest) {
   try {
-    const { url, auth } = await request.json()
+    const { url } = await request.json()
+    const authToken = request.headers.get("x-admin-password")
 
     // Verify auth token
     const adminPassword = getAdminPassword()
-    if (!adminPassword || auth !== adminPassword) {
+    if (!adminPassword || authToken !== adminPassword) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 

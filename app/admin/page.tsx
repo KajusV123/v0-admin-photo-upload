@@ -173,8 +173,8 @@ export default function AdminPage() {
 
       const res = await fetch("/api/admin/upload", {
         method: "POST",
+        headers: { "x-admin-password": token },
         body: formData,
-        credentials: "include",
       })
 
       // Check if response is JSON before parsing
@@ -222,9 +222,11 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/admin/prompts", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-password": authToken,
+        },
         body: JSON.stringify(newPrompt),
-        credentials: "include",
       })
 
       if (res.ok) {
@@ -258,7 +260,7 @@ export default function AdminPage() {
       // Delete prompt from database
       const res = await fetch(`/api/admin/prompts?id=${id}`, {
         method: "DELETE",
-        credentials: "include",
+        headers: { "x-admin-password": authToken },
       })
 
       if (res.ok) {
@@ -266,9 +268,11 @@ export default function AdminPage() {
         try {
           await fetch("/api/admin/upload", {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+              "Content-Type": "application/json",
+              "x-admin-password": authToken,
+            },
             body: JSON.stringify({ url: imageUrl }),
-            credentials: "include",
           })
         } catch (e) {
           console.warn("Could not delete image from storage:", e)

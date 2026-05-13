@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
-import { cookies } from "next/headers"
 import { createClient } from "@/lib/supabase/server"
 
-const ADMIN_COOKIE_NAME = "admin_session"
-
-async function isAuthenticated() {
-  const cookieStore = await cookies()
-  const session = cookieStore.get(ADMIN_COOKIE_NAME)
-  return session?.value === "authenticated"
+function isAuthenticated(request: NextRequest) {
+  const authHeader = request.headers.get("x-admin-password")
+  const adminPassword = process.env.ADMIN_PASSWORD
+  return authHeader === adminPassword
 }
 
 // GET - Fetch all prompts
@@ -36,7 +33,7 @@ export async function GET() {
 // POST - Create a new prompt
 export async function POST(request: NextRequest) {
   try {
-    if (!(await isAuthenticated())) {
+    if (!isAuthenticated(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -75,7 +72,7 @@ export async function POST(request: NextRequest) {
 // PUT - Update a prompt
 export async function PUT(request: NextRequest) {
   try {
-    if (!(await isAuthenticated())) {
+    if (!isAuthenticated(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -116,7 +113,7 @@ export async function PUT(request: NextRequest) {
 // DELETE - Delete a prompt
 export async function DELETE(request: NextRequest) {
   try {
-    if (!(await isAuthenticated())) {
+    if (!isAuthenticated(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
