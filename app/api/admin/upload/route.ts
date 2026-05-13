@@ -8,15 +8,10 @@ export const dynamic = "force-dynamic"
 const ADMIN_COOKIE_NAME = "admin_session"
 
 function isAuthenticated(request: NextRequest): boolean {
-  // Read cookie directly from request headers to avoid issues with FormData requests
-  const cookieHeader = request.headers.get("cookie") || ""
-  const cookies = cookieHeader.split(";").reduce((acc, cookie) => {
-    const [key, value] = cookie.trim().split("=")
-    if (key && value) acc[key] = value
-    return acc
-  }, {} as Record<string, string>)
-  
-  return cookies[ADMIN_COOKIE_NAME] === "authenticated"
+  // Use NextRequest's built-in cookies API which properly parses cookies
+  const sessionCookie = request.cookies.get(ADMIN_COOKIE_NAME)
+  console.log("[v0] Cookie value:", sessionCookie?.value)
+  return sessionCookie?.value === "authenticated"
 }
 
 // POST - Upload an image
