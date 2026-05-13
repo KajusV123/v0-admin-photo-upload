@@ -138,7 +138,13 @@ export default function AdminPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    console.log("[v0] Starting upload for file:", file.name, file.type, file.size)
+    // Check file size on client side first (Vercel serverless has ~4.5MB body limit)
+    const maxSize = 4.5 * 1024 * 1024
+    if (file.size > maxSize) {
+      showNotification("error", "File too large. Maximum size is 4.5MB. Please compress the image first.")
+      return
+    }
+
     setUploadProgress(true)
     
     // Show preview immediately
@@ -150,15 +156,22 @@ export default function AdminPage() {
       const formData = new FormData()
       formData.append("file", file)
 
-      console.log("[v0] Sending upload request...")
       const res = await fetch("/api/admin/upload", {
         method: "POST",
         body: formData,
       })
 
-      console.log("[v0] Upload response status:", res.status)
+      // Check if response is JSON before parsing
+      const contentType = res.headers.get("content-type")
+      if (!contentType?.includes("application/json")) {
+        const text = await res.text()
+        console.error("Non-JSON response:", text)
+        showNotification("error", "Upload failed - file may be too large")
+        setPreviewImage(null)
+        return
+      }
+
       const data = await res.json()
-      console.log("[v0] Upload response data:", data)
 
       if (res.ok) {
         setNewPrompt(prev => ({ ...prev, image_url: data.url }))
@@ -168,8 +181,8 @@ export default function AdminPage() {
         setPreviewImage(null)
       }
     } catch (error) {
-      console.error("[v0] Upload error:", error)
-      showNotification("error", error instanceof Error ? error.message : "Upload failed")
+      console.error("Upload error:", error)
+      showNotification("error", "Upload failed - please try a smaller image")
       setPreviewImage(null)
     } finally {
       setUploadProgress(false)
@@ -468,7 +481,7 @@ export default function AdminPage() {
                           <ImageIcon className="mb-2 h-10 w-10 text-white/40" />
                           <span className="text-sm text-white/60">Click to upload</span>
                           <span className="mt-1 text-xs text-white/40">
-                            JPEG, PNG, WebP, GIF (max 10MB)
+                            JPEG, PNG, WebP, GIF (max 4.5MB)
                           </span>
                         </label>
                       )}

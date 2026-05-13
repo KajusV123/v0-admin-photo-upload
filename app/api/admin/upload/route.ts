@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { put, del } from "@vercel/blob"
 
+// Configure route to handle large file uploads
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
+
 const ADMIN_COOKIE_NAME = "admin_session"
 
 async function isAuthenticated() {
