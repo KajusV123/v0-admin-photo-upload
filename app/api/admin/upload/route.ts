@@ -59,14 +59,14 @@ export async function POST(request: NextRequest) {
     const extension = file.name.split(".").pop() || "jpg"
     const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
 
-    // Upload to Vercel Blob (private store)
+    // Upload to Vercel Blob (public store)
     const blob = await put(filename, file, {
-      access: "private",
+      access: "public",
     })
 
-    // Return the pathname for use with delivery route
+    // Return the public blob URL directly
     return NextResponse.json({ 
-      url: `/api/image?path=${encodeURIComponent(blob.pathname)}`,
+      url: blob.url,
       pathname: blob.pathname 
     })
   } catch (error) {
