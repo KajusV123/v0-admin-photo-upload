@@ -138,6 +138,7 @@ export default function AdminPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
+    console.log("[v0] Starting upload for file:", file.name, file.type, file.size)
     setUploadProgress(true)
     
     // Show preview immediately
@@ -149,23 +150,26 @@ export default function AdminPage() {
       const formData = new FormData()
       formData.append("file", file)
 
+      console.log("[v0] Sending upload request...")
       const res = await fetch("/api/admin/upload", {
         method: "POST",
         body: formData,
       })
 
+      console.log("[v0] Upload response status:", res.status)
+      const data = await res.json()
+      console.log("[v0] Upload response data:", data)
+
       if (res.ok) {
-        const data = await res.json()
         setNewPrompt(prev => ({ ...prev, image_url: data.url }))
         showNotification("success", "Image uploaded successfully")
       } else {
-        const data = await res.json()
         showNotification("error", data.error || "Upload failed")
         setPreviewImage(null)
       }
     } catch (error) {
-      console.error("Upload error:", error)
-      showNotification("error", "Upload failed")
+      console.error("[v0] Upload error:", error)
+      showNotification("error", error instanceof Error ? error.message : "Upload failed")
       setPreviewImage(null)
     } finally {
       setUploadProgress(false)
