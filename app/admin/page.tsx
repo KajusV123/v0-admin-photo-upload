@@ -241,12 +241,19 @@ export default function AdminPage() {
   const handleDeletePrompt = async (id: string, imageUrl: string) => {
     if (!confirm("Are you sure you want to delete this prompt?")) return
 
+    console.log("[v0] Deleting prompt with id:", id, "imageUrl:", imageUrl)
+    console.log("[v0] Auth token present:", !!authToken)
+
     try {
       // Delete prompt from database
       const res = await fetch(`/api/admin/prompts?id=${id}`, {
         method: "DELETE",
         headers: { "x-admin-password": authToken },
       })
+
+      console.log("[v0] Delete response status:", res.status)
+      const responseText = await res.text()
+      console.log("[v0] Delete response body:", responseText)
 
       if (res.ok) {
         // Try to delete image from blob storage (non-critical)
@@ -610,7 +617,11 @@ export default function AdminPage() {
               <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 opacity-0 transition-opacity group-hover:opacity-100">
                 <div className="flex justify-end">
                   <button
-                    onClick={() => handleDeletePrompt(prompt.id, prompt.image_url)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      e.preventDefault()
+                      handleDeletePrompt(prompt.id, prompt.image_url)
+                    }}
                     className="rounded-lg bg-red-500/80 p-2 transition-colors hover:bg-red-500"
                   >
                     <Trash2 className="h-4 w-4" />

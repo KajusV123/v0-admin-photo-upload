@@ -114,11 +114,13 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     if (!isAuthenticated(request)) {
+      console.log("[v0] DELETE unauthorized - auth header:", request.headers.get("x-admin-password")?.substring(0, 3) + "...")
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const { searchParams } = new URL(request.url)
     const id = searchParams.get("id")
+    console.log("[v0] DELETE request for id:", id)
 
     if (!id) {
       return NextResponse.json({ error: "Prompt ID required" }, { status: 400 })
@@ -126,14 +128,25 @@ export async function DELETE(request: NextRequest) {
 
     const supabase = await createClient()
 
-    const { error } = await supabase
+    // First check if the record exists
+    const { data: existing, error: findError } = await supabase
+      .from("gallery_images")
+      .select("id")
+      .eq("id", id)
+      .single()
+
+    console.log("[v0] Found existing record:", existing, "Error:", findError)
+
+    const { error, count } = await supabase
       .from("gallery_images")
       .delete()
       .eq("id", id)
 
+    console.log("[v0] Delete result - error:", error, "count:", count)
+
     if (error) {
       console.error("Error deleting prompt:", error)
-      return NextResponse.json({ error: "Failed to delete prompt" }, { status: 500 })
+      return NextResponse.json({ error: "Failed to delete prompt: " + error.message }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
