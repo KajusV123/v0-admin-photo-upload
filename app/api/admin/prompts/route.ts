@@ -1,10 +1,22 @@
 import { NextRequest, NextResponse } from "next/server"
+import { cookies } from "next/headers"
 import { createClient } from "@/lib/supabase/server"
 
-function isAuthenticated(request: NextRequest) {
+const ADMIN_COOKIE_NAME = "admin_session"
+
+async function isAuthenticated(request: NextRequest) {
+  // First check header-based auth
   const authHeader = request.headers.get("x-admin-password")
   const adminPassword = process.env.ADMIN_PASSWORD
-  return authHeader === adminPassword
+  
+  if (authHeader && authHeader === adminPassword) {
+    return true
+  }
+  
+  // Fall back to cookie-based auth
+  const cookieStore = await cookies()
+  const session = cookieStore.get(ADMIN_COOKIE_NAME)
+  return session?.value === "authenticated"
 }
 
 // GET - Fetch all prompts
@@ -33,7 +45,7 @@ export async function GET() {
 // POST - Create a new prompt
 export async function POST(request: NextRequest) {
   try {
-    if (!isAuthenticated(request)) {
+    if (!(await isAuthenticated(request))) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -72,7 +84,7 @@ export async function POST(request: NextRequest) {
 // PUT - Update a prompt
 export async function PUT(request: NextRequest) {
   try {
-    if (!isAuthenticated(request)) {
+    if (!(await isAuthenticated(request))) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -113,14 +125,12 @@ export async function PUT(request: NextRequest) {
 // DELETE - Delete a prompt
 export async function DELETE(request: NextRequest) {
   try {
-    if (!isAuthenticated(request)) {
-      console.log("[v0] DELETE unauthorized - auth header:", request.headers.get("x-admin-password")?.substring(0, 3) + "...")
+    if (!(await isAuthenticated(request))) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const { searchParams } = new URL(request.url)
     const id = searchParams.get("id")
-    console.log("[v0] DELETE request for id:", id)
 
     if (!id) {
       return NextResponse.json({ error: "Prompt ID required" }, { status: 400 })
@@ -128,21 +138,10 @@ export async function DELETE(request: NextRequest) {
 
     const supabase = await createClient()
 
-    // First check if the record exists
-    const { data: existing, error: findError } = await supabase
-      .from("gallery_images")
-      .select("id")
-      .eq("id", id)
-      .single()
-
-    console.log("[v0] Found existing record:", existing, "Error:", findError)
-
-    const { error, count } = await supabase
+    const { error } = await supabase
       .from("gallery_images")
       .delete()
       .eq("id", id)
-
-    console.log("[v0] Delete result - error:", error, "count:", count)
 
     if (error) {
       console.error("Error deleting prompt:", error)

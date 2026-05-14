@@ -241,19 +241,12 @@ export default function AdminPage() {
   const handleDeletePrompt = async (id: string, imageUrl: string) => {
     if (!confirm("Are you sure you want to delete this prompt?")) return
 
-    console.log("[v0] Deleting prompt with id:", id, "imageUrl:", imageUrl)
-    console.log("[v0] Auth token present:", !!authToken)
-
     try {
       // Delete prompt from database
       const res = await fetch(`/api/admin/prompts?id=${id}`, {
         method: "DELETE",
         headers: { "x-admin-password": authToken },
       })
-
-      console.log("[v0] Delete response status:", res.status)
-      const responseText = await res.text()
-      console.log("[v0] Delete response body:", responseText)
 
       if (res.ok) {
         // Try to delete image from blob storage (non-critical)
