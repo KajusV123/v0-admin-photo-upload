@@ -47,7 +47,7 @@ function getCookie(name: string): string | null {
 }
 
 // Categories for filtering
-const categories = ["All", "Podcast", "Lifestyle", "Beauty", "Fashion", "Fitness", "Portrait"]
+const categories = ["All", "Podcast", "Lifestyle", "Beauty", "Fashion", "Fitness", "Portrait", "The Everyday"]
 
 // Prompt gallery data
 const promptGallery = [

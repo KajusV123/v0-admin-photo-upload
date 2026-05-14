@@ -38,7 +38,8 @@ const CATEGORIES = [
   "Interior",
   "Portrait",
   "Product",
-  "Nature"
+  "Nature",
+  "The Everyday"
 ]
 
 export default function AdminPage() {
