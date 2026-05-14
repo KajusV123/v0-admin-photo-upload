@@ -1097,13 +1097,11 @@ function PromptModal({
         </button>
 
         {/* Image - left side on desktop, top on mobile */}
-        <div className="relative h-64 md:h-auto md:min-h-[400px] w-full shrink-0 md:w-[45%] bg-black/50 flex items-center justify-center">
-          <Image
+        <div className="relative w-full shrink-0 md:w-[45%] md:self-stretch">
+          <img
             src={item.image}
             alt={item.title}
-            fill
-            unoptimized
-            className="object-contain"
+            className="w-full h-auto max-h-[50vh] md:max-h-none md:h-full md:absolute md:inset-0 object-contain md:object-cover"
           />
         </div>
 
