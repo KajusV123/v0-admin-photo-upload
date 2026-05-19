@@ -36,11 +36,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate file size (max 30MB)
-    const maxSize = 30 * 1024 * 1024
+    // Validate file size (max 700KB)
+    const maxSize = 700 * 1024
     if (file.size > maxSize) {
       return NextResponse.json(
-        { error: "File too large. Maximum size is 30MB" },
+        { error: "File too large. Maximum size is 700KB. Please compress your image first." },
         { status: 400 }
       )
     }

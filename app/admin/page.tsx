@@ -141,10 +141,10 @@ export default function AdminPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
-    // Check file size on client side first (max 30MB)
-    const maxSize = 30 * 1024 * 1024
+    // Check file size on client side first (max 700KB)
+    const maxSize = 700 * 1024
     if (file.size > maxSize) {
-      showNotification("error", "File too large. Maximum size is 30MB.")
+      showNotification("error", "File too large. Maximum size is 700KB. Please compress your image first.")
       return
     }
 
@@ -179,8 +179,16 @@ export default function AdminPage() {
       })
 
       if (!res.ok) {
-        const data = await res.json()
-        throw new Error(data.error || "Upload failed")
+        // Handle non-JSON error responses
+        const contentType = res.headers.get("content-type")
+        if (contentType?.includes("application/json")) {
+          const data = await res.json()
+          throw new Error(data.error || "Upload failed")
+        } else {
+          const text = await res.text()
+          console.error("Non-JSON error response:", text)
+          throw new Error("Upload failed. Please try a smaller image (max 700KB).")
+        }
       }
 
       const data = await res.json()
@@ -498,7 +506,7 @@ export default function AdminPage() {
                           <ImageIcon className="mb-2 h-10 w-10 text-white/40" />
                           <span className="text-sm text-white/60">Click to upload</span>
                           <span className="mt-1 text-xs text-white/40">
-                            JPEG, PNG, WebP, GIF (max 30MB)
+                            JPEG, PNG, WebP, GIF (max 700KB)
                           </span>
                         </label>
                       )}

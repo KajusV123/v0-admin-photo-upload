@@ -1,26 +1,41 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3"
 
-const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID!
-const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID!
-const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY!
-const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME!
-const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL!
+const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID
+const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID
+const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY
+const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME
+const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL
 
-export const r2Client = new S3Client({
-  region: "auto",
-  endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: R2_ACCESS_KEY_ID,
-    secretAccessKey: R2_SECRET_ACCESS_KEY,
-  },
-})
+function getR2Client() {
+  if (!R2_ACCOUNT_ID || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY) {
+    throw new Error("R2 credentials not configured. Please set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, and R2_SECRET_ACCESS_KEY environment variables.")
+  }
+  
+  return new S3Client({
+    region: "auto",
+    endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: R2_ACCESS_KEY_ID,
+      secretAccessKey: R2_SECRET_ACCESS_KEY,
+    },
+  })
+}
 
 export async function uploadToR2(
   file: Buffer,
   filename: string,
   contentType: string
 ): Promise<string> {
-  const key = `prompts/${Date.now()}-${Math.random().toString(36).substring(7)}-${filename}`
+  if (!R2_BUCKET_NAME) {
+    throw new Error("R2_BUCKET_NAME not configured")
+  }
+  if (!R2_PUBLIC_URL) {
+    throw new Error("R2_PUBLIC_URL not configured")
+  }
+
+  const r2Client = getR2Client()
+  const safeFilename = filename.replace(/[^a-zA-Z0-9.-]/g, "_")
+  const key = `prompts/${Date.now()}-${Math.random().toString(36).substring(7)}-${safeFilename}`
 
   await r2Client.send(
     new PutObjectCommand({
@@ -36,6 +51,11 @@ export async function uploadToR2(
 }
 
 export async function deleteFromR2(url: string): Promise<void> {
+  if (!R2_BUCKET_NAME || !R2_PUBLIC_URL) {
+    throw new Error("R2 configuration incomplete")
+  }
+
+  const r2Client = getR2Client()
   // Extract the key from the URL
   const key = url.replace(`${R2_PUBLIC_URL}/`, "")
 
@@ -46,5 +66,3 @@ export async function deleteFromR2(url: string): Promise<void> {
     })
   )
 }
-
-export { R2_BUCKET_NAME, R2_PUBLIC_URL }
