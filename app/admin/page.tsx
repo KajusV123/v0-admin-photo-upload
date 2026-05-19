@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { upload } from "@vercel/blob/client"
 import { motion, AnimatePresence } from "framer-motion"
 import { 
   Lock, 
@@ -169,18 +168,23 @@ export default function AdminPage() {
     reader.readAsDataURL(file)
 
     try {
-      // Use client-side direct upload to bypass serverless body limit
-      const timestamp = Date.now()
-      const extension = file.name.split(".").pop() || "jpg"
-      const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
+      // Upload to R2 via server route
+      const formData = new FormData()
+      formData.append("file", file)
+      formData.append("auth", token)
 
-      const blob = await upload(filename, file, {
-        access: "public",
-        handleUploadUrl: "/api/admin/upload/client",
-        clientPayload: JSON.stringify({ auth: token }),
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
       })
 
-      setNewPrompt(prev => ({ ...prev, image_url: blob.url }))
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || "Upload failed")
+      }
+
+      const data = await res.json()
+      setNewPrompt(prev => ({ ...prev, image_url: data.url }))
       showNotification("success", "Image uploaded successfully")
     } catch (error) {
       console.error("Upload error:", error)

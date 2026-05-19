@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { put, del } from "@vercel/blob"
+import { uploadToR2, deleteFromR2 } from "@/lib/r2"
 
 // Configure route to handle file uploads
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
 // Simple auth check - verify admin password is sent with request
-// This bypasses cookie issues with FormData uploads
 function getAdminPassword(): string | undefined {
   return process.env.ADMIN_PASSWORD
 }
@@ -46,29 +45,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if BLOB token exists
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      return NextResponse.json(
-        { error: "Blob storage not configured" },
-        { status: 500 }
-      )
-    }
+    // Convert file to buffer and upload to R2
+    const buffer = Buffer.from(await file.arrayBuffer())
+    const url = await uploadToR2(buffer, file.name, file.type)
 
-    // Generate unique filename
-    const timestamp = Date.now()
-    const extension = file.name.split(".").pop() || "jpg"
-    const filename = `prompts/${timestamp}-${Math.random().toString(36).substring(7)}.${extension}`
-
-    // Upload to Vercel Blob (public store)
-    const blob = await put(filename, file, {
-      access: "public",
-    })
-
-    // Return the public blob URL directly
-    return NextResponse.json({ 
-      url: blob.url,
-      pathname: blob.pathname 
-    })
+    return NextResponse.json({ url })
   } catch (error) {
     console.error("Upload error:", error)
     const errorMessage = error instanceof Error ? error.message : "Upload failed"
@@ -76,7 +57,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// DELETE - Delete an image from blob storage
+// DELETE - Delete an image from R2 storage
 export async function DELETE(request: NextRequest) {
   try {
     const { url } = await request.json()
@@ -92,7 +73,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "No URL provided" }, { status: 400 })
     }
 
-    await del(url)
+    await deleteFromR2(url)
 
     return NextResponse.json({ success: true })
   } catch (error) {
