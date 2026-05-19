@@ -37,14 +37,26 @@ export async function uploadToR2(
   const safeFilename = filename.replace(/[^a-zA-Z0-9.-]/g, "_")
   const key = `prompts/${Date.now()}-${Math.random().toString(36).substring(7)}-${safeFilename}`
 
-  await r2Client.send(
-    new PutObjectCommand({
-      Bucket: R2_BUCKET_NAME,
-      Key: key,
-      Body: file,
-      ContentType: contentType,
-    })
-  )
+  console.log("[v0] R2 upload starting - bucket:", R2_BUCKET_NAME, "key:", key)
+
+  try {
+    await r2Client.send(
+      new PutObjectCommand({
+        Bucket: R2_BUCKET_NAME,
+        Key: key,
+        Body: file,
+        ContentType: contentType,
+      })
+    )
+    console.log("[v0] R2 upload complete")
+  } catch (err) {
+    console.error("[v0] R2 upload failed:", err)
+    // Re-throw with more helpful message
+    if (err instanceof Error) {
+      throw new Error(`R2 upload failed: ${err.message}`)
+    }
+    throw err
+  }
 
   // Return the public URL
   return `${R2_PUBLIC_URL}/${key}`
