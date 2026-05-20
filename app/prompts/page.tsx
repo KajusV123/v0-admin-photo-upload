@@ -1011,6 +1011,7 @@ const GalleryItem = memo(function GalleryItem({
   priority?: boolean
 }) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   return (
     <div
@@ -1021,13 +1022,22 @@ const GalleryItem = memo(function GalleryItem({
         src={item.image}
         alt={item.title}
         className={`gallery-image absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
+          imageLoaded && !imageError ? 'opacity-100' : 'opacity-0'
         }`}
-        onLoad={() => setImageLoaded(true)}
+        onLoad={() => {
+          setImageLoaded(true)
+          setImageError(false)
+        }}
+        onError={() => {
+          setImageLoaded(true)
+          setImageError(true)
+          console.error("[v0] Failed to load image:", item.image)
+        }}
         loading={priority ? "eager" : "lazy"}
+        crossOrigin="anonymous"
       />
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-white/5" />
+      {(!imageLoaded || imageError) && (
+        <div className={`absolute inset-0 ${imageError ? 'bg-red-900/20' : 'bg-white/5'}`} />
       )}
       <div className="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       <div className="gallery-content absolute bottom-0 left-0 right-0 p-4">
@@ -1099,6 +1109,8 @@ function PromptModal({
             src={item.image}
             alt={item.title}
             className="w-full h-auto max-h-[40vh] md:max-h-[70vh] object-contain"
+            crossOrigin="anonymous"
+            onError={() => console.error("[v0] Failed to load modal image:", item.image)}
           />
         </div>
 

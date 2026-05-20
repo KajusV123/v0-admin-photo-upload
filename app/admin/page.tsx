@@ -477,6 +477,8 @@ export default function AdminPage() {
                             src={previewImage || newPrompt.image_url}
                             alt="Preview"
                             className="absolute inset-0 h-full w-full object-cover"
+                            crossOrigin="anonymous"
+                            onError={() => console.error("[v0] Failed to load preview image:", previewImage || newPrompt.image_url)}
                           />
                           <button
                             type="button"
@@ -614,6 +616,8 @@ export default function AdminPage() {
                 src={prompt.image_url}
                 alt={prompt.title}
                 className="absolute inset-0 h-full w-full object-cover"
+                crossOrigin="anonymous"
+                onError={() => console.error("[v0] Failed to load grid image:", prompt.image_url)}
               />
               
               {/* Overlay on hover */}
