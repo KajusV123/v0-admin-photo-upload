@@ -473,11 +473,10 @@ export default function AdminPage() {
                     <div className="relative">
                       {previewImage || newPrompt.image_url ? (
                         <div className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-lg">
-                          <Image
+                          <img
                             src={previewImage || newPrompt.image_url}
                             alt="Preview"
-                            fill
-                            className="object-cover"
+                            className="absolute inset-0 h-full w-full object-cover"
                           />
                           <button
                             type="button"
@@ -611,12 +610,10 @@ export default function AdminPage() {
               layout
               className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-white/10 bg-white/5"
             >
-              <Image
+              <img
                 src={prompt.image_url}
                 alt={prompt.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               
               {/* Overlay on hover */}

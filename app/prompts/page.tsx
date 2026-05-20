@@ -1017,17 +1017,14 @@ const GalleryItem = memo(function GalleryItem({
       onClick={onClick}
       className="gallery-item group relative aspect-[4/5] cursor-pointer overflow-hidden rounded-2xl bg-[#1a1a1a]"
     >
-      <Image
+      <img
         src={item.image}
         alt={item.title}
-        fill
-        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-        className={`gallery-image object-cover ${
+        className={`gallery-image absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         onLoad={() => setImageLoaded(true)}
         loading={priority ? "eager" : "lazy"}
-        quality={75}
       />
       {!imageLoaded && (
         <div className="absolute inset-0 bg-white/5" />
