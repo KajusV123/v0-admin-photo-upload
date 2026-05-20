@@ -42,12 +42,14 @@ export async function uploadToR2(
     throw new Error("R2_BUCKET_NAME not configured")
   }
   if (!publicUrl) {
-    throw new Error("R2_PUBLIC_URL not configured")
+    throw new Error("R2_PUBLIC_URL not configured. Expected format: https://pub-xxxxx.r2.dev")
   }
 
   const r2Client = createR2Client()
   const safeFilename = filename.replace(/[^a-zA-Z0-9.-]/g, "_")
   const key = `prompts/${Date.now()}-${Math.random().toString(36).substring(7)}-${safeFilename}`
+
+  console.log("[v0] Uploading to R2 - bucket:", bucketName, "key:", key, "publicUrl:", publicUrl)
 
   try {
     await r2Client.send(
@@ -66,7 +68,9 @@ export async function uploadToR2(
     throw new Error("R2 upload failed: Unknown error")
   }
 
-  return `${publicUrl}/${key}`
+  const finalUrl = `${publicUrl}/${key}`
+  console.log("[v0] Upload complete - returning URL:", finalUrl)
+  return finalUrl
 }
 
 export async function deleteFromR2(url: string): Promise<void> {
