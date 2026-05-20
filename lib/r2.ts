@@ -9,8 +9,6 @@ function getR2Config() {
     publicUrl: process.env.R2_PUBLIC_URL,
   }
   
-  console.log("[v0] R2 Config check - accountId:", !!config.accountId, "accessKeyId:", !!config.accessKeyId, "secretAccessKey:", !!config.secretAccessKey, "bucketName:", config.bucketName, "publicUrl:", !!config.publicUrl)
-  
   return config
 }
 
@@ -22,7 +20,6 @@ function createR2Client() {
   }
   
   const endpoint = `https://${accountId}.r2.cloudflarestorage.com`
-  console.log("[v0] Creating R2 client with endpoint:", endpoint)
   
   return new S3Client({
     region: "auto",
@@ -52,8 +49,6 @@ export async function uploadToR2(
   const safeFilename = filename.replace(/[^a-zA-Z0-9.-]/g, "_")
   const key = `prompts/${Date.now()}-${Math.random().toString(36).substring(7)}-${safeFilename}`
 
-  console.log("[v0] R2 upload starting - bucket:", bucketName, "key:", key)
-
   try {
     await r2Client.send(
       new PutObjectCommand({
@@ -63,7 +58,6 @@ export async function uploadToR2(
         ContentType: contentType,
       })
     )
-    console.log("[v0] R2 upload complete - URL:", `${publicUrl}/${key}`)
   } catch (err: unknown) {
     console.error("[v0] R2 upload failed:", err)
     if (err instanceof Error) {
