@@ -61,6 +61,8 @@ export default function AdminPage() {
     sort_order: 0,
   })
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [previewImageError, setPreviewImageError] = useState(false)
+  const [previewImageRetries, setPreviewImageRetries] = useState(0)
 
   // Check authentication on mount
   useEffect(() => {
@@ -192,7 +194,10 @@ export default function AdminPage() {
       }
 
       const data = await res.json()
+      console.log("[v0] Upload response URL:", data.url)
       setNewPrompt(prev => ({ ...prev, image_url: data.url }))
+      setPreviewImageError(false)
+      setPreviewImageRetries(0)
       showNotification("success", "Image uploaded successfully")
     } catch (error) {
       console.error("Upload error:", error)
@@ -284,6 +289,19 @@ export default function AdminPage() {
     } catch (error) {
       console.error("Delete error:", error)
       showNotification("error", "Failed to delete prompt")
+    }
+  }
+
+  const handlePreviewImageError = () => {
+    console.log("[v0] Preview image failed to load, URL:", newPrompt.image_url, "Retries:", previewImageRetries)
+    setPreviewImageError(true)
+    
+    // Retry loading after 1 second (up to 3 times)
+    if (previewImageRetries < 3) {
+      setTimeout(() => {
+        setPreviewImageRetries(prev => prev + 1)
+        setPreviewImageError(false)
+      }, 1000)
     }
   }
 
@@ -474,11 +492,12 @@ export default function AdminPage() {
                       {previewImage || newPrompt.image_url ? (
                         <div className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-lg">
                           <img
+                            key={`preview-${previewImageRetries}`}
                             src={previewImage || newPrompt.image_url}
                             alt="Preview"
                             className="absolute inset-0 h-full w-full object-cover"
                             crossOrigin="anonymous"
-                            onError={() => console.error("[v0] Failed to load preview image:", previewImage || newPrompt.image_url)}
+                            onError={handlePreviewImageError}
                           />
                           <button
                             type="button"
