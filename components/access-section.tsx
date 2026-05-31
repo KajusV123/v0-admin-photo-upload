@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 // ========================================
 // ACCESS CODE - Change this value anytime
 // ========================================
-const ACCESS_CODE = "1234"
+const ACCESS_CODE = "129084323322"
 // ========================================
 
 // Cookie utilities for persistent access
